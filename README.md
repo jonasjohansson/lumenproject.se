@@ -1,9 +1,9 @@
 # lumenproject.se
 
-A rebuild of [lumenproject.se](https://www.lumenproject.se/) as a plain vanilla static site
-(HTML, CSS, JS — no framework, no build step) with a dirt-simple CMS: **one Google Sheet**.
-
-Edit the sheet, reload the page, the site updates.
+A rebuild of [lumenproject.se](https://www.lumenproject.se/) as a small static site
+with a dirt-simple CMS: **one Google Sheet**. Content lives in the sheet; the site is
+**pre-rendered with [Eleventy](https://www.11ty.dev/)** so every page (including each
+event) is real HTML at a clean URL.
 
 ## The CMS
 
@@ -11,65 +11,62 @@ All content comes from this public Google Sheet:
 
 **https://docs.google.com/spreadsheets/d/1vFV9h4XjacVPzd9TUNDtsjucoUoSjpyMZLmKm9Jazms/edit**
 
-(Lives in the site's Drive folder. Must stay shared as *Anyone with the link — Viewer*,
-otherwise the live fetch breaks.)
+Keep it shared as *Anyone with the link — Viewer* (the build reads it over the public
+CSV endpoint). Tabs:
 
-The site reads it live via the public CSV endpoint:
-`https://docs.google.com/spreadsheets/d/<ID>/gviz/tq?tqx=out:csv&sheet=<Tab>`
+- **Settings** — key/value: `site_title, tagline, hero_image, about_image, about,
+  founders, contact_email, tickets_url, mailing_url, instagram, facebook, youtube,
+  photo_credit`. Image values may be a full URL or a repo-relative path like
+  `assets/img/hero-spring-2026.webp`.
+- **Events** — `Title, Date (YYYY-MM-DD), Time, Venue, City, Price, Description,
+  TicketURL, ImageURL`. Each row becomes its own page.
+- **Artists** — `Name, Role, Edition, URL`.
+- **Partners** — `Name, URL`.
+- **Media** — `Title, URL`.
 
-### Tabs
+### Pretty URLs
 
-**Settings** — key / value pairs.
+Every event gets a page. Dated events use `/events/YYYY/MM/DD/<slug>/`
+(e.g. `/events/2026/02/22/lumen-project-spring-222/`); undated archive events use
+`/events/<slug>/`. Slugs are derived from the title.
 
-| Key | Used for |
-|-----|----------|
-| `site_title` | Brand wordmark in header and footer |
-| `tagline` | Hero line |
-| `hero_heading` / `hero_subheading` | Big hero text |
-| `hero_image` | Hero background image URL (leave blank for the soft-light gradient) |
-| `logo_image` | Optional logo URL |
-| `about` | About paragraph (home + about page) |
-| `founders` | Who-we-are paragraph |
-| `contact_email` | Email link everywhere |
-| `tickets_url` | Tickets nav link |
-| `instagram` / `facebook` / `youtube` | Social links |
-| `partners` | Comma-separated list |
-| `supporters` | Comma-separated list (shown in footer) |
-| `photo_credit` | Footer photo credit |
+## How updates reach the site
 
-**Events** — one row per event. Columns:
-`Title, Date (YYYY-MM-DD), Time, Venue, City, Price, Description, TicketURL, ImageURL`
-The site auto-splits into **Upcoming** (date today or later) and **Past** (earlier).
+The sheet is the editing surface, but pages are built, not fetched live. A build runs:
 
-**Artists** — one row per artist. Columns: `Name, Role, Edition, URL`.
+- on every push to `main`,
+- daily at 04:00 UTC (so sheet edits go live within a day), and
+- on demand — Actions tab → **Build and deploy** → *Run workflow*.
 
-> Image fields take **URLs**. Any publicly reachable image works. To use a Google Drive
-> image, share it publicly and use `https://lh3.googleusercontent.com/d/<FILE_ID>`.
+So: edit the sheet, then trigger a rebuild (or wait for the daily run).
 
-## Run locally
+## Develop locally
 
 ```sh
-cd lumenproject.se
-python3 -m http.server 8000
-# open http://localhost:8000
+npm install
+npm run serve     # http://localhost:8080, rebuilds on change
+npm run build     # one-off build into _site/
 ```
 
-Or, on this machine, it is served at:
-`http://localhost/org/jonasjohansson/lumenproject.se/`
+## Deploy
 
-## Deploy (GitHub Pages)
-
-Push to GitHub, then Settings → Pages → deploy from `main` / root.
-`CNAME` is set to `lumenproject.jonasjohansson.se`; add a DNS `CNAME` record for
-that subdomain pointing to `jonasjohansson.github.io` when ready.
-`.nojekyll` is included so files are served as-is.
+GitHub Actions builds `_site/` and deploys to GitHub Pages (`.github/workflows/deploy.yml`).
+Custom domain `lumenproject.jonasjohansson.se` is set via `src/CNAME`; point a DNS
+`CNAME` record for that subdomain at `jonasjohansson.github.io`.
 
 ## Structure
 
 ```
-index.html        home — hero, next event, about teaser
-events.html       upcoming + past events, artist lineup, what-to-expect
-about.html        mission, team, partners, supporters, contact
-assets/css/style.css
-assets/js/cms.js  the entire CMS engine (fetch sheet, render)
+.eleventy.js            build config (passthrough, date + img filters)
+package.json
+src/
+  _data/lumen.js        fetches the sheet at build time -> templates
+  _includes/base.njk    shared header/footer layout
+  index.njk             home (hero)
+  events.njk            event archive + artist list
+  about.njk             mission, contact, partners, media
+  event.njk             per-event page (paginated over the Events tab)
+  CNAME
+  assets/css/style.css
+  assets/img/           local images (hero, about photo)
 ```

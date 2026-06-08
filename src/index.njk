@@ -1,0 +1,10 @@
+---
+layout: base.njk
+current: home
+title: LUMEN PROJECT
+permalink: /
+---
+<h1 class="page-title">LUMEN PROJECT<span class="slash">//</span></h1>
+<section>
+  <div class="hero{% if not lumen.settings.hero_image %} is-empty{% endif %}"{% if lumen.settings.hero_image %} style="background-image:url('{{ lumen.settings.hero_image | img }}')"{% endif %}></div>
+</section>

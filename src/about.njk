@@ -1,0 +1,35 @@
+---
+layout: base.njk
+current: about
+title: About — LUMEN PROJECT
+description: LUMEN PROJECT is a non-profit redefining the concert as a spiritual communal happening through sound, light and space.
+permalink: /about/
+---
+<h1 class="page-title">ABOUT<span class="slash">//</span></h1>
+
+<div class="about-photo{% if not lumen.settings.about_image %} is-empty{% endif %}"{% if lumen.settings.about_image %} style="background-image:url('{{ lumen.settings.about_image | img }}')"{% endif %}></div>
+<p class="photo-credit">Photo by {{ lumen.settings.photo_credit }}</p>
+
+<section class="prose">
+  <p class="lead">{{ lumen.settings.about }}</p>
+  <p>{{ lumen.settings.founders }}</p>
+</section>
+
+<section>
+  <h2 class="section">Contact</h2>
+  <p class="prose"><a href="mailto:{{ lumen.settings.contact_email }}">Email us</a> or <a href="{{ lumen.settings.mailing_url }}" target="_blank" rel="noopener">sign up to our mailing list</a> to stay informed.</p>
+</section>
+
+<section>
+  <h2 class="section">Partners</h2>
+  <ul class="linklist">
+    {% for p in lumen.partners %}<li>{% if p.URL %}<a href="{{ p.URL }}" target="_blank" rel="noopener">{{ p.Name }}</a>{% else %}{{ p.Name }}{% endif %}</li>{% endfor %}
+  </ul>
+</section>
+
+<section>
+  <h2 class="section">Media</h2>
+  <ul class="linklist linklist--media">
+    {% for m in lumen.media %}<li>{% if m.URL %}<a href="{{ m.URL }}" target="_blank" rel="noopener">{{ m.Title }}</a>{% else %}{{ m.Title }}{% endif %}</li>{% endfor %}
+  </ul>
+</section>
