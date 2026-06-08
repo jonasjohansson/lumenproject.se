@@ -138,6 +138,16 @@ h2.section {
   text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
 .empty { font-style: italic; opacity: 0.8; }
 
+.event__imglink { display: block; }
+.event__imglink .event__img { transition: opacity 0.2s var(--ease); }
+.event__imglink:hover .event__img { opacity: 0.88; }
+
+/* single-event detail page */
+.event-detail { padding-top: clamp(1rem, 3vw, 2rem); }
+.event-detail .event__img { margin-bottom: 1.2rem; }
+.event-detail__title { margin-top: 0.4rem; }
+.event-detail .event__desc { margin-top: 1rem; }
+
 /* artists */
 .artists { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.4rem 1.5rem; }
 .artist__name { display: block; text-transform: uppercase; font-weight: 500; }

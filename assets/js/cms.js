@@ -48,6 +48,13 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = (s = "") => s.replace(/[&<>"']/g, (c) =>
   ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+/* "LUMEN PROJECT // WINTER 21.12" -> "lumen-project-winter-2112" */
+const slugify = (s = "") =>
+  s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "")
+   .replace(/[^\w\s-]/g, "").trim().replace(/[\s_]+/g, "-").replace(/-+/g, "-");
+
+const eventHref = (e) => `event.html?e=${encodeURIComponent(slugify(e.Title))}`;
+
 function fmtDate(iso) {
   if (!iso) return "";
   const d = new Date(iso + "T00:00:00");
@@ -81,23 +88,43 @@ async function applySettings() {
 /* ---------------------------- Events ------------------------------ */
 function eventCard(e) {
   const meta = [e.Time, e.Venue, e.City].filter(Boolean).join(" · ");
+  const href = eventHref(e);                         /* every event has a detail page */
   const img = e.ImageURL
     ? `<div class="event__img" style="background-image:url('${esc(e.ImageURL)}')"></div>`
     : `<div class="event__img is-empty"></div>`;
-  const link = e.TicketURL || "";
-  const imgWrapped = link ? `<a href="${esc(link)}" target="_blank" rel="noopener">${img}</a>` : img;
   return `
     <article class="event">
-      ${imgWrapped}
+      <a href="${href}" class="event__imglink">${img}</a>
       ${e.Date ? `<p class="event__date"><time datetime="${esc(e.Date)}">${esc(fmtDate(e.Date))}</time></p>` : ""}
-      <h3 class="event__title">${link ? `<a href="${esc(link)}" target="_blank" rel="noopener">${esc(e.Title)}</a>` : esc(e.Title)}</h3>
+      <h3 class="event__title"><a href="${href}">${esc(e.Title)}</a></h3>
       ${meta ? `<p class="event__meta">${esc(meta)}</p>` : ""}
-      ${e.Description ? `<p class="event__desc">${esc(e.Description)}</p>` : ""}
-      <p class="event__links">
-        ${e.Price ? `<span>${esc(e.Price)}</span>` : ""}
-        ${link ? `<a href="${esc(link)}" target="_blank" rel="noopener">View event &rarr;</a>` : ""}
-      </p>
+      <p class="event__links"><a href="${href}">View event &rarr;</a></p>
     </article>`;
+}
+
+/* single-event page: event.html?e=<slug> */
+async function renderEventDetail() {
+  const el = $("#event-detail");
+  if (!el) return;
+  const slug = new URLSearchParams(location.search).get("e");
+  let events = [];
+  try { events = (await fetchTab("Events")).filter((e) => e.Title); } catch (e) { console.warn(e); }
+  const ev = events.find((e) => slugify(e.Title) === slug) || events[0];
+  if (!ev) { el.innerHTML = `<p class="empty">Event not found. <a href="events.html">&larr; All events</a></p>`; return; }
+
+  document.title = `${ev.Title} — LUMEN PROJECT`;
+  const meta = [ev.Time, ev.Venue, ev.City].filter(Boolean).join(" · ");
+  el.innerHTML = `
+    ${ev.ImageURL ? `<div class="event__img" style="background-image:url('${esc(ev.ImageURL)}')"></div>` : ""}
+    ${ev.Date ? `<p class="event__date"><time datetime="${esc(ev.Date)}">${esc(fmtDate(ev.Date))}</time></p>` : ""}
+    <h1 class="page-title event-detail__title">${esc(ev.Title)}</h1>
+    ${meta ? `<p class="event__meta">${esc(meta)}</p>` : ""}
+    ${ev.Description ? `<p class="event__desc prose">${esc(ev.Description)}</p>` : ""}
+    <p class="event__links">
+      ${ev.Price ? `<span>${esc(ev.Price)}</span>` : ""}
+      ${ev.TicketURL ? `<a href="${esc(ev.TicketURL)}" target="_blank" rel="noopener">Tickets &rarr;</a>` : ""}
+      <a href="events.html">&larr; All events</a>
+    </p>`;
 }
 
 async function renderEvents() {
@@ -150,6 +177,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await applySettings();
   await Promise.all([
     renderEvents(),
+    renderEventDetail(),
     renderArtists(),
     renderLinkList("Partners", "#partners-list", "Name"),
     renderLinkList("Media", "#media-list", "Title"),
