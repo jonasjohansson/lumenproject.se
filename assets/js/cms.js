@@ -5,45 +5,33 @@
  *  Edit the sheet, reload the page, the site updates. No build step.
  *
  *  Sheet: https://docs.google.com/spreadsheets/d/1vFV9h4XjacVPzd9TUNDtsjucoUoSjpyMZLmKm9Jazms/edit
- *  Tabs:  Settings (key/value), Events, Artists
+ *  Tabs:  Settings (key/value), Events, Artists, Partners, Media
  * ------------------------------------------------------------------ */
 
 const SHEET_ID = "1vFV9h4XjacVPzd9TUNDtsjucoUoSjpyMZLmKm9Jazms";
 
 /* headers=1 forces gviz to treat row 1 as the header even when every
-   column is plain text (otherwise all-text tabs like Artists collapse). */
+   column is plain text (otherwise all-text tabs collapse into one row). */
 const gvizUrl = (tab) =>
   `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&headers=1&sheet=${encodeURIComponent(tab)}`;
 
 /* --- tiny RFC-4180-ish CSV parser (handles quotes, commas, newlines) --- */
 function parseCSV(text) {
-  const rows = [];
-  let row = [];
-  let field = "";
-  let inQuotes = false;
-
+  const rows = []; let row = [], field = "", q = false;
   for (let i = 0; i < text.length; i++) {
     const c = text[i];
-    if (inQuotes) {
-      if (c === '"') {
-        if (text[i + 1] === '"') { field += '"'; i++; }
-        else inQuotes = false;
-      } else field += c;
-    } else if (c === '"') {
-      inQuotes = true;
-    } else if (c === ",") {
-      row.push(field); field = "";
-    } else if (c === "\n") {
-      row.push(field); rows.push(row); row = []; field = "";
-    } else if (c === "\r") {
-      /* ignore */
-    } else field += c;
+    if (q) {
+      if (c === '"') { if (text[i + 1] === '"') { field += '"'; i++; } else q = false; }
+      else field += c;
+    } else if (c === '"') q = true;
+    else if (c === ",") { row.push(field); field = ""; }
+    else if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; }
+    else if (c !== "\r") field += c;
   }
   if (field.length || row.length) { row.push(field); rows.push(row); }
   return rows;
 }
 
-/* Fetch a tab -> array of objects keyed by header row */
 async function fetchTab(tab) {
   const res = await fetch(gvizUrl(tab), { cache: "no-store" });
   if (!res.ok) throw new Error(`Sheet fetch failed: ${tab} (${res.status})`);
@@ -55,59 +43,36 @@ async function fetchTab(tab) {
   );
 }
 
-/* --------------------------- helpers ------------------------------ */
-const $ = (sel, root = document) => root.querySelector(sel);
-const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
-
-function esc(s = "") {
-  return s.replace(/[&<>"']/g, (c) =>
-    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-}
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = (s = "") => s.replace(/[&<>"']/g, (c) =>
+  ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 function fmtDate(iso) {
   if (!iso) return "";
   const d = new Date(iso + "T00:00:00");
   if (isNaN(d)) return iso;
-  return d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "long", year: "numeric" });
+  return d.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).toUpperCase();
 }
 
 /* --------------------------- Settings ----------------------------- */
 async function applySettings() {
   let map = {};
   try {
-    const rows = await fetchTab("Settings");
-    rows.forEach((r) => { if (r.Key) map[r.Key] = r.Value; });
+    (await fetchTab("Settings")).forEach((r) => { if (r.Key) map[r.Key] = r.Value; });
   } catch (e) { console.warn(e); }
 
-  /* text bindings: <element data-setting="key"> */
-  $$("[data-setting]").forEach((el) => {
-    const v = map[el.dataset.setting];
-    if (v) el.textContent = v;
-  });
+  $$("[data-setting]").forEach((el) => { const v = map[el.dataset.setting]; if (v) el.textContent = v; });
 
-  /* link bindings: <a data-link="key"> sets href (mailto auto for emails) */
   $$("[data-link]").forEach((el) => {
-    const v = map[el.dataset.link];
-    if (!v) return;
+    const v = map[el.dataset.link]; if (!v) return;
     el.href = el.dataset.link === "contact_email" ? `mailto:${v}` : v;
   });
 
-  /* image bindings: <element data-img="key">  (sheet-driven image URLs) */
   $$("[data-img]").forEach((el) => {
     const v = map[el.dataset.img];
-    if (v) {
-      el.style.backgroundImage = `url("${v}")`;
-      el.classList.remove("is-empty");
-    } else {
-      el.classList.add("is-empty");
-    }
-  });
-
-  /* list bindings: comma-separated -> <ul> of <li> */
-  $$("[data-list]").forEach((el) => {
-    const v = map[el.dataset.list];
-    if (!v) return;
-    el.innerHTML = v.split(",").map((s) => `<li>${esc(s.trim())}</li>`).join("");
+    if (v) { el.style.backgroundImage = `url("${v}")`; el.classList.remove("is-empty"); }
+    else el.classList.add("is-empty");
   });
 
   return map;
@@ -115,50 +80,44 @@ async function applySettings() {
 
 /* ---------------------------- Events ------------------------------ */
 function eventCard(e) {
-  const bits = [e.Time, e.Venue, e.City].filter(Boolean).join(" · ");
+  const meta = [e.Time, e.Venue, e.City].filter(Boolean).join(" · ");
+  const img = e.ImageURL
+    ? `<div class="event__img" style="background-image:url('${esc(e.ImageURL)}')"></div>`
+    : `<div class="event__img is-empty"></div>`;
+  const link = e.TicketURL || "";
+  const imgWrapped = link ? `<a href="${esc(link)}" target="_blank" rel="noopener">${img}</a>` : img;
   return `
     <article class="event">
-      <div class="event__date"><time datetime="${esc(e.Date)}">${esc(fmtDate(e.Date))}</time></div>
-      <div class="event__body">
-        <h3 class="event__title">${esc(e.Title)}</h3>
-        ${bits ? `<p class="event__meta">${esc(bits)}</p>` : ""}
-        ${e.Description ? `<p class="event__desc">${esc(e.Description)}</p>` : ""}
-        <p class="event__foot">
-          ${e.Price ? `<span class="event__price">${esc(e.Price)}</span>` : ""}
-          ${e.TicketURL ? `<a class="event__tickets" href="${esc(e.TicketURL)}" target="_blank" rel="noopener">Tickets</a>` : ""}
-        </p>
-      </div>
+      ${imgWrapped}
+      ${e.Date ? `<p class="event__date"><time datetime="${esc(e.Date)}">${esc(fmtDate(e.Date))}</time></p>` : ""}
+      <h3 class="event__title">${esc(e.Title)}</h3>
+      ${meta ? `<p class="event__meta">${esc(meta)}</p>` : ""}
+      ${e.Description ? `<p class="event__desc">${esc(e.Description)}</p>` : ""}
+      <p class="event__links">
+        ${e.Price ? `<span>${esc(e.Price)}</span>` : ""}
+        ${link ? `<a href="${esc(link)}" target="_blank" rel="noopener">View event &rarr;</a>` : ""}
+      </p>
     </article>`;
 }
 
 async function renderEvents() {
-  const upEl = $("#events-upcoming");
-  const pastEl = $("#events-past");
-  if (!upEl && !pastEl) return;
+  const listEl = $("#events-list");
+  const nextEl = $("#events-next");
+  if (!listEl && !nextEl) return;
 
   let events = [];
-  try { events = await fetchTab("Events"); } catch (e) { console.warn(e); }
-  events = events.filter((e) => e.Title);
+  try { events = (await fetchTab("Events")).filter((e) => e.Title); } catch (e) { console.warn(e); }
 
-  const today = new Date(); today.setHours(0, 0, 0, 0);
-  const isUpcoming = (e) => { const d = new Date(e.Date + "T00:00:00"); return !isNaN(d) && d >= today; };
-
-  const upcoming = events.filter(isUpcoming).sort((a, b) => a.Date.localeCompare(b.Date));
-  const past = events.filter((e) => !isUpcoming(e)).sort((a, b) => b.Date.localeCompare(a.Date));
-
-  if (upEl) {
-    upEl.innerHTML = upcoming.length
-      ? upcoming.map(eventCard).join("")
-      : `<p class="empty">No events announced right now. Sign up below to hear first.</p>`;
+  /* sheet order is newest-first; keep it (matches the live archive stream) */
+  if (listEl) {
+    listEl.innerHTML = events.length
+      ? events.map(eventCard).join("")
+      : `<p class="empty">No events to show yet.</p>`;
   }
-  if (pastEl) pastEl.innerHTML = past.map(eventCard).join("");
-
-  /* home page: show only the next upcoming event as a teaser */
-  const teaser = $("#events-next");
-  if (teaser) {
-    teaser.innerHTML = upcoming.length
-      ? eventCard(upcoming[0])
-      : `<p class="empty">The next gathering is being prepared. Sign up below to hear first.</p>`;
+  if (nextEl) {
+    nextEl.innerHTML = events.length
+      ? eventCard(events[0])
+      : `<p class="empty">The next gathering is being prepared.</p>`;
   }
 }
 
@@ -166,20 +125,34 @@ async function renderEvents() {
 async function renderArtists() {
   const el = $("#artists");
   if (!el) return;
-  let artists = [];
-  try { artists = await fetchTab("Artists"); } catch (e) { console.warn(e); }
-  artists = artists.filter((a) => a.Name);
-  el.innerHTML = artists.map((a) => {
+  let rows = [];
+  try { rows = (await fetchTab("Artists")).filter((a) => a.Name); } catch (e) { console.warn(e); }
+  el.innerHTML = rows.map((a) => {
     const inner = `<span class="artist__name">${esc(a.Name)}</span>${a.Role ? `<span class="artist__role">${esc(a.Role)}</span>` : ""}`;
-    return a.URL
-      ? `<li class="artist"><a href="${esc(a.URL)}" target="_blank" rel="noopener">${inner}</a></li>`
-      : `<li class="artist">${inner}</li>`;
+    return `<li class="artist">${a.URL ? `<a href="${esc(a.URL)}" target="_blank" rel="noopener">${inner}</a>` : inner}</li>`;
+  }).join("");
+}
+
+/* ------------------- generic link lists (Partners/Media) ----------- */
+async function renderLinkList(tab, sel, labelKey) {
+  const el = $(sel);
+  if (!el) return;
+  let rows = [];
+  try { rows = (await fetchTab(tab)).filter((r) => r[labelKey]); } catch (e) { console.warn(e); }
+  el.innerHTML = rows.map((r) => {
+    const label = esc(r[labelKey]);
+    return `<li>${r.URL ? `<a href="${esc(r.URL)}" target="_blank" rel="noopener">${label}</a>` : label}</li>`;
   }).join("");
 }
 
 /* ----------------------------- boot ------------------------------- */
 document.addEventListener("DOMContentLoaded", async () => {
   await applySettings();
-  await Promise.all([renderEvents(), renderArtists()]);
+  await Promise.all([
+    renderEvents(),
+    renderArtists(),
+    renderLinkList("Partners", "#partners-list", "Name"),
+    renderLinkList("Media", "#media-list", "Title"),
+  ]);
   document.body.classList.add("is-loaded");
 });
