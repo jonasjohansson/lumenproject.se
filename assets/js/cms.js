@@ -90,7 +90,7 @@ function eventCard(e) {
     <article class="event">
       ${imgWrapped}
       ${e.Date ? `<p class="event__date"><time datetime="${esc(e.Date)}">${esc(fmtDate(e.Date))}</time></p>` : ""}
-      <h3 class="event__title">${esc(e.Title)}</h3>
+      <h3 class="event__title">${link ? `<a href="${esc(link)}" target="_blank" rel="noopener">${esc(e.Title)}</a>` : esc(e.Title)}</h3>
       ${meta ? `<p class="event__meta">${esc(meta)}</p>` : ""}
       ${e.Description ? `<p class="event__desc">${esc(e.Description)}</p>` : ""}
       <p class="event__links">
