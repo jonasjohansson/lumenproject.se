@@ -60,7 +60,8 @@ Or, on this machine, it is served at:
 ## Deploy (GitHub Pages)
 
 Push to GitHub, then Settings → Pages → deploy from `main` / root.
-`CNAME` is set to `lumenproject.se`; point the domain's DNS at GitHub Pages when ready.
+`CNAME` is set to `lumenproject.jonasjohansson.se`; add a DNS `CNAME` record for
+that subdomain pointing to `jonasjohansson.github.io` when ready.
 `.nojekyll` is included so files are served as-is.
 
 ## Structure
