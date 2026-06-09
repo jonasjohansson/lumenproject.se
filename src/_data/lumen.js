@@ -13,8 +13,34 @@
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
+const { imageSize } = require("image-size");
 
 const CONTENT = path.join(__dirname, "..", "..", "content");
+const ASSETS = path.join(__dirname, "..", "assets");
+
+// intrinsic dimensions of a local image (root-absolute path like
+// "/assets/img/events/foo.jpg"); returns null for external/missing files so
+// templates can omit width/height rather than emit wrong ones.
+function dimsOf(src) {
+  if (!src || /^https?:\/\//.test(src)) return null;
+  const rel = String(src).replace(/^\/+/, "").replace(/^assets\//, "");
+  const file = path.join(ASSETS, rel);
+  try {
+    const { width, height } = imageSize(fs.readFileSync(file));
+    return width && height ? { width, height } : null;
+  } catch {
+    return null;
+  }
+}
+
+// trim a free-text description to a clean ~155-char meta excerpt on a word
+// boundary (search snippets / og:description; the full text stays on the page).
+function excerptOf(text, max = 155) {
+  const s = String(text || "").replace(/\s+/g, " ").trim();
+  if (s.length <= max) return s;
+  const cut = s.slice(0, max);
+  return cut.slice(0, cut.lastIndexOf(" ")).replace(/[.,;:–—-]\s*$/, "") + "…";
+}
 
 const slugify = (s = "") =>
   s.toLowerCase().normalize("NFKD")
@@ -60,6 +86,8 @@ module.exports = function () {
       url: dated ? `/events/${e.Date.replace(/-/g, "/")}/${e.slug}/` : `/events/${e.slug}/`,
       meta: [e.Time, e.Venue, e.City].filter(Boolean).join(" · "),
       startISO: dated ? `${e.Date}${start ? "T" + start : ""}` : "",
+      excerpt: excerptOf(e.Description),
+      dims: dimsOf(e.ImageURL),
     };
   });
 

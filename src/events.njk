@@ -11,7 +11,7 @@ permalink: /events/
   {% for e in lumen.events %}
   <article class="event">
     <a href="{{ e.url }}" class="event__imglink">
-      {% if e.ImageURL %}<img class="event__img" src="{{ e.ImageURL | img }}" alt="{{ e.Title }} — poster"{% if not loop.first %} loading="lazy"{% endif %} decoding="async" />{% else %}<span class="event__img is-empty" aria-hidden="true"></span>{% endif %}
+      {% if e.ImageURL %}<img class="event__img" src="{{ e.ImageURL | img }}" alt="{{ e.Title }} — poster"{% if e.dims %} width="{{ e.dims.width }}" height="{{ e.dims.height }}"{% endif %}{% if loop.first %} fetchpriority="high"{% else %} loading="lazy"{% endif %} decoding="async" />{% else %}<span class="event__img is-empty" aria-hidden="true"></span>{% endif %}
     </a>
     {% if e.Date %}<p class="event__date"><time datetime="{{ e.Date }}">{{ e.Date | eventDate }}</time></p>{% endif %}
     <h3 class="event__title"><a href="{{ e.url }}">{{ e.Title }}</a></h3>

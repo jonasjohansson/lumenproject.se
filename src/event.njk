@@ -7,13 +7,13 @@ pagination:
   alias: ev
 permalink: "{{ ev.url }}"
 eleventyComputed:
-  title: "{{ ev.Title }} — LUMEN PROJECT"
-  description: "{{ ev.Description }}"
+  title: "{{ ev.Title | safe }} — LUMEN PROJECT"
+  description: "{{ ev.excerpt | safe }}"
   ogImage: "{{ ev.ImageURL }}"
   ogType: "article"
 ---
 <article class="event-detail">
-  {% if ev.ImageURL %}<img class="event__img" src="{{ ev.ImageURL | img }}" alt="{{ ev.Title }} — poster" decoding="async" />{% endif %}
+  {% if ev.ImageURL %}<img class="event__img" src="{{ ev.ImageURL | img }}" alt="{{ ev.Title }} — poster"{% if ev.dims %} width="{{ ev.dims.width }}" height="{{ ev.dims.height }}"{% endif %} fetchpriority="high" decoding="async" />{% endif %}
   {% if ev.Date %}<p class="event__date"><time datetime="{{ ev.Date }}">{{ ev.Date | eventDate }}</time></p>{% endif %}
   <h1 class="page-title event-detail__title">{{ ev.Title }}</h1>
   {% if ev.meta %}<p class="event__meta">{{ ev.meta }}</p>{% endif %}
