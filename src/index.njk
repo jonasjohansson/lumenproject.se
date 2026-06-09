@@ -15,11 +15,7 @@ permalink: /
 
     <div class="hero__scrolls">
       <a class="hero__cta" href="#events">See events</a>
-      {% if lumen.nextEvent %}
-      <span class="nextev"><span class="k">Next</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a>, {{ lumen.nextEvent.Date | eventDate }}</span>
-      {% else %}
-      <span class="nextev"><span class="k">Now</span> <a href="#events">Explore the archive of past events</a></span>
-      {% endif %}
+      {% if lumen.nextEvent %}<span class="nextev"><span class="k">Next</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a>, {{ lumen.nextEvent.Date | eventDate }}</span>{% endif %}
     </div>
   </div>
 </section>
@@ -32,7 +28,6 @@ permalink: /
 
 <section class="home-sec" id="events" aria-label="Events">
   <div class="wrap">
-    <p class="page-intro">Long-form evenings of sound, light and space. Most recent first, going back to 2017.</p>
     {% include "partials/events-sections.njk" %}
   </div>
 </section>
