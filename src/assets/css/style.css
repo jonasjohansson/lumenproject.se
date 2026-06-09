@@ -160,7 +160,7 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 }
 .corner-home:hover { color: var(--accent-ink); }
 /* over a (dark-scrimmed) hero, stay white */
-.corner-home--hero { color: #fff; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45); }
+.corner-home--hero { color: #fff; }
 .corner-home--hero:hover { color: #fff; }
 
 /* — Layout ————————————————————————————————————————————————— */
@@ -205,7 +205,7 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 .wordmark {
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
   font-size: var(--fs-mega); line-height: 0.84; letter-spacing: 0.005em; color: var(--hero-ink);
-  text-shadow: 0 0 60px rgba(var(--glow), 0.5), 0 2px 30px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 60px rgba(var(--glow), 0.5);   /* luminous glow, no drop shadow */
 }
 .wordmark .l2 { display: block; }
 .hero__tag {
@@ -335,7 +335,7 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 .ev-hero__title {
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase; color: var(--hero-ink);
   font-size: var(--fs-mega); line-height: 0.86; letter-spacing: 0.005em; margin-top: var(--space-2xs);
-  text-shadow: 0 0 50px rgba(var(--glow), 0.4), 0 2px 24px rgba(0, 0, 0, 0.45); text-wrap: balance;
+  text-shadow: 0 0 50px rgba(var(--glow), 0.4); text-wrap: balance;   /* luminous glow, no drop shadow */
 }
 
 .ev-body { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 3.5rem); padding-block: clamp(2.4rem, 6vw, 4.5rem); }
