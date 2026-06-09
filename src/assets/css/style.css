@@ -149,6 +149,7 @@ h2.section {
 }
 .event__meta { font-size: 0.85rem; letter-spacing: 0.02em; }
 .event__desc { font-size: 0.9rem; max-width: 62ch; margin-top: 0.5rem; }
+.event-detail .event__desc { white-space: pre-line; }  /* keep the original line structure */
 .event__links { margin-top: 0.7rem; display: flex; gap: 1.2rem; font-size: var(--fs-small);
   text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
 .empty { font-style: italic; opacity: 0.8; }
