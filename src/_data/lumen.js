@@ -74,11 +74,9 @@ const LINEUP_STOP = new Set([
 // content/function words that mark a token as prose rather than an act name
 const LINEUP_PROSE = /\b(of|to|with|and|for|in|at|by|from|seamless|celebration|advent|experience|longform|disconnect|participate|immerse|connect)\b/i;
 
-// canonical spellings for the artist index (keyed by upper-case variant)
-const ARTIST_ALIAS = {
-  "SUBCHAMBER ENSMBLE": "Subchamber Ensemble",
-  "MALMÖ SUBCHAMBER ENSMBLE": "Subchamber Ensemble",
-};
+// canonical spellings for the artist index (keyed by upper-case variant).
+// NB: "Subchamber Ensmble" is the act's real name, not a typo — don't "correct" it.
+const ARTIST_ALIAS = {};
 function parseLineup(desc) {
   if (!desc) return [];
   const text = String(desc).replace(/\r/g, "");

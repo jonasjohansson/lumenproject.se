@@ -290,6 +290,26 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
   .ev-row__meta { text-align: left; white-space: normal; }
 }
 
+/* — Gallery ————————————————————————————————————————————————— */
+.gallery { columns: 320px; column-gap: var(--space-sm); margin-top: var(--space-md); padding: 0 var(--pad) var(--section-y); }
+.gallery__item { break-inside: avoid; margin: 0 0 var(--space-sm); }
+.gallery__item img { width: 100%; height: auto; display: block; border-radius: var(--radius-sm); }
+
+/* home teaser strip linking to /gallery/ */
+.teaser-head {
+  display: inline-block; font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(1.4rem, 3vw, 2.2rem); letter-spacing: 0.02em; color: var(--ink); margin-bottom: var(--space-md);
+}
+.teaser-head:hover { color: var(--accent-ink); }
+.teaser-head .arrow { color: var(--accent); }
+.teaser { display: flex; gap: var(--space-xs); overflow-x: auto; scrollbar-width: none; }
+.teaser::-webkit-scrollbar { display: none; }
+.teaser img {
+  flex: 0 0 auto; width: clamp(160px, 20vw, 230px); height: clamp(120px, 14vw, 160px);
+  object-fit: cover; border-radius: var(--radius-sm); transition: opacity var(--dur) var(--ease);
+}
+.teaser:hover img { opacity: 0.85; }
+
 /* — Artists index ——————————————————————————————————————————— */
 /* multicolumn so names read A–Z down each column, then continue in the next;
    border on top of each item means no dangling rule under a column */

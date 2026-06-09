@@ -52,6 +52,15 @@ permalink: /
   </div>
 </section>
 
+<section class="home-sec" id="gallery" aria-label="Gallery">
+  <div class="wrap">
+    <a class="teaser-head" href="/gallery/">Gallery <span class="arrow">&rarr;</span></a>
+    <a class="teaser" href="/gallery/" aria-label="Open the photo gallery">
+      {% for img in gallery %}{% if loop.index <= 6 %}<img src="{{ img.src }}" {% if img.width %}width="{{ img.width }}" height="{{ img.height }}" {% endif %}alt="" loading="lazy" decoding="async" />{% endif %}{% endfor %}
+    </a>
+  </div>
+</section>
+
 <section class="home-sec" id="about" aria-label="About">
   <div class="wrap">
     <div class="prose about-lead">
