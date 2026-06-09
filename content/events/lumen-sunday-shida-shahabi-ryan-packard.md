@@ -67,7 +67,7 @@ description: |-
 
   ACCESSIBILITY
 
-  Eric Ericsonhallen has a wheelchair ramp and an accessible toilet. There is a disabled parking space next to the hall. Contact us at lumenprojectstockholm@gmail.com if you would like to reserve a wheelchair space. 
+  Eric Ericsonhallen has a wheelchair ramp and an accessible toilet. There is a disabled parking space next to the hall. Contact us at info@lumenproject.se if you would like to reserve a wheelchair space. 
 
   ---
 

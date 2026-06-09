@@ -12,11 +12,11 @@ permalink: /
     <p class="hero__tag">{{ lumen.settings.tagline }}. Lie down, sleep, or come and go — a concert dissolved into a long, contemplative passage of sound and light.</p>
 
     <div class="hero__scrolls">
-      <a class="hero__cta" href="/events/">See events</a>
+      <a class="hero__cta" href="#events">See events</a>
       {% if lumen.nextEvent %}
       <span class="nextev"><span class="k">Next</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a> — {{ lumen.nextEvent.Date | eventDate }}</span>
       {% else %}
-      <span class="nextev"><span class="k">Now</span> <a href="/events/">Explore the archive of past events</a></span>
+      <span class="nextev"><span class="k">Now</span> <a href="#events">Explore the archive of past events</a></span>
       {% endif %}
     </div>
   </div>
@@ -29,17 +29,47 @@ permalink: /
   </div>
 </section>
 
-<nav class="routes" aria-label="Sections">
-  <a class="route" href="/events/">
-    <span class="route__name">Events <span class="arrow">→</span></span>
-    <span class="route__meta">{{ lumen.past.length + lumen.upcoming.length }} happenings · 2017—now</span>
-  </a>
-  <a class="route" href="/artists/">
-    <span class="route__name">Artists <span class="arrow">→</span></span>
-    <span class="route__meta">{{ lumen.artists.length }} performers</span>
-  </a>
-  <a class="route" href="/about/">
-    <span class="route__name">About <span class="arrow">→</span></span>
-    <span class="route__meta">Who we are · contact</span>
-  </a>
-</nav>
+<section class="home-sec" id="events" aria-labelledby="events-h">
+  <div class="wrap">
+    <h2 class="page-title" id="events-h">Events<span class="slash">.</span></h2>
+    <p class="page-intro">Durational evenings of sound, light and space — most recent first. An archive going back to 2017.</p>
+    {% include "partials/events-sections.njk" %}
+  </div>
+</section>
+
+<section class="home-sec" id="artists" aria-labelledby="artists-h">
+  <div class="wrap">
+    <h2 class="page-title" id="artists-h">Artists<span class="slash">.</span></h2>
+    <p class="page-intro">The musicians, composers and performers who have shaped LUMEN PROJECT since 2017.</p>
+    {% include "partials/artists-list.njk" %}
+  </div>
+</section>
+
+<section class="home-sec" id="about" aria-labelledby="about-h">
+  <div class="wrap">
+    <h2 class="page-title" id="about-h">About<span class="slash">.</span></h2>
+    <div class="prose" style="margin-bottom: var(--gap)">
+      <p>{{ lumen.settings.about }}</p>
+      <p>{{ lumen.settings.founders }}</p>
+    </div>
+
+    <div class="about-cols">
+      <div>
+        <h3 class="h2">Stay in touch</h3>
+        <p class="prose"><a href="mailto:{{ lumen.settings.contact_email }}">{{ lumen.settings.contact_email }}</a> · <a href="{{ lumen.settings.mailing_url }}" target="_blank" rel="noopener">join the mailing list</a></p>
+      </div>
+      <div>
+        <h3 class="h2">Partners</h3>
+        <ul class="linklist">
+          {% for p in lumen.partners %}<li>{% if p.URL %}<a href="{{ p.URL }}" target="_blank" rel="noopener">{{ p.Name }}</a>{% else %}{{ p.Name }}{% endif %}</li>{% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h3 class="h2">Press</h3>
+        <ul class="linklist linklist--media">
+          {% for m in lumen.media %}<li>{% if m.URL %}<a href="{{ m.URL }}" target="_blank" rel="noopener">{{ m.Title }}</a>{% else %}{{ m.Title }}{% endif %}</li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

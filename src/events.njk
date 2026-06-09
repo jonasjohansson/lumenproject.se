@@ -8,43 +8,5 @@ permalink: /events/
 <div class="wrap page">
   <h1 class="page-title">Events<span class="slash">.</span></h1>
   <p class="page-intro">Durational evenings of sound, light and space — most recent first. An archive going back to 2017.</p>
-
-  {% if lumen.upcoming.length %}
-  <section aria-label="Upcoming">
-    {% for e in lumen.upcoming %}
-    <a class="featured" href="{{ e.url }}">
-      <div class="featured__media">
-        <span class="featured__badge">Upcoming</span>
-        {% if e.ImageURL %}<img src="{{ e.ImageURL | img }}" alt="{{ e.Title }} — poster"{% if e.dims %} width="{{ e.dims.width }}" height="{{ e.dims.height }}"{% endif %} decoding="async" />{% endif %}
-      </div>
-      <div class="featured__body">
-        <p class="featured__date">{{ e.Date | eventDate }}</p>
-        <h2 class="featured__title">{{ e.Title }}</h2>
-        {% if e.meta %}<p class="featured__meta">{{ e.meta }}</p>{% endif %}
-      </div>
-    </a>
-    {% endfor %}
-  </section>
-  {% endif %}
-
-  {% for group in lumen.pastByYear %}
-  <section class="year">
-    <div class="year__head">
-      <h2 class="year__n">{{ group.year }}</h2>
-      <span class="year__count">{{ group.events.length }} event{% if group.events.length != 1 %}s{% endif %}</span>
-    </div>
-    <div class="grid">
-      {% for e in group.events %}
-      <a class="card" href="{{ e.url }}">
-        <div class="card__media{% if not e.ImageURL %} is-empty{% endif %}">
-          {% if e.ImageURL %}<img src="{{ e.ImageURL | img }}" alt="{{ e.Title }} — poster"{% if e.dims %} width="{{ e.dims.width }}" height="{{ e.dims.height }}"{% endif %} loading="lazy" decoding="async" />{% endif %}
-        </div>
-        {% if e.Date %}<p class="card__date">{{ e.Date | eventDate }}</p>{% endif %}
-        <h3 class="card__title">{{ e.Title }}</h3>
-        {% if e.meta %}<p class="card__meta">{{ e.meta }}</p>{% endif %}
-      </a>
-      {% endfor %}
-    </div>
-  </section>
-  {% endfor %}
+  {% include "partials/events-sections.njk" %}
 </div>

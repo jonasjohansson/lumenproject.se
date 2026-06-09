@@ -221,6 +221,15 @@ main { display: block; }
   font-size: var(--fs-h2); letter-spacing: 0.02em; margin-bottom: 1.4rem;
 }
 
+/* keep nav pinned right even when the brand is hidden (home page) */
+.nav { margin-left: auto; }
+
+/* one-page home: stacked sections with quiet dividers */
+.home-sec { scroll-margin-top: 72px; padding-block: clamp(2.8rem, 7vw, 6.5rem); }
+.home-sec + .home-sec { border-top: 1px solid var(--line); }
+.home-sec > .wrap > .page-title { margin-bottom: 0.6rem; }
+.about-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(1.6rem, 4vw, 3rem); }
+
 /* quiet routes (home -> events / artists) */
 .routes { display: grid; gap: 1px; background: var(--line); border-block: 1px solid var(--line); }
 .route {

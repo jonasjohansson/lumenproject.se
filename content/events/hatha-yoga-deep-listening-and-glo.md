@@ -37,7 +37,7 @@ description: |-
   WHEN: 27 NOVEMBER 15-18 
   WHERE: ERIC ERICSONHALLEN (we may also go outside, if the weather allows for it)
   HOW MUCH: 150 SEK (including fika)
-  Sign up by sending an email to lumenprojectstockholm@gmail.com
+  Sign up by sending an email to info@lumenproject.se
 
   More info and RSVP: https://www.facebook.com/events/612116952657779/
 

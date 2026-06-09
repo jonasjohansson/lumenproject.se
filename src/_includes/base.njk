@@ -52,11 +52,11 @@
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/">Lumen Project<span class="dot">.</span></a>
+      {% if current != 'home' %}<a class="brand" href="/">Lumen Project<span class="dot">.</span></a>{% endif %}
       <nav class="nav" aria-label="Primary">
-        <a href="/events/"{% if current == 'events' %} aria-current="page"{% endif %}>Events</a>
-        <a href="/artists/"{% if current == 'artists' %} aria-current="page"{% endif %}>Artists</a>
-        <a href="/about/"{% if current == 'about' %} aria-current="page"{% endif %}>About</a>
+        <a href="/#events">Events</a>
+        <a href="/#artists">Artists</a>
+        <a href="/#about">About</a>
         <a class="contact" href="mailto:{{ lumen.settings.contact_email }}">{{ lumen.settings.contact_email }}</a>
         <span class="sep" aria-hidden="true"></span>
         <span class="socials">
