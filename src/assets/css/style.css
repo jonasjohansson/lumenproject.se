@@ -170,7 +170,9 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 .page-intro { max-width: 46ch; font-size: var(--fs-lead); color: var(--ink-dim); margin-bottom: var(--gap); }
 
 .section { padding-block: var(--section-y); }
-.section--center { text-align: center; }
+/* the centred manifest sits between hero and events; its bottom spacing is
+   provided by the next section's top padding, so zero it here to stay symmetric */
+.section--center { text-align: center; padding-bottom: 0; }
 
 /* one-page home: stacked sections with quiet dividers */
 .home-sec { scroll-margin-top: var(--space-md); padding-block: var(--section-y); }
@@ -190,11 +192,11 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 html[data-theme="day"]   .hero__img--day,
 html[data-theme="dusk"]  .hero__img--dusk,
 html[data-theme="night"] .hero__img--night { opacity: 1; }
-.hero::before {   /* always-dark scrim so the white wordmark reads on any phase */
+.hero::before {   /* dark scrim for the wordmark; the very bottom dissolves into the page */
   content: ""; position: absolute; inset: 0; z-index: -1; transition: background var(--dur-slow) var(--ease);
   background:
     radial-gradient(120% 80% at 50% 8%, rgba(var(--glow), 0.16), transparent 60%),
-    linear-gradient(180deg, rgba(7, 8, 13, 0.45) 0%, rgba(7, 8, 13, 0.05) 32%, rgba(7, 8, 13, 0.86) 100%);
+    linear-gradient(180deg, rgba(7, 8, 13, 0.5) 0%, rgba(7, 8, 13, 0.08) 30%, rgba(7, 8, 13, 0.82) 84%, var(--paper) 100%);
 }
 .hero__inner { width: 100%; max-width: var(--maxw); margin-inline: auto; padding: 0 var(--pad) clamp(2.4rem, 7vw, 5rem); }
 .wordmark {
@@ -289,8 +291,10 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 }
 
 /* — Artists index ——————————————————————————————————————————— */
-.artists { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0 var(--space-lg); }
-.artist { border-bottom: var(--border); padding: 0.85rem 0; }
+/* multicolumn so names read A–Z down each column, then continue in the next;
+   border on top of each item means no dangling rule under a column */
+.artists { list-style: none; columns: 240px; column-gap: var(--space-lg); }
+.artist { break-inside: avoid; border-top: var(--border); padding: 0.85rem 0; }
 .artist__name { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.1rem, 2.4vw, 1.5rem); line-height: 1.05; letter-spacing: 0.01em; }
 .artist a:hover .artist__name { color: var(--accent-ink); }
 
