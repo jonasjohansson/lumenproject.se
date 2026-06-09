@@ -156,9 +156,12 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
   position: fixed; z-index: 50; top: clamp(0.8rem, 2vw, 1.3rem); left: clamp(0.9rem, 3vw, 2rem);
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
   letter-spacing: var(--tracking-wide); font-size: 1.05rem; line-height: 1;
-  color: #fff; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);   /* white, legible over imagery */
+  color: var(--ink);   /* adapts to the page background (dark on light, light on dark) */
 }
 .corner-home:hover { color: var(--accent-ink); }
+/* over a (dark-scrimmed) hero, stay white */
+.corner-home--hero { color: #fff; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45); }
+.corner-home--hero:hover { color: #fff; }
 
 /* — Layout ————————————————————————————————————————————————— */
 .page { padding-top: var(--page-top); }
