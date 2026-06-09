@@ -1,87 +1,82 @@
 /* ------------------------------------------------------------------ *
- *  Build-time CMS: pull every tab of the public Google Sheet and hand
- *  it to the templates. Eleventy runs this once per build (push, the
- *  daily cron, or a manual run), so the static pages are pre-rendered
- *  from whatever is in the sheet at build time.
+ *  Build-time CMS: read content from local repo files (managed by
+ *  Pages CMS, app.pagescms.org) and hand it to the templates.
  *
- *  Sheet: https://docs.google.com/spreadsheets/d/1vFV9h4XjacVPzd9TUNDtsjucoUoSjpyMZLmKm9Jazms/edit
+ *    content/events/*.md   — one Markdown file per event (frontmatter)
+ *    content/settings.json — site text/links + artists/partners/media
+ *    src/assets/img/events/— event posters (uploaded via the CMS)
+ *
+ *  Editors use Pages CMS; each save commits files here, which triggers
+ *  the GitHub Action to rebuild and deploy. No external service at build.
  * ------------------------------------------------------------------ */
 
-const SHEET_ID = "1vFV9h4XjacVPzd9TUNDtsjucoUoSjpyMZLmKm9Jazms";
+const fs = require("fs");
+const path = require("path");
+const matter = require("gray-matter");
 
-const gvizUrl = (tab) =>
-  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&headers=1&sheet=${encodeURIComponent(tab)}`;
-
-function parseCSV(text) {
-  const rows = []; let row = [], field = "", q = false;
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i];
-    if (q) {
-      if (c === '"') { if (text[i + 1] === '"') { field += '"'; i++; } else q = false; }
-      else field += c;
-    } else if (c === '"') q = true;
-    else if (c === ",") { row.push(field); field = ""; }
-    else if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; }
-    else if (c !== "\r") field += c;
-  }
-  if (field.length || row.length) { row.push(field); rows.push(row); }
-  return rows;
-}
-
-async function fetchTab(tab) {
-  const res = await fetch(gvizUrl(tab));
-  if (!res.ok) throw new Error(`Sheet fetch failed: ${tab} (${res.status})`);
-  const rows = parseCSV(await res.text()).filter((r) => r.some((c) => c.trim() !== ""));
-  if (!rows.length) return [];
-  const headers = rows[0].map((h) => h.trim());
-  return rows.slice(1).map((r) =>
-    Object.fromEntries(headers.map((h, i) => [h, (r[i] || "").trim()]))
-  );
-}
+const CONTENT = path.join(__dirname, "..", "..", "content");
 
 const slugify = (s = "") =>
   s.toLowerCase().normalize("NFKD")
    .replace(/[^\w\s-]/g, "").trim().replace(/[\s_]+/g, "-").replace(/-+/g, "-");
 
-module.exports = async function () {
-  // Events are essential: if that fetch fails, fail the build loudly rather
-  // than silently deploying an empty site. Secondary tabs degrade gracefully.
-  const events = await fetchTab("Events");
-  const [settingsRows, artists, partners, media] = await Promise.all(
-    ["Settings", "Artists", "Partners", "Media"].map((t) =>
-      fetchTab(t).catch((e) => { console.warn(e.message); return []; })
-    )
-  );
-  if (!events.filter((e) => e.Title).length) {
-    throw new Error("Events tab returned no rows — aborting build to avoid an empty site.");
+// robust YYYY-MM-DD, tolerant of YAML date objects (if the CMS rewrites
+// the date field unquoted, js-yaml parses it to a Date).
+function ymd(v) {
+  if (!v) return "";
+  if (v instanceof Date) return v.toISOString().slice(0, 10);
+  return String(v).slice(0, 10);
+}
+
+module.exports = function () {
+  const dir = path.join(CONTENT, "events");
+  const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith(".md")) : [];
+
+  let events = files.map((f) => {
+    const g = matter(fs.readFileSync(path.join(dir, f), "utf8"));
+    const d = g.data || {};
+    return {
+      Title: d.title || "",
+      Date: ymd(d.date),
+      Time: d.time || "",
+      Venue: d.venue || "",
+      City: d.city || "",
+      Price: d.price || "",
+      TicketURL: d.ticketUrl || "",
+      ImageURL: d.image || "",
+      Description: (d.description != null ? String(d.description) : (g.content || "")).trim(),
+      slug: f.replace(/\.md$/, "") || slugify(d.title),
+    };
+  }).filter((e) => e.Title);
+
+  // newest first
+  events.sort((a, b) => (b.Date || "").localeCompare(a.Date || ""));
+
+  events = events.map((e) => {
+    const dated = /^\d{4}-\d{2}-\d{2}$/.test(e.Date);
+    const start = (e.Time || "").split("-")[0].trim();
+    return {
+      ...e,
+      url: dated ? `/events/${e.Date.replace(/-/g, "/")}/${e.slug}/` : `/events/${e.slug}/`,
+      meta: [e.Time, e.Venue, e.City].filter(Boolean).join(" · "),
+      startISO: dated ? `${e.Date}${start ? "T" + start : ""}` : "",
+    };
+  });
+
+  if (!events.length) {
+    throw new Error("No events found in content/events — aborting build to avoid an empty site.");
   }
 
-  const settings = {};
-  settingsRows.forEach((r) => { if (r.Key) settings[r.Key] = r.Value; });
-
-  const usedSlugs = new Set();
-  const cleanEvents = events
-    .filter((e) => e.Title)
-    .map((e) => {
-      let slug = slugify(e.Title) || "event";
-      while (usedSlugs.has(slug)) slug = slug.replace(/(-\d+)?$/, (m) => `-${(parseInt(m.slice(1)) || 1) + 1}`);
-      usedSlugs.add(slug);
-      const dated = /^\d{4}-\d{2}-\d{2}$/.test(e.Date);
-      const start = (e.Time || "").split("-")[0].trim();
-      return {
-        ...e,
-        slug,
-        url: dated ? `/events/${e.Date.replace(/-/g, "/")}/${slug}/` : `/events/${slug}/`,
-        meta: [e.Time, e.Venue, e.City].filter(Boolean).join(" · "),
-        startISO: dated ? `${e.Date}${start ? "T" + start : ""}` : "",
-      };
-    });
+  const s = JSON.parse(fs.readFileSync(path.join(CONTENT, "settings.json"), "utf8"));
 
   return {
-    settings,
-    events: cleanEvents,
-    artists: artists.filter((a) => a.Name),
-    partners: partners.filter((p) => p.Name),
-    media: media.filter((m) => m.Title),
+    settings: s.settings || {},
+    events,
+    artists: (s.artists || []).filter((a) => a.name)
+      .map((a) => ({ Name: a.name, Role: a.role, Edition: a.edition, URL: a.url })),
+    partners: (s.partners || []).filter((p) => p.name)
+      .map((p) => ({ Name: p.name, URL: p.url })),
+    media: (s.media || []).filter((m) => m.title)
+      .map((m) => ({ Title: m.title, URL: m.url })),
   };
 };

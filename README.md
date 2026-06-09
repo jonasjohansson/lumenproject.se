@@ -1,44 +1,39 @@
 # lumenproject.se
 
-A rebuild of [lumenproject.se](https://www.lumenproject.se/) as a small static site
-with a dirt-simple CMS: **one Google Sheet**. Content lives in the sheet; the site is
-**pre-rendered with [Eleventy](https://www.11ty.dev/)** so every page (including each
-event) is real HTML at a clean URL.
+A small static site (Eleventy) deployed to GitHub Pages, with a friendly CMS
+on top: **[Pages CMS](https://pagescms.org)**. Content lives as plain files in
+this repo; editors use a form-based UI with drag-and-drop image upload. Every
+save is a commit, which triggers the GitHub Action to rebuild and deploy.
 
-## The CMS
+## Editing content (Pages CMS)
 
-All content comes from this public Google Sheet:
+1. Go to **https://app.pagescms.org**, sign in with GitHub (owner only, one-time
+   GitHub App install on this repo — grants the CMS write access).
+2. Invite collaborators by email from the Pages CMS account screen — they get a
+   passwordless magic-link login and **do not need a GitHub account**.
+3. Edit:
+   - **Events** — one entry per event: title, date, time, venue, city, price,
+     ticket URL, **poster (drag-and-drop upload)**, and a description.
+   - **Settings** — site text, hero/about images, contact + social links, and the
+     Artists / Partners / Media lists.
+4. Save → it commits to the repo → the site rebuilds (~1–2 min) and goes live.
 
-**https://docs.google.com/spreadsheets/d/1vFV9h4XjacVPzd9TUNDtsjucoUoSjpyMZLmKm9Jazms/edit**
+Config for all of the above lives in [`.pages.yml`](./.pages.yml).
 
-Keep it shared as *Anyone with the link — Viewer* (the build reads it over the public
-CSV endpoint). Tabs:
+## Where content lives (no database)
 
-- **Settings** — key/value: `site_title, tagline, hero_image, about_image, about,
-  founders, contact_email, tickets_url, mailing_url, instagram, facebook, youtube,
-  photo_credit`. Image values may be a full URL or a repo-relative path like
-  `assets/img/hero-spring-2026.webp`.
-- **Events** — `Title, Date (YYYY-MM-DD), Time, Venue, City, Price, Description,
-  TicketURL, ImageURL`. Each row becomes its own page.
-- **Artists** — `Name, Role, Edition, URL`.
-- **Partners** — `Name, URL`.
-- **Media** — `Title, URL`.
+```
+content/events/*.md        one Markdown file per event (frontmatter)
+content/settings.json      site text/links + artists, partners, media
+src/assets/img/events/     event posters (uploaded via the CMS)
+src/assets/img/            hero + about photo
+```
 
-### Pretty URLs
+The Eleventy build reads these files at build time (`src/_data/lumen.js`), so the
+content is just files in git — no external service, no lock-in. (It used to read a
+Google Sheet; that's retired, the sheet can be archived.)
 
-Every event gets a page. Dated events use `/events/YYYY/MM/DD/<slug>/`
-(e.g. `/events/2026/02/22/lumen-project-spring-222/`); undated archive events use
-`/events/<slug>/`. Slugs are derived from the title.
-
-## How updates reach the site
-
-The sheet is the editing surface, but pages are built, not fetched live. A build runs:
-
-- on every push to `main`,
-- daily at 04:00 UTC (so sheet edits go live within a day), and
-- on demand — Actions tab → **Build and deploy** → *Run workflow*.
-
-So: edit the sheet, then trigger a rebuild (or wait for the daily run).
+Event URLs are pre-rendered to `/events/YYYY/MM/DD/<slug>/` (slug from the title).
 
 ## Develop locally
 
@@ -50,7 +45,8 @@ npm run build     # one-off build into _site/
 
 ## Deploy
 
-GitHub Actions builds `_site/` and deploys to GitHub Pages (`.github/workflows/deploy.yml`).
+GitHub Actions builds `_site/` and deploys to GitHub Pages
+(`.github/workflows/deploy.yml`) on push, a daily cron, and manual dispatch.
 Custom domain `lumenproject.se` is set via `src/CNAME`. Because it's an apex
 domain, point DNS at GitHub Pages with **A records** to `185.199.108.153`,
 `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (or use Cloudflare
@@ -59,16 +55,17 @@ CNAME-flattening: a `CNAME` at the apex → `jonasjohansson.github.io`).
 ## Structure
 
 ```
+.pages.yml              Pages CMS config (collections, fields, media)
 .eleventy.js            build config (passthrough, date + img filters)
 package.json
+content/                editable content (events + settings)
 src/
-  _data/lumen.js        fetches the sheet at build time -> templates
+  _data/lumen.js        reads content/ -> templates
+  _data/site.js         canonical base URL
   _includes/base.njk    shared header/footer layout
-  index.njk             home (hero)
-  events.njk            event archive + artist list
-  about.njk             mission, contact, partners, media
-  event.njk             per-event page (paginated over the Events tab)
+  index.njk events.njk about.njk event.njk
+  404.njk sitemap.njk robots.njk
   CNAME
   assets/css/style.css
-  assets/img/           local images (hero, about photo)
+  assets/img/           images (hero, about, event posters)
 ```

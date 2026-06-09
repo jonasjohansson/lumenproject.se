@@ -1,0 +1,75 @@
+# Pages CMS config — https://pagescms.org
+# Install the Pages CMS GitHub App on this repo, then edit at app.pagescms.org.
+
+media:
+  input: src/assets/img/events   # where uploaded posters are committed
+  output: /assets/img/events     # path written into the content files
+
+content:
+  - name: events
+    label: Events
+    type: collection
+    path: content/events
+    filename: '{fields.title}.md'
+    view:
+      fields: [title, date, venue]
+      primary: title
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: date, label: Date, type: date, options: { format: yyyy-MM-dd } }
+      - { name: time, label: Time (e.g. 15:00-21:00), type: string }
+      - { name: venue, label: Venue, type: string }
+      - { name: city, label: City, type: string }
+      - { name: price, label: Price (e.g. 350 SEK), type: string }
+      - { name: ticketUrl, label: Ticket URL, type: string }
+      - { name: image, label: Poster, type: image }
+      - { name: description, label: Description, type: text }
+
+  - name: settings
+    label: Settings
+    type: file
+    path: content/settings.json
+    fields:
+      - name: settings
+        label: Site text & links
+        type: object
+        fields:
+          - { name: site_title, label: Site title, type: string }
+          - { name: tagline, type: string }
+          - { name: hero_heading, type: string }
+          - { name: hero_subheading, type: string }
+          - { name: hero_image, label: Hero image, type: image }
+          - { name: about_image, label: About photo, type: image }
+          - { name: about, label: About text, type: text }
+          - { name: founders, label: Team / founders, type: text }
+          - { name: contact_email, type: string }
+          - { name: tickets_url, type: string }
+          - { name: mailing_url, type: string }
+          - { name: instagram, type: string }
+          - { name: facebook, type: string }
+          - { name: youtube, type: string }
+          - { name: photo_credit, type: string }
+      - name: artists
+        label: Artists
+        type: list
+        fields:
+          - { name: name, type: string }
+          - { name: role, type: string }
+          - { name: edition, type: string }
+          - { name: url, label: URL, type: string }
+      - name: partners
+        label: Partners
+        type: list
+        fields:
+          - { name: name, type: string }
+          - { name: url, label: URL, type: string }
+      - name: media
+        label: Media / press
+        type: list
+        fields:
+          - { name: title, type: string }
+          - { name: url, label: URL, type: string }

@@ -1,0 +1,184 @@
+{
+  "settings": {
+    "site_title": "LUMEN PROJECT",
+    "tagline": "Immersive experiences of sound, light and space",
+    "hero_heading": "LUMEN PROJECT",
+    "hero_subheading": "Spring 2026",
+    "hero_image": "assets/img/hero-spring-2026.webp",
+    "logo_image": "",
+    "about": "LUMEN PROJECT is a non-profit organisation redefining the concert as a spiritual communal happening through sound, light and space. You are welcome to lie down, sleep, or come and go freely. The extended format invites contemplative states through continuous sound.",
+    "founders": "Founded by Nathan Larson and Lina Enqvist (2017). Joined by Maria Lyth (2019). Team: Abhishek Michael, Daniel Söderberg, Isabelle Häggström.",
+    "contact_email": "lumenprojectstockholm@gmail.com",
+    "tickets_url": "https://nortic.se/ticket/show/316281",
+    "instagram": "https://www.instagram.com/lumenproject/",
+    "facebook": "https://www.facebook.com/lumenprojectstockholm/",
+    "youtube": "https://www.youtube.com/@lumenproject",
+    "partners": "24HR DRONE INT'L, Basilica Hudson, Eric Ericson International Choral Center, Le Guess Who?, Malmö Live, Ruptured",
+    "supporters": "Kulturrådet, Stockholms stad, Region Stockholm, Musikverket, Viriditas Foundation",
+    "photo_credit": "Camilla Rehnstrand",
+    "about_image": "assets/img/about-camilla.webp",
+    "hero_caption_1": "SPRING",
+    "hero_caption_2": "Sunday 22 February",
+    "mailing_url": "https://lumenproject.eo.page/9ms13"
+  },
+  "artists": [
+    {
+      "name": "Maria W Horn",
+      "role": "Composer",
+      "edition": "Spring 22.2",
+      "url": ""
+    },
+    {
+      "name": "Mats Erlandsson",
+      "role": "Composer",
+      "edition": "Spring 22.2",
+      "url": ""
+    },
+    {
+      "name": "Eve Matin",
+      "role": "Artist",
+      "edition": "Spring 22.2",
+      "url": ""
+    },
+    {
+      "name": "Mohammad Reza Mortazavi",
+      "role": "Percussion",
+      "edition": "Spring 22.2",
+      "url": ""
+    },
+    {
+      "name": "Clarissa Connelly",
+      "role": "Artist",
+      "edition": "Winter 21.12",
+      "url": ""
+    },
+    {
+      "name": "Vida Vojić",
+      "role": "Artist",
+      "edition": "Winter 21.12",
+      "url": ""
+    },
+    {
+      "name": "Haga Vokalensemble",
+      "role": "Choir",
+      "edition": "Winter 21.12",
+      "url": ""
+    },
+    {
+      "name": "Ensemble Sága",
+      "role": "Ensemble",
+      "edition": "Winter 21.12",
+      "url": ""
+    },
+    {
+      "name": "Datasal",
+      "role": "Live",
+      "edition": "× Hosoi",
+      "url": ""
+    },
+    {
+      "name": "Mariam Wallentin",
+      "role": "Voice",
+      "edition": "Winter 15.12",
+      "url": ""
+    },
+    {
+      "name": "Hatis Noit",
+      "role": "Voice",
+      "edition": "Spring 3.3",
+      "url": ""
+    },
+    {
+      "name": "Francesca Heart",
+      "role": "Artist",
+      "edition": "Spring 3.3",
+      "url": ""
+    },
+    {
+      "name": "Abdullah Miniawy",
+      "role": "Artist",
+      "edition": "Spring 3.3",
+      "url": ""
+    },
+    {
+      "name": "FUJI||||||||||TA",
+      "role": "Sound sculptor",
+      "edition": "2024",
+      "url": ""
+    },
+    {
+      "name": "Lisa Stenberg",
+      "role": "Composer",
+      "edition": "2024",
+      "url": ""
+    }
+  ],
+  "partners": [
+    {
+      "name": "24HR DRONE INT'L",
+      "url": ""
+    },
+    {
+      "name": "BASILICA HUDSON • HUDSON, NY",
+      "url": "http://basilicahudson.org/"
+    },
+    {
+      "name": "ERIC ERICSON INTERNATIONAL CHORAL CENTER",
+      "url": "https://www.ericsonchoralcentre.se/"
+    },
+    {
+      "name": "LE GUESS WHO? • UTRECHT, NETHERLANDS",
+      "url": "https://www.leguesswho.nl/"
+    },
+    {
+      "name": "MALMÖ LIVE • MALMÖ, SWEDEN",
+      "url": "https://malmolive.se/"
+    },
+    {
+      "name": "RUPTURED • BEIRUT, LEBANON",
+      "url": "https://rupturedonline.com/"
+    }
+  ],
+  "media": [
+    {
+      "title": "Varva ner på musikfestivalen som uppmuntrar dig att sova – Allt om Stockholm",
+      "url": "https://alltomstockholm.se/scenkultur/festivalen-uppmuntras-sova/"
+    },
+    {
+      "title": "Great Learning Orchestra rör sig från kaos till vila – Dagens Nyheter",
+      "url": "https://www.dn.se/kultur-noje/konsertrecensioner/great-learning-orchestra-ror-sig-fran-kaos-till-vila/"
+    },
+    {
+      "title": "Malmöprofiler startar konferens i Beirut – Sydsvenskan",
+      "url": "https://www.sydsvenskan.se/2019-01-28/malmoprofiler-startar-konferens-i-beirut"
+    },
+    {
+      "title": "10 musikhändelser att se fram emot i vår – Dagens Nyheter",
+      "url": "https://www.dn.se/kultur-noje/musik/10-musikhandelser-att-se-fram-emot-i-var/"
+    },
+    {
+      "title": "ARCTIC DRONE, 24 ORE DI MUSICA, YOGA E SOGNI – La Repubblica",
+      "url": "https://xl.repubblica.it/fotogallerie/arctic-drone-24-ore-di-musica-yoga-e-sogni/"
+    },
+    {
+      "title": "24 klukkustunda langur niður – mbl.is",
+      "url": "https://www.mbl.is/folk/frettir/2019/10/19/24_klukkustunda_langur_nidur/"
+    },
+    {
+      "title": "It really cannot be commodified, in conversation with Nathan Larson – MusicMap",
+      "url": "https://musicmap.global/article/nathan-larson-lumen-project-interview"
+    },
+    {
+      "title": "A Moment in Time – C-print",
+      "url": "https://www.c-print.se/post/2019/02/19/a-moment-in-time-lumen-project"
+    },
+    {
+      "title": "LUMEN PROJECT, STOCKHOLM – Routes North",
+      "url": ""
+    },
+    {
+      "title": "Dream Music Two, Meditation och snygga fonter – Hymn",
+      "url": "https://hymn.se/2019/02/07/dream-music-two-meditation-och-snygga-fonter/"
+    }
+  ]
+}
