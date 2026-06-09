@@ -16,7 +16,7 @@ eleventyComputed:
   <header class="ev-hero">
     {% if ev.LeadURL %}<img class="ev-hero__img" src="{{ ev.LeadURL | img }}" alt="{{ ev.Title }}{% if ev.isUpcoming %} poster{% endif %}" fetchpriority="high" decoding="async" />{% endif %}
     <div class="ev-hero__inner">
-      {% if ev.isUpcoming %}<span class="ev-hero__badge">Upcoming</span>{% endif %}
+      {% if ev.isUpcoming %}<span class="badge ev-hero__badge">Upcoming</span>{% endif %}
       {% if ev.Date %}<p class="ev-hero__date"><time datetime="{{ ev.Date }}">{{ ev.Date | eventDate }}</time></p>{% endif %}
       <h1 class="ev-hero__title">{{ ev.Title }}</h1>
     </div>
@@ -29,7 +29,7 @@ eleventyComputed:
         {% if ev.Venue %}<div class="fact"><p class="fact__k">Venue</p><p class="fact__v">{{ ev.Venue }}</p></div>{% endif %}
         {% if ev.City %}<div class="fact"><p class="fact__k">City</p><p class="fact__v">{{ ev.City }}</p></div>{% endif %}
         {% if ev.Price %}<div class="fact"><p class="fact__k">Admission</p><p class="fact__v">{{ ev.Price }}</p></div>{% endif %}
-        {% if ev.isUpcoming and ev.TicketURL %}<a class="ev-cta" href="{{ ev.TicketURL }}" target="_blank" rel="noopener">Tickets &rarr;</a>{% endif %}
+        {% if ev.isUpcoming and ev.TicketURL %}<a class="badge ev-cta" href="{{ ev.TicketURL }}" target="_blank" rel="noopener">Tickets &rarr;</a>{% endif %}
       </aside>
 
       <div>

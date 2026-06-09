@@ -41,28 +41,10 @@ permalink: /
 
 <section class="home-sec" id="about" aria-label="About">
   <div class="wrap">
-    <div class="prose" style="margin-bottom: var(--gap)">
+    <div class="prose about-lead">
       <p>{{ lumen.settings.about }}</p>
       <p>{{ lumen.settings.founders }}</p>
     </div>
-
-    <div class="about-cols">
-      <div>
-        <h3 class="h2">Stay in touch</h3>
-        <p class="prose"><a href="mailto:{{ lumen.settings.contact_email }}">{{ lumen.settings.contact_email }}</a> · <a href="{{ lumen.settings.mailing_url }}" target="_blank" rel="noopener">join the mailing list</a></p>
-      </div>
-      <div>
-        <h3 class="h2">Partners</h3>
-        <ul class="linklist">
-          {% for p in lumen.partners %}<li>{% if p.URL %}<a href="{{ p.URL }}" target="_blank" rel="noopener">{{ p.Name }}</a>{% else %}{{ p.Name }}{% endif %}</li>{% endfor %}
-        </ul>
-      </div>
-      <div>
-        <h3 class="h2">Press</h3>
-        <ul class="linklist linklist--media">
-          {% for m in lumen.media %}<li>{% if m.URL %}<a href="{{ m.URL }}" target="_blank" rel="noopener">{{ m.Title }}</a>{% else %}{{ m.Title }}{% endif %}</li>{% endfor %}
-        </ul>
-      </div>
-    </div>
+    {% include "partials/about-cols.njk" %}
   </div>
 </section>

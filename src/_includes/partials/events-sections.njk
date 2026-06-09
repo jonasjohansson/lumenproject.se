@@ -5,7 +5,7 @@
   {% for e in lumen.upcoming %}
   <a class="featured" href="{{ e.url }}">
     <div class="featured__media">
-      <span class="featured__badge">Upcoming</span>
+      <span class="badge featured__badge">Upcoming</span>
       {% if e.ImageURL %}<img src="{{ e.ImageURL | img }}" alt="{{ e.Title }} poster"{% if e.dims %} width="{{ e.dims.width }}" height="{{ e.dims.height }}"{% endif %} decoding="async" />{% endif %}
     </div>
     <div class="featured__body">

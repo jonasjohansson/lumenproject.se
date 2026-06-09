@@ -11,27 +11,9 @@ permalink: /about/
   <img class="about-photo" src="/assets/img/photos/gathering.jpg" alt="Audience lying among candles at a LUMEN PROJECT happening, photographed by Olga Androsova" width="2000" height="1333" loading="lazy" decoding="async" />
   <p class="photo-credit">Photo by Olga Androsova</p>
 
-  <section class="prose" style="margin-bottom: var(--gap)">
+  <div class="prose about-lead">
     <p>{{ lumen.settings.about }}</p>
     <p>{{ lumen.settings.founders }}</p>
-  </section>
-
-  <section class="section" style="padding-block: 0 var(--gap)">
-    <h2 class="h2">Stay in touch</h2>
-    <p class="prose"><a href="mailto:{{ lumen.settings.contact_email }}">{{ lumen.settings.contact_email }}</a> · <a href="{{ lumen.settings.mailing_url }}" target="_blank" rel="noopener">join the mailing list</a></p>
-  </section>
-
-  <section class="section" style="padding-block: 0 var(--gap)">
-    <h2 class="h2">Partners</h2>
-    <ul class="linklist">
-      {% for p in lumen.partners %}<li>{% if p.URL %}<a href="{{ p.URL }}" target="_blank" rel="noopener">{{ p.Name }}</a>{% else %}{{ p.Name }}{% endif %}</li>{% endfor %}
-    </ul>
-  </section>
-
-  <section class="section" style="padding-block: 0 var(--gap)">
-    <h2 class="h2">Press</h2>
-    <ul class="linklist linklist--media">
-      {% for m in lumen.media %}<li>{% if m.URL %}<a href="{{ m.URL }}" target="_blank" rel="noopener">{{ m.Title }}</a>{% else %}{{ m.Title }}{% endif %}</li>{% endfor %}
-    </ul>
-  </section>
+  </div>
+  {% include "partials/about-cols.njk" %}
 </div>
