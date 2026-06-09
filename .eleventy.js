@@ -60,13 +60,14 @@ module.exports = function (eleventyConfig) {
       if (!t) { flush(); continue; }
       if (/^[\/\\]{2,}$/.test(t)) { flush(); continue; }                 // bare /// or // divider
       if (/^[—–\-·•]+$/.test(t)) { flush(); continue; }                  // bare dash/dot divider
+      if (t.includes("::")) { flush(); continue; }                       // decorative ":: ... ::" metadata
       const seps = (t.match(/\/\//g) || []).length;
       // multi-act line-up: "Performances by: A // B // C"
       if (seps >= 2) {
         const m = t.match(/^(performances?\s+(?:by|from)\s*:?\s*)?([\s\S]*)$/i);
         const names = m[2].split("//").map((x) => titleCase(x.replace(/[◇|]/g, " ").trim())).filter(Boolean);
         flush();
-        html += '<p class="ev-cast">' + esc(names.join("  //  ")) + "</p>";
+        html += '<p class="ev-cast">' + esc(names.join("  /  ")) + "</p>";
         continue;
       }
       // single "// LABEL" header (used by some events for sections / single acts)

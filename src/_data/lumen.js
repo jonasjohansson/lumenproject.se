@@ -36,7 +36,10 @@ function dimsOf(src) {
 // trim a free-text description to a clean ~155-char meta excerpt on a word
 // boundary (search snippets / og:description; the full text stays on the page).
 function excerptOf(text, max = 155) {
-  const s = String(text || "").replace(/\s+/g, " ").trim();
+  // build the excerpt from prose only — skip decorative ":: ::" and "//" lines
+  const s = String(text || "")
+    .split(/\n/).filter((l) => !/::|\/\//.test(l)).join(" ")
+    .replace(/\s+/g, " ").trim();
   if (s.length <= max) return s;
   const cut = s.slice(0, max);
   return cut.slice(0, cut.lastIndexOf(" ")).replace(/[.,;:–—-]\s*$/, "") + "…";
@@ -110,7 +113,7 @@ module.exports = function () {
     const g = matter(fs.readFileSync(path.join(dir, f), "utf8"));
     const d = g.data || {};
     return {
-      Title: d.title || "",
+      Title: (d.title || "").replace(/\s*\/\/+\s*/g, " / "),
       Date: ymd(d.date),
       Time: d.time || "",
       Venue: d.venue || "",
