@@ -51,8 +51,10 @@ npm run build     # one-off build into _site/
 ## Deploy
 
 GitHub Actions builds `_site/` and deploys to GitHub Pages (`.github/workflows/deploy.yml`).
-Custom domain `lumenproject.se` is set via `src/CNAME`; point a DNS
-`CNAME` record for that subdomain at `jonasjohansson.github.io`.
+Custom domain `lumenproject.se` is set via `src/CNAME`. Because it's an apex
+domain, point DNS at GitHub Pages with **A records** to `185.199.108.153`,
+`185.199.109.153`, `185.199.110.153`, `185.199.111.153` (or use Cloudflare
+CNAME-flattening: a `CNAME` at the apex → `jonasjohansson.github.io`).
 
 ## Structure
 
