@@ -1,5 +1,5 @@
 ---
-title: "LUMEN SUNDAY I"
+title: "Lumen Sunday I"
 date: "2020-02-16"
 time: "18:00-20:00"
 venue: "Eric Ericsonhallen"

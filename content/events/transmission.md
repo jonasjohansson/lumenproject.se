@@ -1,5 +1,5 @@
 ---
-title: "TRANSMISSION"
+title: "Transmission"
 date: "2020-06-14"
 time: "14:00-23:00"
 venue: "Eric Ericsonhallen"

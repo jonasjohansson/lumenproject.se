@@ -1,5 +1,5 @@
 ---
-title: "LUMEN PROJECT STOCKHOLM"
+title: "Lumen Project Stockholm"
 date: "2019-02-23"
 time: "10:00-22:00"
 venue: "Basilica Hudson"

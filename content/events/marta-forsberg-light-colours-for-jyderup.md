@@ -1,5 +1,5 @@
 ---
-title: "MARTA FORSBERG: LIGHT COLOURS FOR JYDERUP"
+title: "Marta Forsberg: Light Colours for Jyderup"
 date: "2019-02-11"
 time: "10:00-22:00"
 venue: "Jyderup"

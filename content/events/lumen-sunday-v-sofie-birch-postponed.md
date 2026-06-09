@@ -1,5 +1,5 @@
 ---
-title: "LUMEN SUNDAY V - SOFIE BIRCH - POSTPONED"
+title: "Lumen Sunday V - Sofie Birch - Postponed"
 date: "2020-11-15"
 time: "16:00-20:00"
 venue: "Eric Ericsonhallen"

@@ -1,5 +1,5 @@
 ---
-title: "OCCAM'S RAZOR BY C / P / S KUNGL. KONSTHÖGSKOLAN"
+title: "Occam's Razor by C / P / S Kungl. Konsthögskolan"
 date: "2019-05-30"
 time: "18:00-22:00"
 venue: "Eric Ericsonhallen"

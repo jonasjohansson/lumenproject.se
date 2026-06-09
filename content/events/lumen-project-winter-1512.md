@@ -1,5 +1,5 @@
 ---
-title: "LUMEN PROJECT // WINTER 15.12"
+title: "Lumen Project // Winter 15.12"
 date: "2024-12-15"
 time: "18:00-19:30"
 venue: "Eric Ericsonhallen"

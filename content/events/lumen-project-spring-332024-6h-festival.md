@@ -1,5 +1,5 @@
 ---
-title: "LUMEN PROJECT // SPRING 3.3.2024 (6H FESTIVAL)"
+title: "Lumen Project // Spring 3.3.2024 (6H Festival)"
 date: "2024-03-03"
 time: "15:00-21:00"
 venue: "Eric Ericsonhallen"

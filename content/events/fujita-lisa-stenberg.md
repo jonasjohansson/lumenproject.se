@@ -1,5 +1,5 @@
 ---
-title: "FUJI||||||||||TA & LISA STENBERG"
+title: "FUJI||||||||||TA & Lisa Stenberg"
 date: "2024-09-10"
 time: "19:30-20:30"
 venue: "Hägerstensåsens Medborgarhus"

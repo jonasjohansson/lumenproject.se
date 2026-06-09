@@ -1,5 +1,5 @@
 ---
-title: "HATHA YOGA, DEEP LISTENING, AND GLO"
+title: "Hatha Yoga, Deep Listening, and Glo"
 date: "2019-11-27"
 time: "07:30-21:00"
 venue: "Eric Ericsonhallen"

@@ -1,5 +1,5 @@
 ---
-title: "ALMA LÖV"
+title: "Alma Löv"
 date: "2022-08-13"
 time: "20:00-22:00"
 venue: "Alma Löv"

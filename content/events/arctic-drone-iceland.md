@@ -1,5 +1,5 @@
 ---
-title: "ARCTIC DRONE ICELAND"
+title: "Arctic Drone Iceland"
 date: "2019-10-19"
 time: "10:00-10:00"
 venue: "Húsavík"

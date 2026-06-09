@@ -1,5 +1,5 @@
 ---
-title: "SOFIE BIRCH / CARA TOLMIE"
+title: "Sofie Birch / Cara Tolmie"
 date: "2021-11-22"
 time: "18:30-19:45"
 venue: "Eric Ericsonhallen"

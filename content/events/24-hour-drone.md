@@ -1,5 +1,5 @@
 ---
-title: "24 HOUR DRONE"
+title: "24 Hour Drone"
 date: "2019-04-27"
 time: "12:00-12:00"
 venue: ""

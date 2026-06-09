@@ -1,5 +1,5 @@
 ---
-title: "LUMEN SUNDAY II - EMANATE - CANCELLED"
+title: "Lumen Sunday II - Emanate - Cancelled"
 date: "2020-03-29"
 time: "19:00-21:00"
 venue: "Eric Ericsonhallen"

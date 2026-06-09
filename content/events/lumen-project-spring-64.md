@@ -1,5 +1,5 @@
 ---
-title: "LUMEN PROJECT // SPRING 6.4"
+title: "Lumen Project // Spring 6.4"
 date: "2025-04-06"
 time: "15:00-21:30"
 venue: "Eric Ericsonhallen"

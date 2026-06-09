@@ -1,5 +1,5 @@
 ---
-title: "LUMEN SUNDAY // SHIDA SHAHABI // RYAN PACKARD"
+title: "Lumen Sunday // Shida Shahabi // Ryan Packard"
 date: "2023-09-24"
 time: "18:00-20:00"
 venue: "Eric Ericsonhallen"

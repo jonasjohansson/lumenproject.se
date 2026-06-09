@@ -1,5 +1,5 @@
 ---
-title: "LUMEN SUNDAY IV - SUBCHAMBER ENSMBLE"
+title: "Lumen Sunday IV - Subchamber Ensmble"
 date: "2020-10-18"
 time: "16:00-20:00"
 venue: "Eric Ericsonhallen"

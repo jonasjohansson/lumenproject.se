@@ -1,5 +1,5 @@
 ---
-title: "LUMEN SUNDAY III - SHIDA SHAHABI"
+title: "Lumen Sunday III - Shida Shahabi"
 date: "2020-09-27"
 time: "16:00-20:00"
 venue: "Eric Ericsonhallen"

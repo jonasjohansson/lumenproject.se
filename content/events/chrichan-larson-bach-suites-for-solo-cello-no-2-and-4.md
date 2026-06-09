@@ -1,5 +1,5 @@
 ---
-title: "CHRICHAN LARSON: BACH SUITES FOR SOLO CELLO NO. 2 AND 4"
+title: "Chrichan Larson: Bach Suites for Solo Cello No. 2 and 4"
 date: "2019-01-28"
 time: "18:30-19:30"
 venue: ""

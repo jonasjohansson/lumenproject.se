@@ -1,5 +1,5 @@
 ---
-title: "BEIRUT DRONE '19"
+title: "Beirut Drone '19"
 date: "2019-06-15"
 time: "12:00-00:00"
 venue: "Zoukak Studio"

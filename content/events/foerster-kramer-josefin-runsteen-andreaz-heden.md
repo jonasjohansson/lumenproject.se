@@ -1,5 +1,5 @@
 ---
-title: "FOERSTER & KRAMER / JOSEFIN RUNSTEEN & ANDREAZ HEDÉN"
+title: "Foerster & Kramer / Josefin Runsteen & Andreaz Hedén"
 date: "2021-12-06"
 time: "18:30-19:45"
 venue: "Eric Ericsonhallen"

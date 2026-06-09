@@ -1,5 +1,5 @@
 ---
-title: "LUMEN PROJECT STOCKHOLM 2020 - CANCELLED"
+title: "Lumen Project Stockholm 2020 - Cancelled"
 date: "2020-05-01"
 time: "15:00-23:59"
 venue: "Eric Ericsonhallen"

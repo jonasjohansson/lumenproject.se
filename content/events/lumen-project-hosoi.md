@@ -1,5 +1,5 @@
 ---
-title: "LUMEN PROJECT × HOSOI"
+title: "Lumen Project × Hosoi"
 date: "2025-11-02"
 time: "17:00-20:00"
 venue: "Hosoi"
