@@ -1,0 +1,20 @@
+---
+pagination:
+  data: lumen.events
+  size: 1
+  alias: ev
+permalink: "{{ ev.oldUrl }}index.html"
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting…</title>
+  <link rel="canonical" href="{{ site.url }}{{ ev.url }}" />
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="refresh" content="0; url={{ ev.url }}" />
+  <script>location.replace("{{ ev.url }}");</script>
+</head>
+<body><p>This page has moved to <a href="{{ ev.url }}">{{ ev.url }}</a>.</p></body>
+</html>

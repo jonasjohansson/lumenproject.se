@@ -141,7 +141,8 @@ module.exports = function () {
     const lead = (!upcoming && e.Photo) ? e.Photo : e.ImageURL;
     return {
       ...e,
-      url: dated ? `/events/${e.Date.replace(/-/g, "/")}/${e.slug}/` : `/events/${e.slug}/`,
+      url: `/${e.slug}/`,
+      oldUrl: dated ? `/events/${e.Date.replace(/-/g, "/")}/${e.slug}/` : `/events/${e.slug}/`,
       year: dated ? e.Date.slice(0, 4) : "",
       meta: [e.Time, e.Venue, e.City].filter(Boolean).join(" · "),
       startISO: dated ? `${e.Date}${start ? "T" + start : ""}` : "",
