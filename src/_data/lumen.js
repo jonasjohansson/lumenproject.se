@@ -44,25 +44,36 @@ const slugify = (s = "") =>
    .replace(/[^\w\s-]/g, "").trim().replace(/[\s_]+/g, "-").replace(/-+/g, "-");
 
 module.exports = async function () {
-  const [settingsRows, events, artists, partners, media] = await Promise.all(
-    ["Settings", "Events", "Artists", "Partners", "Media"].map((t) =>
+  // Events are essential: if that fetch fails, fail the build loudly rather
+  // than silently deploying an empty site. Secondary tabs degrade gracefully.
+  const events = await fetchTab("Events");
+  const [settingsRows, artists, partners, media] = await Promise.all(
+    ["Settings", "Artists", "Partners", "Media"].map((t) =>
       fetchTab(t).catch((e) => { console.warn(e.message); return []; })
     )
   );
+  if (!events.filter((e) => e.Title).length) {
+    throw new Error("Events tab returned no rows — aborting build to avoid an empty site.");
+  }
 
   const settings = {};
   settingsRows.forEach((r) => { if (r.Key) settings[r.Key] = r.Value; });
 
+  const usedSlugs = new Set();
   const cleanEvents = events
     .filter((e) => e.Title)
     .map((e) => {
-      const slug = slugify(e.Title);
+      let slug = slugify(e.Title) || "event";
+      while (usedSlugs.has(slug)) slug = slug.replace(/(-\d+)?$/, (m) => `-${(parseInt(m.slice(1)) || 1) + 1}`);
+      usedSlugs.add(slug);
       const dated = /^\d{4}-\d{2}-\d{2}$/.test(e.Date);
+      const start = (e.Time || "").split("-")[0].trim();
       return {
         ...e,
         slug,
         url: dated ? `/events/${e.Date.replace(/-/g, "/")}/${slug}/` : `/events/${slug}/`,
         meta: [e.Time, e.Venue, e.City].filter(Boolean).join(" · "),
+        startISO: dated ? `${e.Date}${start ? "T" + start : ""}` : "",
       };
     });
 

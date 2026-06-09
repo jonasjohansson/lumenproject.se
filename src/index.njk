@@ -6,5 +6,9 @@ permalink: /
 ---
 <h1 class="page-title">LUMEN PROJECT<span class="slash">//</span></h1>
 <section>
-  <div class="hero{% if not lumen.settings.hero_image %} is-empty{% endif %}"{% if lumen.settings.hero_image %} style="background-image:url('{{ lumen.settings.hero_image | img }}')"{% endif %}></div>
+  {% if lumen.settings.hero_image %}
+  <img class="hero" src="{{ lumen.settings.hero_image | img }}" alt="LUMEN PROJECT — {{ lumen.settings.hero_subheading or 'Spring 2026' }}" width="1920" height="1080" fetchpriority="high" decoding="async" />
+  {% else %}
+  <div class="hero is-empty"></div>
+  {% endif %}
 </section>

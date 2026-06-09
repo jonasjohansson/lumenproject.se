@@ -9,9 +9,11 @@ permalink: "{{ ev.url }}"
 eleventyComputed:
   title: "{{ ev.Title }} — LUMEN PROJECT"
   description: "{{ ev.Description }}"
+  ogImage: "{{ ev.ImageURL }}"
+  ogType: "article"
 ---
 <article class="event-detail">
-  {% if ev.ImageURL %}<div class="event__img" style="background-image:url('{{ ev.ImageURL | img }}')"></div>{% endif %}
+  {% if ev.ImageURL %}<img class="event__img" src="{{ ev.ImageURL | img }}" alt="{{ ev.Title }} — poster" decoding="async" />{% endif %}
   {% if ev.Date %}<p class="event__date"><time datetime="{{ ev.Date }}">{{ ev.Date | eventDate }}</time></p>{% endif %}
   <h1 class="page-title event-detail__title">{{ ev.Title }}</h1>
   {% if ev.meta %}<p class="event__meta">{{ ev.meta }}</p>{% endif %}
@@ -22,3 +24,19 @@ eleventyComputed:
     <a href="/events/">&larr; All events</a>
   </p>
 </article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": {{ ev.Title | dump | safe }},
+  {% if ev.startISO %}"startDate": {{ ev.startISO | dump | safe }},{% endif %}
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  {% if ev.Venue %}"location": { "@type": "Place", "name": {{ ev.Venue | dump | safe }}, "address": {{ (ev.City or "Stockholm") | dump | safe }} },{% endif %}
+  {% if ev.ImageURL %}"image": [{{ ev.ImageURL | dump | safe }}],{% endif %}
+  {% if ev.Description %}"description": {{ ev.Description | dump | safe }},{% endif %}
+  {% if ev.TicketURL %}"offers": { "@type": "Offer", "url": {{ ev.TicketURL | dump | safe }}, "availability": "https://schema.org/InStock" },{% endif %}
+  "organizer": { "@type": "Organization", "name": "LUMEN PROJECT", "url": {{ site.url | dump | safe }} }
+}
+</script>

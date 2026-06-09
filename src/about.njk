@@ -7,7 +7,7 @@ permalink: /about/
 ---
 <h1 class="page-title">ABOUT<span class="slash">//</span></h1>
 
-<div class="about-photo{% if not lumen.settings.about_image %} is-empty{% endif %}"{% if lumen.settings.about_image %} style="background-image:url('{{ lumen.settings.about_image | img }}')"{% endif %}></div>
+{% if lumen.settings.about_image %}<img class="about-photo" src="{{ lumen.settings.about_image | img }}" alt="LUMEN PROJECT performance — photo by {{ lumen.settings.photo_credit }}" loading="lazy" decoding="async" />{% else %}<div class="about-photo is-empty"></div>{% endif %}
 <p class="photo-credit">Photo by {{ lumen.settings.photo_credit }}</p>
 
 <section class="prose">

@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ title or lumen.settings.site_title }}</title>
   <meta name="description" content="{{ description or lumen.settings.tagline }}" />
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+
+  {% set ogImageAbs = (ogImage or lumen.settings.hero_image) | absImg %}
+  <meta property="og:type" content="{{ ogType or 'website' }}" />
+  <meta property="og:site_name" content="{{ lumen.settings.site_title }}" />
+  <meta property="og:title" content="{{ title or lumen.settings.site_title }}" />
+  <meta property="og:description" content="{{ description or lumen.settings.tagline }}" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  {% if ogImageAbs %}<meta property="og:image" content="{{ ogImageAbs }}" />{% endif %}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ title or lumen.settings.site_title }}" />
+  <meta name="twitter:description" content="{{ description or lumen.settings.tagline }}" />
+  {% if ogImageAbs %}<meta name="twitter:image" content="{{ ogImageAbs }}" />{% endif %}
+
+  <meta name="theme-color" content="#e0e0c7" />
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/img/favicon.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
   <link rel="preconnect" href="https://images.squarespace-cdn.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,6 +31,8 @@
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body id="page-{{ current }}" class="is-loaded">
+
+  <a class="skip" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="wrap">
@@ -21,7 +42,7 @@
         <a class="icon" href="{{ lumen.settings.instagram }}" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2.7 0 3 0 4.1.1 1 0 1.7.2 2.3.4.6.2 1.1.5 1.6 1 .5.5.8 1 1 1.6.2.6.4 1.3.4 2.3.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.7-.4 2.3-.2.6-.5 1.1-1 1.6-.5.5-1 .8-1.6 1-.6.2-1.3.4-2.3.4-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.7-.2-2.3-.4-.6-.2-1.1-.5-1.6-1-.5-.5-.8-1-1-1.6-.2-.6-.4-1.3-.4-2.3C2 15 2 14.7 2 12s0-3 .1-4.1c0-1 .2-1.7.4-2.3.2-.6.5-1.1 1-1.6.5-.5 1-.8 1.6-1 .6-.2 1.3-.4 2.3-.4C9 2 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.4 5.1a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6z"/></svg></a>
         <a class="icon" href="{{ lumen.settings.youtube }}" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.5c-.1-.9-.5-1.6-1.4-1.8C19.9 5.3 12 5.3 12 5.3s-7.9 0-9.6.4C1.5 5.9 1.1 6.6 1 7.5.6 9.2.6 12 .6 12s0 2.8.4 4.5c.1.9.5 1.6 1.4 1.8 1.7.4 9.6.4 9.6.4s7.9 0 9.6-.4c.9-.2 1.3-.9 1.4-1.8.4-1.7.4-4.5.4-4.5s0-2.8-.4-4.5zM9.8 15.3V8.7l6.2 3.3-6.2 3.3z"/></svg></a>
       </div>
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary">
         <a href="/"{% if current == 'home' %} aria-current="page"{% endif %}>Home</a>
         <a href="/events/"{% if current == 'events' %} aria-current="page"{% endif %}>Events</a>
         <a href="/about/"{% if current == 'about' %} aria-current="page"{% endif %}>About</a>
@@ -30,7 +51,7 @@
     </div>
   </header>
 
-  <main class="wrap">
+  <main class="wrap" id="main">
     {{ content | safe }}
   </main>
 

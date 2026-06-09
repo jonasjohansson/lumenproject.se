@@ -1,0 +1,13 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ site.url }}/</loc></url>
+  <url><loc>{{ site.url }}/events/</loc></url>
+  <url><loc>{{ site.url }}/about/</loc></url>
+  {%- for e in lumen.events %}
+  <url><loc>{{ site.url }}{{ e.url }}</loc></url>
+  {%- endfor %}
+</urlset>
