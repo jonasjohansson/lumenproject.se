@@ -18,7 +18,7 @@ module.exports = function (eleventyConfig) {
   });
 
   // fully-qualified image URL (for og:image / twitter:image — scrapers need absolute)
-  const ORIGIN = "https://lumenproject.jonasjohansson.se";
+  const ORIGIN = "https://lumenproject.se";
   eleventyConfig.addFilter("absImg", (v) => {
     if (!v) return "";
     return /^https?:\/\//.test(v) ? v : ORIGIN + "/" + String(v).replace(/^\/+/, "");

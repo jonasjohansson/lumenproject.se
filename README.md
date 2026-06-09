@@ -51,7 +51,7 @@ npm run build     # one-off build into _site/
 ## Deploy
 
 GitHub Actions builds `_site/` and deploys to GitHub Pages (`.github/workflows/deploy.yml`).
-Custom domain `lumenproject.jonasjohansson.se` is set via `src/CNAME`; point a DNS
+Custom domain `lumenproject.se` is set via `src/CNAME`; point a DNS
 `CNAME` record for that subdomain at `jonasjohansson.github.io`.
 
 ## Structure
