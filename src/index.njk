@@ -34,7 +34,7 @@ permalink: /
 
 <section class="home-sec" id="artists" aria-label="Artists">
   <div class="wrap">
-    <p class="page-intro">{{ lumen.artists.length }} musicians, composers and performers have shaped Lumen Project since 2017.</p>
+    <p class="page-intro">{{ lumen.artists.length }} musicians, composers and performers have shaped <strong>Lumen Project</strong> since 2017.</p>
     {% include "partials/artists-list.njk" %}
   </div>
 </section>
@@ -42,7 +42,7 @@ permalink: /
 <section class="home-sec" id="about" aria-label="About">
   <div class="wrap">
     <div class="prose about-lead">
-      <p>{{ lumen.settings.about }}</p>
+      <p>{{ lumen.settings.about | replace("Lumen Project", "<strong>Lumen Project</strong>") | safe }}</p>
       <p>{{ lumen.settings.founders }}</p>
     </div>
     {% include "partials/about-cols.njk" %}

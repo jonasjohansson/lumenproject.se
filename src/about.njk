@@ -12,7 +12,7 @@ permalink: /about/
   <p class="photo-credit">Photo by Olga Androsova</p>
 
   <div class="prose about-lead">
-    <p>{{ lumen.settings.about }}</p>
+    <p>{{ lumen.settings.about | replace("Lumen Project", "<strong>Lumen Project</strong>") | safe }}</p>
     <p>{{ lumen.settings.founders }}</p>
   </div>
   {% include "partials/about-cols.njk" %}

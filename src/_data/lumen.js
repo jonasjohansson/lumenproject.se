@@ -38,7 +38,9 @@ function dimsOf(src) {
 function excerptOf(text, max = 155) {
   // build the excerpt from prose only — skip decorative ":: ::" and "//" lines
   const s = String(text || "")
-    .split(/\n/).filter((l) => !/::|\/\//.test(l)).join(" ")
+    .split(/\n/)
+    .filter((l) => !/::|\/\/|https?:\/\/|www\.|instagram|facebook|spotify|youtu/i.test(l))
+    .join(" ")
     .replace(/\s+/g, " ").trim();
   if (s.length <= max) return s;
   const cut = s.slice(0, max);
@@ -71,6 +73,12 @@ const LINEUP_STOP = new Set([
 ]);
 // content/function words that mark a token as prose rather than an act name
 const LINEUP_PROSE = /\b(of|to|with|and|for|in|at|by|from|seamless|celebration|advent|experience|longform|disconnect|participate|immerse|connect)\b/i;
+
+// canonical spellings for the artist index (keyed by upper-case variant)
+const ARTIST_ALIAS = {
+  "SUBCHAMBER ENSMBLE": "Subchamber Ensemble",
+  "MALMÖ SUBCHAMBER ENSMBLE": "Subchamber Ensemble",
+};
 function parseLineup(desc) {
   if (!desc) return [];
   const text = String(desc).replace(/\r/g, "");
@@ -136,9 +144,9 @@ module.exports = function () {
     const dated = /^\d{4}-\d{2}-\d{2}$/.test(e.Date);
     const start = (e.Time || "").split("-")[0].trim();
     const upcoming = dated && e.Date >= today;
-    // past events lead with a photo from the event if one is set; upcoming
-    // events lead with their poster/graphic. Falls back to the poster either way.
-    const lead = (!upcoming && e.Photo) ? e.Photo : e.ImageURL;
+    // hero leads with the event's project artwork (poster/graphic); falls back
+    // to an event photo only when there is no artwork.
+    const lead = e.ImageURL || e.Photo;
     return {
       ...e,
       url: `/${e.slug}/`,
@@ -181,15 +189,19 @@ module.exports = function () {
   const curated = new Map();
   for (const a of (s.artists || [])) if (a.name) curated.set(a.name.toUpperCase(), a);
   const artistMap = new Map();
-  for (const e of events) {
-    for (const name of e.lineup) {
-      const k = name.toUpperCase();
-      if (!artistMap.has(k)) {
-        const c = curated.get(k) || {};
-        artistMap.set(k, { Name: name, Role: c.role || "", URL: c.url || "", Edition: c.edition || "" });
-      }
+  const addArtist = (name) => {
+    name = name.trim();
+    if (ARTIST_ALIAS[name.toUpperCase()]) name = ARTIST_ALIAS[name.toUpperCase()];
+    if (name.length < 2) return;
+    const k = name.toUpperCase();
+    if (!artistMap.has(k)) {
+      const c = curated.get(k) || {};
+      artistMap.set(k, { Name: name, URL: c.url || "" });
     }
-  }
+  };
+  // index lists individuals: split billed duos ("A & B") into separate names
+  // (event pages keep the pairing — they render e.lineup directly).
+  for (const e of events) for (const billed of e.lineup) billed.split(/\s+&\s+/).forEach(addArtist);
   for (const a of (s.artists || [])) {
     if (a.name && !artistMap.has(a.name.toUpperCase()))
       artistMap.set(a.name.toUpperCase(), { Name: a.name, Role: a.role || "", URL: a.url || "", Edition: a.edition || "" });
