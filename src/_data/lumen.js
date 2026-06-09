@@ -54,6 +54,54 @@ function ymd(v) {
   return String(v).slice(0, 10);
 }
 
+// Pull the performer line-up out of an event description. Lumen writes rosters
+// as "Performances by: NAME // NAME // NAME" or stand-alone "// NAME" headers.
+// Heuristic + a stop-list; duos written "A & B" are kept as one act. This is
+// best-effort over free text — easy to override later with explicit data.
+const LINEUP_STOP = new Set([
+  "LUMEN PROJECT", "LUMEN VOICES", "GONGS OF LUMEN", "TIME IS A MOUNTAIN",
+  "THREE SEPERATE EVENTS", "STOCKHOLM 2020", "24 HR DRONE", "6 HR YOGA",
+  "24 HOUR DRONE", "SPRING 24.4.", "WITH", "AND", "THE", "PRESENT", "PRESENTS",
+  "NYC", "STOCKHOLM", "BEIRUT", "PARIS", "REYKJAVÍK", "BOVALLSTRAND", "MALMÖ",
+  "ALMA LÖV", "SWEDEN", "LEBANON",
+  "INFO", "COCOONING", "NOTE", "NB", "PROGRAMME", "PROGRAM", "THANKS", "LINE-UP", "LINEUP",
+]);
+// content/function words that mark a token as prose rather than an act name
+const LINEUP_PROSE = /\b(of|to|with|and|for|in|at|by|from|seamless|celebration|advent|experience|longform|disconnect|participate|immerse|connect)\b/i;
+function parseLineup(desc) {
+  if (!desc) return [];
+  const text = String(desc).replace(/\r/g, "");
+  const segs = [];
+  const cue = text.match(/performances?\s+(?:by|from)\s*:?\s*([^\n]+)/i);
+  if (cue) segs.push(cue[1]);
+  for (const l of text.split("\n")) {
+    if (/thanks|support|about|accessib|ticket|collab|in collaboration/i.test(l)) continue;
+    if ((l.match(/\/\//g) || []).length >= 2 && /[A-ZÅÄÖ]{3,}/.test(l)) segs.push(l);
+    else if (/^\s*\/\/\s*[A-ZÅÄÖ]{2,}/.test(l)) segs.push(l);   // "// DATASAL"
+  }
+  const out = [];
+  const seen = new Set();
+  for (const seg of segs) {
+    for (let name of seg.split("//")) {
+      name = name.replace(/présente|present(s)?/ig, "/").split("/")[0]
+                 .replace(/[:|◇]/g, " ").replace(/\s+/g, " ").trim();
+      name = name.replace(/^(BEIRUT|STOCKHOLM|MALMÖ|PARIS|REYKJAVÍK|BOVALLSTRAND|NYC)\s+/i, "").trim();
+      if (!name || name.length < 2 || name.length > 48) continue;
+      if (/^https?:|facebook|spotify|tickster|biljett|doors|sek|youtu|^\d/i.test(name)) continue;
+      if (/,|\bartists?\b|response|present/i.test(name)) continue;
+      if (LINEUP_STOP.has(name.toUpperCase())) continue;
+      // all-caps act names pass; otherwise reject prose fragments / sizes
+      if (name !== name.toUpperCase()) {
+        if (name.includes(" ") && LINEUP_PROSE.test(name)) continue;
+        if (/\d/.test(name)) continue;
+      }
+      const k = name.toUpperCase();
+      if (!seen.has(k)) { seen.add(k); out.push(name); }
+    }
+  }
+  return out;
+}
+
 module.exports = function () {
   const dir = path.join(CONTENT, "events");
   const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith(".md")) : [];
@@ -99,6 +147,7 @@ module.exports = function () {
       LeadURL: lead,
       dims: dimsOf(e.ImageURL),
       leadDims: dimsOf(lead),
+      lineup: parseLineup(e.Description),
     };
   });
 
@@ -122,6 +171,27 @@ module.exports = function () {
 
   const s = JSON.parse(fs.readFileSync(path.join(CONTENT, "settings.json"), "utf8"));
 
+  // Performer index: every act mined from event line-ups (newest event first),
+  // enriched with role/url from the curated settings list where names match,
+  // plus any curated artists that never appeared in a parsed line-up.
+  const curated = new Map();
+  for (const a of (s.artists || [])) if (a.name) curated.set(a.name.toUpperCase(), a);
+  const artistMap = new Map();
+  for (const e of events) {
+    for (const name of e.lineup) {
+      const k = name.toUpperCase();
+      if (!artistMap.has(k)) {
+        const c = curated.get(k) || {};
+        artistMap.set(k, { Name: name, Role: c.role || "", URL: c.url || "", Edition: c.edition || "" });
+      }
+    }
+  }
+  for (const a of (s.artists || [])) {
+    if (a.name && !artistMap.has(a.name.toUpperCase()))
+      artistMap.set(a.name.toUpperCase(), { Name: a.name, Role: a.role || "", URL: a.url || "", Edition: a.edition || "" });
+  }
+  const artists = [...artistMap.values()].sort((a, b) => a.Name.localeCompare(b.Name, "sv"));
+
   return {
     settings: s.settings || {},
     events,
@@ -129,8 +199,7 @@ module.exports = function () {
     past,
     pastByYear,
     nextEvent,
-    artists: (s.artists || []).filter((a) => a.name)
-      .map((a) => ({ Name: a.name, Role: a.role, Edition: a.edition, URL: a.url })),
+    artists,
     partners: (s.partners || []).filter((p) => p.name)
       .map((p) => ({ Name: p.name, URL: p.url })),
     media: (s.media || []).filter((m) => m.title)

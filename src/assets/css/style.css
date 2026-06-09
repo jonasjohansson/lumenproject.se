@@ -67,7 +67,8 @@ html[data-theme="night"] { color-scheme: dark; }   /* uses :root defaults */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; }
+html::-webkit-scrollbar, body::-webkit-scrollbar { width: 0; height: 0; display: none; }
 
 body {
   font-family: var(--body);
@@ -150,7 +151,7 @@ a:hover { color: var(--ink); }
 
 /* page gets pushed below the fixed header (except full-bleed heroes) */
 main { display: block; }
-.page { padding-top: calc(60px + clamp(2rem, 6vw, 5rem)); }
+.page { padding-top: clamp(4.5rem, 9vw, 7rem); }
 .page-title {
   font-family: var(--display); font-weight: 700; line-height: 0.92;
   font-size: var(--fs-title); text-transform: uppercase; letter-spacing: 0.005em;
@@ -164,15 +165,20 @@ main { display: block; }
   position: relative; min-height: 100svh; display: grid; align-items: end;
   isolation: isolate; overflow: hidden;
 }
-.hero__img {
+.hero__img {  /* three stacked frames; the one for the active phase fades in */
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; z-index: -2;
+  object-fit: cover; z-index: -2; opacity: 0;
+  transition: opacity 1.1s var(--ease);
 }
-.hero::before {  /* legibility scrim, theme-tinted */
+html[data-theme="day"]   .hero__img--day,
+html[data-theme="dusk"]  .hero__img--dusk,
+html[data-theme="night"] .hero__img--night { opacity: 1; }
+.hero::before {  /* always-dark scrim so the white wordmark reads on any hero */
   content: ""; position: absolute; inset: 0; z-index: -1;
+  transition: background var(--slow);
   background:
-    radial-gradient(120% 80% at 50% 8%, rgba(var(--glow), 0.18), transparent 60%),
-    linear-gradient(180deg, rgba(var(--scrim), 0.55) 0%, rgba(var(--scrim), 0.05) 34%, rgba(var(--scrim), 0.75) 100%);
+    radial-gradient(120% 80% at 50% 8%, rgba(var(--glow), 0.16), transparent 60%),
+    linear-gradient(180deg, rgba(7, 8, 13, 0.45) 0%, rgba(7, 8, 13, 0.05) 32%, rgba(7, 8, 13, 0.86) 100%);
 }
 .hero__inner { padding: 0 var(--pad) clamp(2.4rem, 7vw, 5rem); width: 100%; max-width: var(--maxw); margin-inline: auto; }
 .wordmark {
@@ -224,8 +230,53 @@ main { display: block; }
 /* keep nav pinned right even when the brand is hidden (home page) */
 .nav { margin-left: auto; }
 
+/* minimal floating chrome: day/night toggle + active socials (top-right) */
+.chrome {
+  position: fixed; z-index: 50; display: flex; align-items: center; gap: 0.5rem;
+  top: clamp(0.8rem, 2vw, 1.3rem); right: clamp(0.9rem, 3vw, 2rem);
+}
+.chrome__toggle, .chrome__ic {
+  width: 34px; height: 34px; display: grid; place-items: center;
+  border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent); border-radius: 50%;
+  color: var(--ink); background: color-mix(in srgb, var(--paper) 30%, transparent);
+  -webkit-backdrop-filter: blur(9px); backdrop-filter: blur(9px);
+  transition: color 0.18s var(--ease), border-color 0.18s var(--ease), background var(--slow);
+  cursor: pointer;
+}
+.chrome__toggle:hover, .chrome__ic:hover { color: var(--accent-ink); border-color: var(--accent); }
+.chrome svg { width: 16px; height: 16px; fill: currentColor; }
+.chrome__toggle .g { display: none; }
+.chrome__toggle .g svg { width: 17px; height: 17px; }
+html[data-theme="day"]   .chrome__toggle .g-day,
+html[data-theme="dusk"]  .chrome__toggle .g-dusk,
+html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
+
+/* small home link (top-left) on inner pages, since there's no header */
+.corner-home {
+  position: fixed; z-index: 50; top: clamp(0.8rem, 2vw, 1.3rem); left: clamp(0.9rem, 3vw, 2rem);
+  font-family: var(--display); font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.14em; font-size: 1.05rem; color: var(--ink);
+  mix-blend-mode: difference;   /* legible over imagery */
+}
+.corner-home:hover { color: var(--accent-ink); mix-blend-mode: normal; }
+
+/* line-up chips on event detail */
+.lineup { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem 0.6rem; margin-bottom: clamp(1.6rem, 4vw, 2.6rem); }
+.lineup li {
+  font-family: var(--display); text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.92rem;
+  color: var(--ink); border: 1px solid var(--line); padding: 0.34em 0.75em; border-radius: 999px;
+}
+
+/* minimal closing line (replaces the formal footer) */
+.colophon {
+  text-align: center; color: var(--ink-dim); font-size: var(--fs-small);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border-top: 1px solid var(--line); margin-top: clamp(2.5rem, 7vw, 5rem);
+  padding: clamp(1.8rem, 5vw, 3rem) var(--pad);
+}
+
 /* one-page home: stacked sections with quiet dividers */
-.home-sec { scroll-margin-top: 72px; padding-block: clamp(2.8rem, 7vw, 6.5rem); }
+.home-sec { scroll-margin-top: 1.5rem; padding-block: clamp(2.8rem, 7vw, 6.5rem); }
 .home-sec + .home-sec { border-top: 1px solid var(--line); }
 .home-sec > .wrap > .page-title { margin-bottom: 0.6rem; }
 .about-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(1.6rem, 4vw, 3rem); }
@@ -315,7 +366,7 @@ main { display: block; }
 .ev-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
 .ev-hero::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(180deg, rgba(var(--scrim), 0.45) 0%, rgba(var(--scrim), 0) 38%, rgba(var(--scrim), 0.82) 100%);
+  background: linear-gradient(180deg, rgba(7, 8, 13, 0.4) 0%, rgba(7, 8, 13, 0) 38%, rgba(7, 8, 13, 0.88) 100%);
 }
 .ev-hero__inner { width: 100%; max-width: var(--maxw); margin-inline: auto; padding: 0 var(--pad) clamp(1.8rem, 5vw, 3.4rem); }
 .ev-hero__date { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.14em; color: #fff; opacity: 0.85; font-size: 0.95rem; }

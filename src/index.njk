@@ -6,7 +6,9 @@ description: A non-profit redefining the concert as a communal happening through
 permalink: /
 ---
 <section class="hero">
-  <img class="hero__img" src="/assets/img/photos/hero-church.jpg" alt="A LUMEN PROJECT performance in a candlelit church — photo by Olga Androsova" fetchpriority="high" decoding="async" />
+  <img class="hero__img hero__img--day" src="/assets/img/photos/pulpit-bw.jpg" alt="" aria-hidden="true" decoding="async" />
+  <img class="hero__img hero__img--dusk" src="/assets/img/photos/hero-church.jpg" alt="A LUMEN PROJECT performance in a candlelit church — photo by Olga Androsova" fetchpriority="high" decoding="async" />
+  <img class="hero__img hero__img--night" src="/assets/img/photos/statuary.jpg" alt="" aria-hidden="true" decoding="async" />
   <div class="hero__inner">
     <h1 class="wordmark">Lumen<span class="l2">Project</span></h1>
     <p class="hero__tag">{{ lumen.settings.tagline }}. Lie down, sleep, or come and go — a concert dissolved into a long, contemplative passage of sound and light.</p>
@@ -29,25 +31,22 @@ permalink: /
   </div>
 </section>
 
-<section class="home-sec" id="events" aria-labelledby="events-h">
+<section class="home-sec" id="events" aria-label="Events">
   <div class="wrap">
-    <h2 class="page-title" id="events-h">Events<span class="slash">.</span></h2>
     <p class="page-intro">Durational evenings of sound, light and space — most recent first. An archive going back to 2017.</p>
     {% include "partials/events-sections.njk" %}
   </div>
 </section>
 
-<section class="home-sec" id="artists" aria-labelledby="artists-h">
+<section class="home-sec" id="artists" aria-label="Artists">
   <div class="wrap">
-    <h2 class="page-title" id="artists-h">Artists<span class="slash">.</span></h2>
-    <p class="page-intro">The musicians, composers and performers who have shaped LUMEN PROJECT since 2017.</p>
+    <p class="page-intro">{{ lumen.artists.length }} musicians, composers and performers have shaped LUMEN PROJECT since 2017.</p>
     {% include "partials/artists-list.njk" %}
   </div>
 </section>
 
-<section class="home-sec" id="about" aria-labelledby="about-h">
+<section class="home-sec" id="about" aria-label="About">
   <div class="wrap">
-    <h2 class="page-title" id="about-h">About<span class="slash">.</span></h2>
     <div class="prose" style="margin-bottom: var(--gap)">
       <p>{{ lumen.settings.about }}</p>
       <p>{{ lumen.settings.founders }}</p>

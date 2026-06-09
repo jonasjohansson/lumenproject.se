@@ -33,6 +33,11 @@ eleventyComputed:
       </aside>
 
       <div>
+        {% if ev.lineup.length %}
+        <ul class="lineup">
+          {% for a in ev.lineup %}<li>{{ a }}</li>{% endfor %}
+        </ul>
+        {% endif %}
         {% if ev.Description %}<div class="prose ev-desc">{{ ev.Description }}</div>{% endif %}
         <p style="margin-top:2.4rem"><a class="backlink" href="/#events">&larr; All events</a></p>
       </div>
