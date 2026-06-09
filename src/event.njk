@@ -7,7 +7,7 @@ pagination:
   alias: ev
 permalink: "{{ ev.url }}"
 eleventyComputed:
-  title: "{{ ev.Title | safe }} · LUMEN PROJECT"
+  title: "{{ ev.Title | safe }} · Lumen Project"
   description: "{{ ev.excerpt | safe }}"
   ogImage: "{{ ev.LeadURL or ev.ImageURL }}"
   ogType: "article"
@@ -52,6 +52,6 @@ eleventyComputed:
   {% if ev.LeadURL %}"image": [{{ (ev.LeadURL | absImg) | dump | safe }}],{% endif %}
   {% if ev.Description %}"description": {{ ev.excerpt | dump | safe }},{% endif %}
   {% if ev.isUpcoming and ev.TicketURL %}"offers": { "@type": "Offer", "url": {{ ev.TicketURL | dump | safe }}, "availability": "https://schema.org/InStock" },{% endif %}
-  "organizer": { "@type": "Organization", "name": "LUMEN PROJECT", "url": {{ site.url | dump | safe }} }
+  "organizer": { "@type": "Organization", "name": "Lumen Project", "url": {{ site.url | dump | safe }} }
 }
 </script>

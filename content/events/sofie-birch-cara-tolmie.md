@@ -8,7 +8,7 @@ price: ""
 ticketUrl: ""
 image: "/assets/img/events/sofie-birch-cara-tolmie.png"
 description: |-
-  LUMEN PROJECT // SOFIE BIRCH + CARA TOLMIE - MONDAY NOVEMBER 22nd
+  Lumen Project // SOFIE BIRCH + CARA TOLMIE - MONDAY NOVEMBER 22nd
 
   :: November 22nd ::
   :: 18:30 sharp ::

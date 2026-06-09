@@ -43,7 +43,7 @@ description: |-
 
    GLO
 
-  LUMEN PROJECT is hosting the Great Learning Orchestra (GLO), which is celebrating 20 years as an ensemble playing experimental music. Together with a choir, GLO will perform pieces inspired by the work of Pauline Oliveros and a specially-composed piece by Ida Lundén. 
+  Lumen Project is hosting the Great Learning Orchestra (GLO), which is celebrating 20 years as an ensemble playing experimental music. Together with a choir, GLO will perform pieces inspired by the work of Pauline Oliveros and a specially-composed piece by Ida Lundén. 
 
   WHEN: 27 NOVEMBER 19.30-21 
   WHERE: ERIC ERICSONHALLEN
@@ -52,5 +52,5 @@ description: |-
 
   More info and RSVP: https://www.facebook.com/events/2522304574551531/
 
-   These events are part of LUMEN PROJECT's ongoing collaboration with the Eric Ericson International Choral Centre. Our goal is to bring a sense of magic + sanctuary to the frenetic, sometimes disjointed, world in which we live.
+   These events are part of Lumen Project's ongoing collaboration with the Eric Ericson International Choral Centre. Our goal is to bring a sense of magic + sanctuary to the frenetic, sometimes disjointed, world in which we live.
 ---

@@ -8,7 +8,7 @@ price: ""
 ticketUrl: ""
 image: "/assets/img/events/foerster-kramer-josefin-runsteen-andreaz-heden.png"
 description: |-
-  LUMEN PROJECT // FOERSTER & KRAMER + JOSEFIN RUNSTEEN & ANDREAZ HEDÉN
+  Lumen Project // FOERSTER & KRAMER + JOSEFIN RUNSTEEN & ANDREAZ HEDÉN
 
   :: December 6th ::
   :: 18:30 sharp ::

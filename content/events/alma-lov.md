@@ -8,7 +8,7 @@ price: ""
 ticketUrl: ""
 image: "/assets/img/events/alma-lov.jpg"
 description: |-
-  LUMEN PROJECT // ALMA LÖV
+  Lumen Project // ALMA LÖV
 
   :: Saturday 13th August 2022 ::
   :: 20:00 – 22:00 plus daytime events ::
