@@ -7,7 +7,7 @@ pagination:
   alias: ev
 permalink: "{{ ev.url }}"
 eleventyComputed:
-  title: "{{ ev.Title | safe }} · Lumen Project"
+  title: "{{ ev.Title | safe }}{% if 'Lumen Project' not in ev.Title %} · Lumen Project{% endif %}"
   description: "{{ ev.excerpt | safe }}"
   ogImage: "{{ ev.LeadURL or ev.ImageURL }}"
   ogType: "article"
