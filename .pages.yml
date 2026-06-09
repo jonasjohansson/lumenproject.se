@@ -47,6 +47,7 @@ content:
           - { name: about_image, label: About photo, type: image }
           - { name: about, label: About text, type: text }
           - { name: founders, label: Team / founders, type: text }
+          - { name: experience, label: How to experience it, type: text }
           - { name: contact_email, type: string }
           - { name: tickets_url, type: string }
           - { name: mailing_url, type: string }

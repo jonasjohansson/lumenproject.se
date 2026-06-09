@@ -63,10 +63,7 @@ permalink: /
 
 <section class="home-sec" id="about" aria-label="About">
   <div class="wrap">
-    <div class="prose about-lead">
-      <p>{{ lumen.settings.about | replace("Lumen Project", "<strong>Lumen Project</strong>") | safe }}</p>
-      <p>{{ lumen.settings.founders }}</p>
-    </div>
+    {% include "partials/about-lead.njk" %}
     {% include "partials/about-cols.njk" %}
   </div>
 </section>

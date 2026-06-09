@@ -11,9 +11,6 @@ permalink: /about/
   <img class="about-photo" src="/assets/img/photos/gathering.jpg" alt="Audience lying among candles at a Lumen Project happening, photographed by Olga Androsova" width="2000" height="1333" loading="lazy" decoding="async" />
   <p class="photo-credit">Photo by Olga Androsova</p>
 
-  <div class="prose about-lead">
-    <p>{{ lumen.settings.about | replace("Lumen Project", "<strong>Lumen Project</strong>") | safe }}</p>
-    <p>{{ lumen.settings.founders }}</p>
-  </div>
+  {% include "partials/about-lead.njk" %}
   {% include "partials/about-cols.njk" %}
 </div>
