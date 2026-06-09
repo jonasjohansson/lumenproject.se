@@ -1,30 +1,11 @@
 ---
 layout: base.njk
 current: events
-title: Events — LUMEN PROJECT
-description: Upcoming and past LUMEN PROJECT events.
+title: Events · Lumen Project
+description: Upcoming and past Lumen Project happenings of sound, light and space, in churches and large rooms.
 permalink: /events/
 ---
-<h1 class="page-title">EVENTS<span class="slash">//</span></h1>
-
-<section class="events">
-  {% for e in lumen.events %}
-  <article class="event">
-    <a href="{{ e.url }}" class="event__imglink">
-      {% if e.ImageURL %}<img class="event__img" src="{{ e.ImageURL | img }}" alt="{{ e.Title }} — poster"{% if not loop.first %} loading="lazy"{% endif %} decoding="async" />{% else %}<span class="event__img is-empty" aria-hidden="true"></span>{% endif %}
-    </a>
-    {% if e.Date %}<p class="event__date"><time datetime="{{ e.Date }}">{{ e.Date | eventDate }}</time></p>{% endif %}
-    <h3 class="event__title"><a href="{{ e.url }}">{{ e.Title }}</a></h3>
-    {% if e.meta %}<p class="event__meta">{{ e.meta }}</p>{% endif %}
-  </article>
-  {% endfor %}
-</section>
-
-<section>
-  <h2 class="section">Artists</h2>
-  <ul class="artists">
-    {% for a in lumen.artists %}
-    <li class="artist">{% if a.URL %}<a href="{{ a.URL }}" target="_blank" rel="noopener">{% endif %}<span class="artist__name">{{ a.Name }}</span>{% if a.Role %}<span class="artist__role">{{ a.Role }}</span>{% endif %}{% if a.URL %}</a>{% endif %}</li>
-    {% endfor %}
-  </ul>
-</section>
+<div class="wrap page">
+  <h1 class="page-title">Events<span class="slash">.</span></h1>
+  {% include "partials/events-sections.njk" %}
+</div>

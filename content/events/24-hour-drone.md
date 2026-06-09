@@ -8,7 +8,7 @@ price: ""
 ticketUrl: ""
 image: "/assets/img/events/24-hour-drone.jpg"
 description: |-
-  For Basilica Hudon’s 24 HOUR DRONE, LUMEN PROJECT presents:
+  For Basilica Hudon’s 24 HOUR DRONE, Lumen Project presents:
 
   Reg Bloor // Soramimi // Octonomy // Bob Bellerue // Bouquet // Ginny Benson // Ben Seretan
 

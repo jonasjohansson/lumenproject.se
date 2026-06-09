@@ -8,7 +8,7 @@ price: ""
 ticketUrl: ""
 image: "/assets/img/events/lumen-project-stockholm-2020-cancelled.png"
 description: |-
-  LUMEN PROJECT
+  Lumen Project
   // STOCKHOLM 2020
 
   Join us for a seamless 9 hour sound and light festival in Eric Ericsonhallen at Skeppsholmen, Stockholm! 

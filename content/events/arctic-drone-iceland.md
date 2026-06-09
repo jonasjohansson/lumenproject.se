@@ -10,7 +10,7 @@ image: "/assets/img/events/arctic-drone-iceland.jpg"
 description: |-
   24 HR DRONE \\\/// 6 HR YOGA
 
-  LUMEN PROJECT is proud to co-present this unique event in Húsavík, Iceland from 10 am October 19 - 10 am October 20
+  Lumen Project is proud to co-present this unique event in Húsavík, Iceland from 10 am October 19 - 10 am October 20
 
   ARCTIC DRONE is an immersive art event and all-encompassing experience, inspired by international series, featuring musicians and sound artists experimenting within the spectrum of drone to create 24 hours of unbroken, uninterrupted sound with sustained tones shaped by voice or instrumentation, transcend time, genre and music itself. This is a shared experience devoted to unifying players and listeners alike.
 
@@ -28,7 +28,7 @@ description: |-
 
   No tickets are sold to the art event. It is free for hotel and buffet guests at Fosshotel Húsavík.
 
-  Curated by Nathan Larson for LUMEN PROJECT, Bardi Johannsson, Melissa Auf Der Maur for BASILICA HUDSON.
+  Curated by Nathan Larson for Lumen Project, Bardi Johannsson, Melissa Auf Der Maur for BASILICA HUDSON.
 
   More information: https://www.islandshotel.is/droneyoga
 

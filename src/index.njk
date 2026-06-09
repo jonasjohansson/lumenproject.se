@@ -1,14 +1,50 @@
 ---
 layout: base.njk
 current: home
-title: LUMEN PROJECT
+title: Lumen Project
+description: A non-profit redefining the concert as a communal happening through sound, light and space. Lie down, sleep, come and go. Stockholm.
 permalink: /
 ---
-<h1 class="page-title">LUMEN PROJECT<span class="slash">//</span></h1>
-<section>
-  {% if lumen.settings.hero_image %}
-  <img class="hero" src="{{ lumen.settings.hero_image | img }}" alt="LUMEN PROJECT — {{ lumen.settings.hero_subheading or 'Spring 2026' }}" width="1920" height="1080" fetchpriority="high" decoding="async" />
-  {% else %}
-  <div class="hero is-empty"></div>
-  {% endif %}
+<section class="hero">
+  <img class="hero__img hero__img--day" src="/assets/img/photos/hero-day.jpg" alt="" aria-hidden="true" decoding="async" />
+  <img class="hero__img hero__img--dusk" src="/assets/img/photos/hero-dusk.jpg" alt="A Lumen Project performance in a sunlit hall, photographed by Olga Androsova" fetchpriority="high" decoding="async" />
+  <img class="hero__img hero__img--night" src="/assets/img/photos/hero-night.jpg" alt="" aria-hidden="true" decoding="async" />
+  <div class="hero__inner">
+    <h1 class="wordmark">Lumen<span class="l2">Project</span></h1>
+    <p class="hero__tag">{{ lumen.settings.tagline }}. You are welcome to lie down, sleep, or come and go freely.</p>
+
+    <div class="hero__scrolls">
+      <a class="hero__cta" href="#events">See events</a>
+      {% if lumen.nextEvent %}<span class="nextev"><span class="k">Next</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a>, {{ lumen.nextEvent.Date | eventDate }}</span>{% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--center">
+  <div class="wrap">
+    <p class="manifest">The concert as a spiritual, communal happening. <span class="dim">Day into dusk into night.</span></p>
+  </div>
+</section>
+
+<section class="home-sec" id="events" aria-label="Events">
+  <div class="wrap">
+    {% include "partials/events-sections.njk" %}
+  </div>
+</section>
+
+<section class="home-sec" id="artists" aria-label="Artists">
+  <div class="wrap">
+    <p class="page-intro">{{ lumen.artists.length }} musicians, composers and performers have shaped <strong>Lumen Project</strong> since 2017.</p>
+    {% include "partials/artists-list.njk" %}
+  </div>
+</section>
+
+<section class="home-sec" id="about" aria-label="About">
+  <div class="wrap">
+    <div class="prose about-lead">
+      <p>{{ lumen.settings.about | replace("Lumen Project", "<strong>Lumen Project</strong>") | safe }}</p>
+      <p>{{ lumen.settings.founders }}</p>
+    </div>
+    {% include "partials/about-cols.njk" %}
+  </div>
 </section>

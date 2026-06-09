@@ -40,11 +40,11 @@ description: |-
 
   ERIK ENOCKSSON // CHRISTER BOTHÉN // LUMEN VOICES
 
-  Presented by LUMEN PROJECT, LE GUESS WHO?, BASILICA HUDSON, CAFE MIDNATT, and TEMPLET
+  Presented by Lumen Project, LE GUESS WHO?, BASILICA HUDSON, CAFE MIDNATT, and TEMPLET
 
   Curated by NATHAN LARSON & WILDBIRDS and PEACEDRUMS
 
-  LUMEN PROJECT SPOTIFY PLAYLIST
+  Lumen Project SPOTIFY PLAYLIST
 
   With support from and thanks to: 
   Stockholms stad

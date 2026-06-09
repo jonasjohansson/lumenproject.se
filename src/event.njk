@@ -7,22 +7,37 @@ pagination:
   alias: ev
 permalink: "{{ ev.url }}"
 eleventyComputed:
-  title: "{{ ev.Title }} — LUMEN PROJECT"
-  description: "{{ ev.Description }}"
-  ogImage: "{{ ev.ImageURL }}"
+  title: "{{ ev.Title | safe }}{% if 'Lumen Project' not in ev.Title %} · Lumen Project{% endif %}"
+  description: "{{ ev.excerpt | safe }}"
+  ogImage: "{{ ev.LeadURL or ev.ImageURL }}"
   ogType: "article"
 ---
 <article class="event-detail">
-  {% if ev.ImageURL %}<img class="event__img" src="{{ ev.ImageURL | img }}" alt="{{ ev.Title }} — poster" decoding="async" />{% endif %}
-  {% if ev.Date %}<p class="event__date"><time datetime="{{ ev.Date }}">{{ ev.Date | eventDate }}</time></p>{% endif %}
-  <h1 class="page-title event-detail__title">{{ ev.Title }}</h1>
-  {% if ev.meta %}<p class="event__meta">{{ ev.meta }}</p>{% endif %}
-  {% if ev.Description %}<p class="event__desc prose">{{ ev.Description }}</p>{% endif %}
-  <p class="event__links">
-    {% if ev.Price %}<span>{{ ev.Price }}</span>{% endif %}
-    {% if ev.TicketURL %}<a href="{{ ev.TicketURL }}" target="_blank" rel="noopener">Tickets &rarr;</a>{% endif %}
-    <a href="/events/">&larr; All events</a>
-  </p>
+  <header class="ev-hero">
+    {% if ev.LeadURL %}<img class="ev-hero__img" src="{{ ev.LeadURL | img }}" alt="{{ ev.Title }}{% if ev.isUpcoming %} poster{% endif %}" fetchpriority="high" decoding="async" />{% endif %}
+    <div class="ev-hero__inner">
+      {% if ev.isUpcoming %}<span class="badge ev-hero__badge">Upcoming</span>{% endif %}
+      {% if ev.Date %}<p class="ev-hero__date"><time datetime="{{ ev.Date }}">{{ ev.Date | eventDate }}</time></p>{% endif %}
+      <h1 class="ev-hero__title">{{ ev.Title }}</h1>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="ev-body">
+      <aside class="ev-facts">
+        {% if ev.Time %}<div class="fact"><p class="fact__k">Time</p><p class="fact__v">{{ ev.Time }}</p></div>{% endif %}
+        {% if ev.Venue %}<div class="fact"><p class="fact__k">Venue</p><p class="fact__v">{{ ev.Venue }}</p></div>{% endif %}
+        {% if ev.City %}<div class="fact"><p class="fact__k">City</p><p class="fact__v">{{ ev.City }}</p></div>{% endif %}
+        {% if ev.Price %}<div class="fact"><p class="fact__k">Admission</p><p class="fact__v">{{ ev.Price }}</p></div>{% endif %}
+        {% if ev.isUpcoming and ev.TicketURL %}<a class="badge ev-cta" href="{{ ev.TicketURL }}" target="_blank" rel="noopener">Tickets &rarr;</a>{% endif %}
+      </aside>
+
+      <div>
+        {% if ev.Description %}<div class="prose ev-desc">{{ ev.Description | eventBody | safe }}</div>{% endif %}
+        <p style="margin-top:2.4rem"><a class="backlink" href="/events/">&larr; All events</a></p>
+      </div>
+    </div>
+  </div>
 </article>
 
 <script type="application/ld+json">
@@ -34,9 +49,9 @@ eleventyComputed:
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   {% if ev.Venue %}"location": { "@type": "Place", "name": {{ ev.Venue | dump | safe }}, "address": {{ (ev.City or "Stockholm") | dump | safe }} },{% endif %}
-  {% if ev.ImageURL %}"image": [{{ ev.ImageURL | dump | safe }}],{% endif %}
-  {% if ev.Description %}"description": {{ ev.Description | dump | safe }},{% endif %}
-  {% if ev.TicketURL %}"offers": { "@type": "Offer", "url": {{ ev.TicketURL | dump | safe }}, "availability": "https://schema.org/InStock" },{% endif %}
-  "organizer": { "@type": "Organization", "name": "LUMEN PROJECT", "url": {{ site.url | dump | safe }} }
+  {% if ev.LeadURL %}"image": [{{ (ev.LeadURL | absImg) | dump | safe }}],{% endif %}
+  {% if ev.Description %}"description": {{ ev.excerpt | dump | safe }},{% endif %}
+  {% if ev.isUpcoming and ev.TicketURL %}"offers": { "@type": "Offer", "url": {{ ev.TicketURL | dump | safe }}, "availability": "https://schema.org/InStock" },{% endif %}
+  "organizer": { "@type": "Organization", "name": "Lumen Project", "url": {{ site.url | dump | safe }} }
 }
 </script>

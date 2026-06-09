@@ -8,7 +8,7 @@ price: ""
 ticketUrl: ""
 image: "/assets/img/events/isak-sundstrom-victoria-verseau.png"
 description: |-
-  LUMEN PROJECT // ISAK SUNDSTRÖM // VICTORIA VERSEAU
+  Lumen Project // ISAK SUNDSTRÖM // VICTORIA VERSEAU
 
   :: Sunday Sept 11th ::
 

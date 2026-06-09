@@ -8,7 +8,7 @@ price: ""
 ticketUrl: ""
 image: "/assets/img/events/occams-razor-by-c-p-s-kungl-konsthogskolan.jpg"
 description: |-
-  LUMEN PROJECT is excited to host research platform Composing / Public / Space (C / P / S).
+  Lumen Project is excited to host research platform Composing / Public / Space (C / P / S).
 
   Occam's Razor is an atmospheric experience through time and space at Eric Ericsonhallen. Individual and collective works of sound, performance, and video are interlinked, activating different architectural aspects of the church and immerse its visitors.
 
@@ -25,7 +25,7 @@ description: |-
   PRACTICAL INFO:
   This event is FREE OF CHARGE. When entering Eric Ericsonhallen, please turn off / silence your phone and remove your shoes if you wish. Welcome to come and go as you wish during the evening.
 
-  This event is part of LUMEN PROJECT's ongoing collab with the Eric Ericson International Choral Centre. Our goal is to bring a sense of magic + sanctuary to the frenetic, sometimes disjointed, world in which we live. THANK YOU!
+  This event is part of Lumen Project's ongoing collab with the Eric Ericson International Choral Centre. Our goal is to bring a sense of magic + sanctuary to the frenetic, sometimes disjointed, world in which we live. THANK YOU!
 
   Thanks to EMS Elektronmusik studion for technical assistance.
 
