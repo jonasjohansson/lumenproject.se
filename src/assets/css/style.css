@@ -63,7 +63,10 @@
   --accent:     #8aa2ff;
   --accent-ink: #a7b8ff;          /* accent used as text (AA on paper) */
   --on-accent:  #0a0b11;          /* text on an accent fill */
-  --hero-ink:   #fff;             /* text over the dark hero scrim */
+  --hero-ink:   #fff;             /* text over the dark hero scrim (event hero) */
+  --hhero-ink:  #fff;             /* home hero text — theme-aware (see below) */
+  --hhero-veil: 0.55;             /* home hero dark scrim strength */
+  --hhero-glow: 0.5;              /* home hero wordmark glow */
   --glow:       120, 150, 255;    /* rgb — bloom / glow */
   color-scheme: dark;
 }
@@ -75,6 +78,7 @@ html[data-theme="day"] {
   --line:  rgba(25, 27, 43, 0.16);
   --accent: #b5532a; --accent-ink: #9a3d00;
   --glow:  248, 168, 78;
+  --hhero-ink: #181a28; --hhero-veil: 0; --hhero-glow: 0;   /* day: dark text, clean fade, no veil */
   color-scheme: light;
 }
 html[data-theme="dusk"] {
@@ -83,6 +87,7 @@ html[data-theme="dusk"] {
   --line:  rgba(243, 231, 211, 0.16);
   --accent: #ffb259; --accent-ink: #ffbf73;
   --glow:  255, 150, 60;
+  --hhero-veil: 0.5; --hhero-glow: 0.42;   /* dusk: dark ground, keep white text + veil */
   color-scheme: dark;
 }
 html[data-theme="night"] { color-scheme: dark; }   /* uses :root defaults */
@@ -195,36 +200,38 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 html[data-theme="day"]   .hero__img--day,
 html[data-theme="dusk"]  .hero__img--dusk,
 html[data-theme="night"] .hero__img--night { opacity: 1; }
-.hero::before {   /* dark scrim for the wordmark; the very bottom dissolves into the page */
+.hero::before {   /* dark only behind the wordmark (upper-mid); bottom fades cleanly to the page */
   content: ""; position: absolute; inset: 0; z-index: -1; transition: background var(--dur-slow) var(--ease);
   background:
-    radial-gradient(120% 80% at 50% 8%, rgba(var(--glow), 0.16), transparent 60%),
-    linear-gradient(180deg, rgba(7, 8, 13, 0.5) 0%, rgba(7, 8, 13, 0.08) 30%, rgba(7, 8, 13, 0.82) 84%, var(--paper) 100%);
+    linear-gradient(180deg, transparent 64%, var(--paper) 100%),                                                                  /* dissolve into the page */
+    linear-gradient(180deg, rgba(7, 8, 13, calc(var(--hhero-veil) * 1.05)) 0%, rgba(7, 8, 13, calc(var(--hhero-veil) * 0.7)) 45%,
+                            rgba(7, 8, 13, calc(var(--hhero-veil) * 0.85)) 66%, rgba(7, 8, 13, 0) 92%),                             /* dark veil only when text is white */
+    radial-gradient(120% 80% at 50% 8%, rgba(var(--glow), 0.16), transparent 60%);                                                /* luminous halo */
 }
 .hero__inner { width: 100%; max-width: var(--maxw); margin-inline: auto; padding: 0 var(--pad) clamp(2.4rem, 7vw, 5rem); }
 .wordmark {
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-  font-size: var(--fs-mega); line-height: 0.84; letter-spacing: 0.005em; color: var(--hero-ink);
-  text-shadow: 0 0 60px rgba(var(--glow), 0.5);   /* luminous glow, no drop shadow */
+  font-size: var(--fs-mega); line-height: 0.84; letter-spacing: 0.005em; color: var(--hhero-ink);
+  text-shadow: 0 0 60px rgba(var(--glow), var(--hhero-glow));   /* luminous glow (off in day), no drop shadow */
 }
 .wordmark .l2 { display: block; }
 .hero__tag {
   margin-top: var(--space-sm); max-width: 40ch; font-size: var(--fs-lead); line-height: 1.4;
-  color: rgba(255, 255, 255, 0.86); text-wrap: balance;
+  color: color-mix(in srgb, var(--hhero-ink) 88%, transparent); text-wrap: balance;
 }
 .hero__scrolls { margin-top: var(--space-md); display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; }
 .hero__cta {
   font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide);
-  font-size: 0.95rem; color: var(--hero-ink); border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem; color: var(--hhero-ink); border: 1px solid color-mix(in srgb, var(--hhero-ink) 50%, transparent);
   padding: 0.7em 1.3em; border-radius: var(--pill); backdrop-filter: blur(4px);
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
-.hero__cta:hover { background: var(--hero-ink); color: #000; border-color: var(--hero-ink); }
+.hero__cta:hover { background: var(--hhero-ink); color: var(--paper); border-color: var(--hhero-ink); }
 
-.nextev { display: inline-flex; align-items: baseline; gap: 0.8ch; flex-wrap: wrap; color: var(--hero-ink); font-size: 0.95rem; }
-.nextev .k { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 0.78rem; color: rgba(255, 255, 255, 0.7); }
-.nextev a { color: var(--hero-ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255, 255, 255, 0.5); }
-.nextev a:hover { text-decoration-color: var(--hero-ink); }
+.nextev { display: inline-flex; align-items: baseline; gap: 0.8ch; flex-wrap: wrap; color: var(--hhero-ink); font-size: 0.95rem; }
+.nextev .k { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 0.78rem; color: color-mix(in srgb, var(--hhero-ink) 70%, transparent); }
+.nextev a { color: var(--hhero-ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--hhero-ink) 50%, transparent); }
+.nextev a:hover { text-decoration-color: var(--hhero-ink); }
 
 /* — Manifest ———————————————————————————————————————————————— */
 .manifest {
