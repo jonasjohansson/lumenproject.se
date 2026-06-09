@@ -167,7 +167,6 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
   font-size: var(--fs-title); text-transform: uppercase; letter-spacing: 0.005em;
   margin-bottom: var(--gap);
 }
-.page-title .slash { color: var(--accent); }
 .page-intro { max-width: 46ch; font-size: var(--fs-lead); color: var(--ink-dim); margin-bottom: var(--gap); }
 
 .section { padding-block: var(--section-y); }
@@ -270,6 +269,24 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
   font-size: 0.74rem; font-weight: 700; padding: 0.4em 0.85em; border-radius: var(--pill);
 }
 .featured .badge { position: absolute; top: var(--space-sm); left: var(--space-sm); }
+
+/* text index (no artwork) — the standalone /events/ page */
+.ev-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-md);
+  border-bottom: var(--border); padding: var(--space-sm) 0;
+}
+.ev-row__title {
+  font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
+  font-size: clamp(1.15rem, 2.4vw, 1.6rem); line-height: 1.05; color: var(--ink);
+  display: inline-flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
+}
+.ev-row:hover .ev-row__title { color: var(--accent-ink); }
+.ev-row__meta { color: var(--ink-dim); font-size: 0.85rem; text-align: right; white-space: nowrap; }
+.ev-row__date { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking); color: var(--accent-ink); }
+@media (max-width: 600px) {
+  .ev-row { flex-direction: column; gap: var(--space-3xs); }
+  .ev-row__meta { text-align: left; white-space: normal; }
+}
 
 /* — Artists index ——————————————————————————————————————————— */
 .artists { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0 var(--space-lg); }

@@ -149,8 +149,9 @@ module.exports = function () {
     const lead = e.ImageURL || e.Photo;
     return {
       ...e,
-      url: `/${e.slug}/`,
-      oldUrl: dated ? `/events/${e.Date.replace(/-/g, "/")}/${e.slug}/` : `/events/${e.slug}/`,
+      url: `/events/${e.slug}/`,
+      datedUrl: dated ? `/events/${e.Date.replace(/-/g, "/")}/${e.slug}/` : "",
+      rootUrl: `/${e.slug}/`,
       year: dated ? e.Date.slice(0, 4) : "",
       meta: [e.Time, e.Venue, e.City].filter(Boolean).join(" · "),
       startISO: dated ? `${e.Date}${start ? "T" + start : ""}` : "",
@@ -179,6 +180,14 @@ module.exports = function () {
     let g = pastByYear.find((g) => g.year === y);
     if (!g) { g = { year: y, events: [] }; pastByYear.push(g); }
     g.events.push(e);
+  }
+
+  // 301-style redirect stubs from every prior URL shape (dated + root) -> /events/<slug>/
+  const redirects = [];
+  for (const e of events) {
+    for (const from of [e.datedUrl, e.rootUrl]) {
+      if (from && from !== e.url) redirects.push({ from, to: e.url });
+    }
   }
 
   const s = JSON.parse(fs.readFileSync(path.join(CONTENT, "settings.json"), "utf8"));
@@ -215,6 +224,7 @@ module.exports = function () {
     past,
     pastByYear,
     nextEvent,
+    redirects,
     artists,
     partners: (s.partners || []).filter((p) => p.name)
       .map((p) => ({ Name: p.name, URL: p.url })),

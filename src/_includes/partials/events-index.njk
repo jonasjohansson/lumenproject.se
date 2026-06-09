@@ -1,0 +1,24 @@
+{# Text index of events (no artwork) — used by the standalone /events/ page.
+   The home #events section uses the visual gallery (events-sections.njk). #}
+{% if lumen.upcoming.length %}
+{% for e in lumen.upcoming %}
+<a class="ev-row ev-row--up" href="{{ e.url }}">
+  <span class="ev-row__title">{{ e.Title }} <span class="badge">Upcoming</span></span>
+  <span class="ev-row__meta"><span class="ev-row__date">{{ e.Date | eventDate }}</span>{% if e.meta %} · {{ e.meta }}{% endif %}</span>
+</a>
+{% endfor %}
+{% endif %}
+
+{% for group in lumen.pastByYear %}
+<section class="year">
+  <div class="year__head"><h2 class="year__n">{{ group.year }}</h2></div>
+  <div class="ev-index">
+    {% for e in group.events %}
+    <a class="ev-row" href="{{ e.url }}">
+      <span class="ev-row__title">{{ e.Title }}</span>
+      <span class="ev-row__meta">{% if e.meta %}{{ e.meta }}{% endif %}</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}

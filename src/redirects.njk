@@ -1,9 +1,9 @@
 ---
 pagination:
-  data: lumen.events
+  data: lumen.redirects
   size: 1
-  alias: ev
-permalink: "{{ ev.oldUrl }}index.html"
+  alias: r
+permalink: "{{ r.from }}index.html"
 eleventyExcludeFromCollections: true
 ---
 <!doctype html>
@@ -11,10 +11,10 @@ eleventyExcludeFromCollections: true
 <head>
   <meta charset="utf-8" />
   <title>Redirecting…</title>
-  <link rel="canonical" href="{{ site.url }}{{ ev.url }}" />
+  <link rel="canonical" href="{{ site.url }}{{ r.to }}" />
   <meta name="robots" content="noindex" />
-  <meta http-equiv="refresh" content="0; url={{ ev.url }}" />
-  <script>location.replace("{{ ev.url }}");</script>
+  <meta http-equiv="refresh" content="0; url={{ r.to }}" />
+  <script>location.replace("{{ r.to }}");</script>
 </head>
-<body><p>This page has moved to <a href="{{ ev.url }}">{{ ev.url }}</a>.</p></body>
+<body><p>This page has moved to <a href="{{ r.to }}">{{ r.to }}</a>.</p></body>
 </html>
