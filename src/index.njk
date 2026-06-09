@@ -1,22 +1,22 @@
 ---
 layout: base.njk
 current: home
-title: LUMEN PROJECT — Immersive sound, light and space
+title: LUMEN PROJECT · Immersive sound, light and space
 description: A non-profit redefining the concert as a communal happening through sound, light and space. Lie down, sleep, come and go. Stockholm.
 permalink: /
 ---
 <section class="hero">
   <img class="hero__img hero__img--day" src="/assets/img/photos/pulpit-bw.jpg" alt="" aria-hidden="true" decoding="async" />
-  <img class="hero__img hero__img--dusk" src="/assets/img/photos/hero-church.jpg" alt="A LUMEN PROJECT performance in a candlelit church — photo by Olga Androsova" fetchpriority="high" decoding="async" />
+  <img class="hero__img hero__img--dusk" src="/assets/img/photos/hero-church.jpg" alt="A LUMEN PROJECT performance in a candlelit church, photographed by Olga Androsova" fetchpriority="high" decoding="async" />
   <img class="hero__img hero__img--night" src="/assets/img/photos/statuary.jpg" alt="" aria-hidden="true" decoding="async" />
   <div class="hero__inner">
     <h1 class="wordmark">Lumen<span class="l2">Project</span></h1>
-    <p class="hero__tag">{{ lumen.settings.tagline }}. Lie down, sleep, or come and go — a concert dissolved into a long, contemplative passage of sound and light.</p>
+    <p class="hero__tag">{{ lumen.settings.tagline }}. You are welcome to lie down, sleep, or come and go freely.</p>
 
     <div class="hero__scrolls">
       <a class="hero__cta" href="#events">See events</a>
       {% if lumen.nextEvent %}
-      <span class="nextev"><span class="k">Next</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a> — {{ lumen.nextEvent.Date | eventDate }}</span>
+      <span class="nextev"><span class="k">Next</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a>, {{ lumen.nextEvent.Date | eventDate }}</span>
       {% else %}
       <span class="nextev"><span class="k">Now</span> <a href="#events">Explore the archive of past events</a></span>
       {% endif %}
@@ -26,14 +26,13 @@ permalink: /
 
 <section class="section section--center">
   <div class="wrap">
-    <p class="kicker">Sound · Light · Space</p>
     <p class="manifest">The concert as a spiritual, communal happening. <span class="dim">Day into dusk into night.</span></p>
   </div>
 </section>
 
 <section class="home-sec" id="events" aria-label="Events">
   <div class="wrap">
-    <p class="page-intro">Durational evenings of sound, light and space — most recent first. An archive going back to 2017.</p>
+    <p class="page-intro">Long-form evenings of sound, light and space. Most recent first, going back to 2017.</p>
     {% include "partials/events-sections.njk" %}
   </div>
 </section>

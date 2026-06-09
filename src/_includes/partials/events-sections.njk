@@ -6,7 +6,7 @@
   <a class="featured" href="{{ e.url }}">
     <div class="featured__media">
       <span class="featured__badge">Upcoming</span>
-      {% if e.ImageURL %}<img src="{{ e.ImageURL | img }}" alt="{{ e.Title }} — poster"{% if e.dims %} width="{{ e.dims.width }}" height="{{ e.dims.height }}"{% endif %} decoding="async" />{% endif %}
+      {% if e.ImageURL %}<img src="{{ e.ImageURL | img }}" alt="{{ e.Title }} poster"{% if e.dims %} width="{{ e.dims.width }}" height="{{ e.dims.height }}"{% endif %} decoding="async" />{% endif %}
     </div>
     <div class="featured__body">
       <p class="featured__date">{{ e.Date | eventDate }}</p>
@@ -22,13 +22,12 @@
 <section class="year">
   <div class="year__head">
     <h3 class="year__n">{{ group.year }}</h3>
-    <span class="year__count">{{ group.events.length }} event{% if group.events.length != 1 %}s{% endif %}</span>
   </div>
   <div class="grid">
     {% for e in group.events %}
     <a class="card" href="{{ e.url }}">
       <div class="card__media{% if not e.ImageURL %} is-empty{% endif %}">
-        {% if e.ImageURL %}<img src="{{ e.ImageURL | img }}" alt="{{ e.Title }} — poster"{% if e.dims %} width="{{ e.dims.width }}" height="{{ e.dims.height }}"{% endif %} loading="lazy" decoding="async" />{% endif %}
+        {% if e.ImageURL %}<img src="{{ e.ImageURL | img }}" alt="{{ e.Title }} poster"{% if e.dims %} width="{{ e.dims.width }}" height="{{ e.dims.height }}"{% endif %} loading="lazy" decoding="async" />{% endif %}
       </div>
       {% if e.Date %}<p class="card__date">{{ e.Date | eventDate }}</p>{% endif %}
       <h4 class="card__title">{{ e.Title }}</h4>

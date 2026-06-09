@@ -356,7 +356,7 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
   border-bottom: 1px solid var(--line); padding: 0.85rem 0;
   display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
 }
-.artist__name { font-family: var(--display); font-weight: 600; text-transform: uppercase; font-size: clamp(1.1rem, 2.4vw, 1.5rem); line-height: 1.05; letter-spacing: 0.01em; }
+.artist__name { font-family: var(--display); font-weight: 600; font-size: clamp(1.1rem, 2.4vw, 1.5rem); line-height: 1.05; letter-spacing: 0.01em; }
 .artist__role { color: var(--ink-dim); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; text-align: right; white-space: nowrap; }
 .artist a:hover .artist__name { color: var(--accent-ink); }
 .artist a { display: contents; }
@@ -388,7 +388,16 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 .fact { border-top: 1px solid var(--line); padding-top: 0.7rem; }
 .fact__k { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; color: var(--ink-dim); }
 .fact__v { font-size: 1.05rem; margin-top: 0.15rem; }
-.ev-desc { white-space: pre-line; }
+.ev-desc > p { margin-bottom: 1.05rem; }
+.ev-sub {
+  font-family: var(--display); font-weight: 700; font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  letter-spacing: 0.01em; margin: 2rem 0 0.6rem; color: var(--ink);
+}
+.ev-cast {
+  font-family: var(--display); font-weight: 600; text-transform: none;
+  font-size: clamp(1.15rem, 2.4vw, 1.7rem); line-height: 1.25; letter-spacing: 0.01em;
+  margin: 0.4rem 0 1.6rem; color: var(--ink);
+}
 .ev-cta {
   display: inline-block; margin-top: 1.6rem; background: var(--accent); color: #0a0b11;
   font-family: var(--display); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;

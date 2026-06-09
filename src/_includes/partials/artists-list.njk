@@ -1,9 +1,8 @@
-{# Reusable artists index. Used by the one-page home (#artists) and /artists/. #}
+{# Reusable artists index — names only. Used by home (#artists) and /artists/. #}
 <ul class="artists">
   {% for a in lumen.artists %}
   <li class="artist">
-    {% if a.URL %}<a href="{{ a.URL }}" target="_blank" rel="noopener"><span class="artist__name">{{ a.Name }}</span>{% if a.Role or a.Edition %}<span class="artist__role">{{ a.Role or a.Edition }}</span>{% endif %}</a>
-    {% else %}<span class="artist__name">{{ a.Name }}</span>{% if a.Role or a.Edition %}<span class="artist__role">{{ a.Role or a.Edition }}</span>{% endif %}{% endif %}
+    {% if a.URL %}<a href="{{ a.URL }}" target="_blank" rel="noopener"><span class="artist__name">{{ a.Name | tc }}</span></a>{% else %}<span class="artist__name">{{ a.Name | tc }}</span>{% endif %}
   </li>
   {% endfor %}
 </ul>
