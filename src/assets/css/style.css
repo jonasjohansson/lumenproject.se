@@ -155,7 +155,7 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 .corner-home {
   position: fixed; z-index: 50; top: clamp(0.8rem, 2vw, 1.3rem); left: clamp(0.9rem, 3vw, 2rem);
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-  letter-spacing: var(--tracking-wide); font-size: 1.05rem; color: var(--ink);
+  letter-spacing: var(--tracking-wide); font-size: 1.05rem; line-height: 1; color: var(--ink);
   mix-blend-mode: difference;   /* legible over imagery */
 }
 .corner-home:hover { color: var(--accent-ink); mix-blend-mode: normal; }
