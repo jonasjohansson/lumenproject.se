@@ -70,6 +70,7 @@ module.exports = function () {
       Price: d.price || "",
       TicketURL: d.ticketUrl || "",
       ImageURL: d.image || "",
+      Photo: d.photo || "",
       Description: (d.description != null ? String(d.description) : (g.content || "")).trim(),
       slug: f.replace(/\.md$/, "") || slugify(d.title),
     };
@@ -78,16 +79,26 @@ module.exports = function () {
   // newest first
   events.sort((a, b) => (b.Date || "").localeCompare(a.Date || ""));
 
-  events = events.map((e) => {
+  const today = new Date().toISOString().slice(0, 10);
+
+  events = events.map((e, i) => {
     const dated = /^\d{4}-\d{2}-\d{2}$/.test(e.Date);
     const start = (e.Time || "").split("-")[0].trim();
+    const upcoming = dated && e.Date >= today;
+    // past events lead with a photo from the event if one is set; upcoming
+    // events lead with their poster/graphic. Falls back to the poster either way.
+    const lead = (!upcoming && e.Photo) ? e.Photo : e.ImageURL;
     return {
       ...e,
       url: dated ? `/events/${e.Date.replace(/-/g, "/")}/${e.slug}/` : `/events/${e.slug}/`,
+      year: dated ? e.Date.slice(0, 4) : "",
       meta: [e.Time, e.Venue, e.City].filter(Boolean).join(" · "),
       startISO: dated ? `${e.Date}${start ? "T" + start : ""}` : "",
       excerpt: excerptOf(e.Description),
+      isUpcoming: upcoming,
+      LeadURL: lead,
       dims: dimsOf(e.ImageURL),
+      leadDims: dimsOf(lead),
     };
   });
 
@@ -95,11 +106,29 @@ module.exports = function () {
     throw new Error("No events found in content/events — aborting build to avoid an empty site.");
   }
 
+  // upcoming soonest-first; past newest-first (events[] is already newest-first)
+  const upcoming = events.filter((e) => e.isUpcoming).sort((a, b) => a.Date.localeCompare(b.Date));
+  const past = events.filter((e) => !e.isUpcoming);
+  const nextEvent = upcoming[0] || null;
+
+  // group past events by year (past is already newest-first) for the index
+  const pastByYear = [];
+  for (const e of past) {
+    const y = e.year || "Undated";
+    let g = pastByYear.find((g) => g.year === y);
+    if (!g) { g = { year: y, events: [] }; pastByYear.push(g); }
+    g.events.push(e);
+  }
+
   const s = JSON.parse(fs.readFileSync(path.join(CONTENT, "settings.json"), "utf8"));
 
   return {
     settings: s.settings || {},
     events,
+    upcoming,
+    past,
+    pastByYear,
+    nextEvent,
     artists: (s.artists || []).filter((a) => a.name)
       .map((a) => ({ Name: a.name, Role: a.role, Edition: a.edition, URL: a.url })),
     partners: (s.partners || []).filter((p) => p.name)

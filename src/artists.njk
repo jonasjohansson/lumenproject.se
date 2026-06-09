@@ -1,0 +1,20 @@
+---
+layout: base.njk
+current: artists
+title: Artists — LUMEN PROJECT
+description: The musicians, composers and performers who have shaped LUMEN PROJECT happenings since 2017.
+permalink: /artists/
+---
+<div class="wrap page">
+  <h1 class="page-title">Artists<span class="slash">.</span></h1>
+  <p class="page-intro">The musicians, composers and performers who have shaped LUMEN PROJECT since 2017.</p>
+
+  <ul class="artists">
+    {% for a in lumen.artists %}
+    <li class="artist">
+      {% if a.URL %}<a href="{{ a.URL }}" target="_blank" rel="noopener"><span class="artist__name">{{ a.Name }}</span>{% if a.Role or a.Edition %}<span class="artist__role">{{ a.Role or a.Edition }}</span>{% endif %}</a>
+      {% else %}<span class="artist__name">{{ a.Name }}</span>{% if a.Role or a.Edition %}<span class="artist__role">{{ a.Role or a.Edition }}</span>{% endif %}{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>

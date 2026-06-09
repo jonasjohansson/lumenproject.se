@@ -1,14 +1,45 @@
 ---
 layout: base.njk
 current: home
-title: LUMEN PROJECT
+title: LUMEN PROJECT — Immersive sound, light and space
+description: A non-profit redefining the concert as a communal happening through sound, light and space. Lie down, sleep, come and go. Stockholm.
 permalink: /
 ---
-<h1 class="page-title">LUMEN PROJECT<span class="slash">//</span></h1>
-<section>
-  {% if lumen.settings.hero_image %}
-  <img class="hero" src="{{ lumen.settings.hero_image | img }}" alt="LUMEN PROJECT — {{ lumen.settings.hero_subheading or 'Spring 2026' }}" width="1920" height="1080" fetchpriority="high" decoding="async" />
-  {% else %}
-  <div class="hero is-empty"></div>
-  {% endif %}
+<section class="hero">
+  <img class="hero__img" src="/assets/img/photos/hero-church.jpg" alt="A LUMEN PROJECT performance in a candlelit church — photo by Olga Androsova" fetchpriority="high" decoding="async" />
+  <div class="hero__inner">
+    <h1 class="wordmark">Lumen<span class="l2">Project</span></h1>
+    <p class="hero__tag">{{ lumen.settings.tagline }}. Lie down, sleep, or come and go — a concert dissolved into a long, contemplative passage of sound and light.</p>
+
+    <div class="hero__scrolls">
+      <a class="hero__cta" href="/events/">See events</a>
+      {% if lumen.nextEvent %}
+      <span class="nextev"><span class="k">Next</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a> — {{ lumen.nextEvent.Date | eventDate }}</span>
+      {% else %}
+      <span class="nextev"><span class="k">Now</span> <a href="/events/">Explore the archive of past events</a></span>
+      {% endif %}
+    </div>
+  </div>
 </section>
+
+<section class="section section--center">
+  <div class="wrap">
+    <p class="kicker">Sound · Light · Space</p>
+    <p class="manifest">The concert as a spiritual, communal happening. <span class="dim">Day into dusk into night.</span></p>
+  </div>
+</section>
+
+<nav class="routes" aria-label="Sections">
+  <a class="route" href="/events/">
+    <span class="route__name">Events <span class="arrow">→</span></span>
+    <span class="route__meta">{{ lumen.past.length + lumen.upcoming.length }} happenings · 2017—now</span>
+  </a>
+  <a class="route" href="/artists/">
+    <span class="route__name">Artists <span class="arrow">→</span></span>
+    <span class="route__meta">{{ lumen.artists.length }} performers</span>
+  </a>
+  <a class="route" href="/about/">
+    <span class="route__name">About <span class="arrow">→</span></span>
+    <span class="route__meta">Who we are · contact</span>
+  </a>
+</nav>

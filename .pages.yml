@@ -26,7 +26,8 @@ content:
       - { name: city, label: City, type: string }
       - { name: price, label: Price (e.g. 350 SEK), type: string }
       - { name: ticketUrl, label: Ticket URL, type: string }
-      - { name: image, label: Poster, type: image }
+      - { name: image, label: Poster / graphic, type: image }
+      - { name: photo, label: Event photo (past events lead with this), type: image }
       - { name: description, label: Description, type: text }
 
   - name: settings
