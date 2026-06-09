@@ -24,17 +24,24 @@
   <meta name="description" content="{{ description or lumen.settings.tagline }}" />
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
 
-  {% set ogImageAbs = (ogImage or lumen.settings.hero_image or "assets/img/photos/hero-dusk.jpg") | absImg %}
+  {% set ogSrc = ogImage or site.ogImage.src %}
+  {% set ogW = ogImageW or (site.ogImage.width if not ogImage) %}
+  {% set ogH = ogImageH or (site.ogImage.height if not ogImage) %}
+  {% set ogAlt = ogImageAlt or (site.ogImage.alt if not ogImage) or (title or lumen.settings.site_title) %}
   <meta property="og:type" content="{{ ogType or 'website' }}" />
   <meta property="og:site_name" content="{{ lumen.settings.site_title }}" />
   <meta property="og:title" content="{{ title or lumen.settings.site_title }}" />
   <meta property="og:description" content="{{ description or lumen.settings.tagline }}" />
   <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-  {% if ogImageAbs %}<meta property="og:image" content="{{ ogImageAbs }}" />{% endif %}
+  <meta property="og:image" content="{{ ogSrc | absImg }}" />
+  <meta property="og:image:alt" content="{{ ogAlt }}" />
+  {% if ogW %}<meta property="og:image:width" content="{{ ogW }}" />{% endif %}
+  {% if ogH %}<meta property="og:image:height" content="{{ ogH }}" />{% endif %}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{ title or lumen.settings.site_title }}" />
   <meta name="twitter:description" content="{{ description or lumen.settings.tagline }}" />
-  {% if ogImageAbs %}<meta name="twitter:image" content="{{ ogImageAbs }}" />{% endif %}
+  <meta name="twitter:image" content="{{ ogSrc | absImg }}" />
+  <meta name="twitter:image:alt" content="{{ ogAlt }}" />
 
   <meta name="theme-color" content="#0a0b11" />
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
@@ -42,7 +49,6 @@
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
 
   <link rel="preload" href="/assets/fonts/barlow-condensed-700-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/assets/fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/fonts.css" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>

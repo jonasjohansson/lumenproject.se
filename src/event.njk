@@ -10,6 +10,9 @@ eleventyComputed:
   title: "{{ ev.Title | safe }}{% if 'Lumen Project' not in ev.Title %} · Lumen Project{% endif %}"
   description: "{{ ev.excerpt | safe }}"
   ogImage: "{{ ev.LeadURL or ev.ImageURL }}"
+  ogImageW: "{{ ev.leadDims.width if ev.leadDims else '' }}"
+  ogImageH: "{{ ev.leadDims.height if ev.leadDims else '' }}"
+  ogImageAlt: "{{ ev.Title | safe }}"
   ogType: "article"
 ---
 <article class="event-detail">

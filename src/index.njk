@@ -6,9 +6,22 @@ description: A non-profit redefining the concert as a communal happening through
 permalink: /
 ---
 <section class="hero">
-  <img class="hero__img hero__img--day" src="/assets/img/photos/hero-day.jpg" srcset="/assets/img/photos/hero-day-sm.jpg 1100w, /assets/img/photos/hero-day.jpg 2200w" sizes="100vw" alt="" aria-hidden="true" decoding="async" />
-  <img class="hero__img hero__img--dusk" src="/assets/img/photos/hero-dusk.jpg" srcset="/assets/img/photos/hero-dusk-sm.jpg 1100w, /assets/img/photos/hero-dusk.jpg 2200w" sizes="100vw" alt="A Lumen Project performance in a sunlit hall, photographed by Olga Androsova" fetchpriority="high" decoding="async" />
-  <img class="hero__img hero__img--night" src="/assets/img/photos/hero-night.jpg" srcset="/assets/img/photos/hero-night-sm.jpg 1100w, /assets/img/photos/hero-night.jpg 2200w" sizes="100vw" alt="" aria-hidden="true" decoding="async" />
+  {# only the active phase's image loads first (LCP); the other two load after
+     window load so they're ready to crossfade on a theme toggle #}
+  <img class="hero__img hero__img--day" data-srcset="/assets/img/photos/hero-day-sm.jpg 1100w, /assets/img/photos/hero-day.jpg 2200w" data-src="/assets/img/photos/hero-day.jpg" sizes="100vw" alt="" aria-hidden="true" decoding="async" />
+  <img class="hero__img hero__img--dusk" data-srcset="/assets/img/photos/hero-dusk-sm.jpg 1100w, /assets/img/photos/hero-dusk.jpg 2200w" data-src="/assets/img/photos/hero-dusk.jpg" sizes="100vw" alt="A Lumen Project performance in a sunlit hall, photographed by Olga Androsova" decoding="async" />
+  <img class="hero__img hero__img--night" data-srcset="/assets/img/photos/hero-night-sm.jpg 1100w, /assets/img/photos/hero-night.jpg 2200w" data-src="/assets/img/photos/hero-night.jpg" sizes="100vw" alt="" aria-hidden="true" decoding="async" />
+  <script>
+    (function () {
+      var t = document.documentElement.dataset.theme || "night";
+      var imgs = [].slice.call(document.querySelectorAll(".hero__img"));
+      function load(i) { if (!i || i.src) return; if (i.dataset.srcset) i.srcset = i.dataset.srcset; i.src = i.dataset.src; }
+      var active = document.querySelector(".hero__img--" + t) || imgs[0];
+      if (active) active.setAttribute("fetchpriority", "high");
+      load(active);
+      addEventListener("load", function () { imgs.forEach(load); });
+    })();
+  </script>
   <div class="hero__inner">
     <h1 class="wordmark">Lumen<span class="l2">Project</span></h1>
     <p class="hero__tag">{{ lumen.settings.tagline }}</p>
