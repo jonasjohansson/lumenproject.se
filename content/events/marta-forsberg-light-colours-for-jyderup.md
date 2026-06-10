@@ -6,7 +6,7 @@ venue: "Jyderup"
 city: ""
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/marta-forsberg-light-colours-for-jyderup.jpg"
+image: "/assets/img/events/lumenproject-marta-forsberg-light-colours-for-jyderup.jpg"
 description: |-
   Light Colours is a light- and sound installation, originally based on sounds of violin strings. During a residency at Jyderup Højskole in Denmark late 2017, the piece took a completely new form – the loops of strings got replaced by voices of three music students from the school. Suddenly the piece got lips and lungs, creating a choir of lights.
 

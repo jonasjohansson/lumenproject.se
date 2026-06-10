@@ -6,7 +6,7 @@ venue: ""
 city: ""
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/chrichan-larson-bach-suites-for-solo-cello-no-2-and-4.jpg"
+image: "/assets/img/events/lumenproject-chrichan-larson-bach-suites-for-solo-cello-no-2-and-4.jpg"
 description: |-
   Educated in Paris, Stockholm and Basel, cellist and composer Chrichan Larson has performed as Principal Cellist with the Royal Stockholm Philharmonic Orchestra and with Ensemble Inter- Contemporain in Paris. Larson is an accomplished chamber musician, with his name attached to ensembles such as KanmarensembleN, Ensemble Ma and Das Orchester.
 

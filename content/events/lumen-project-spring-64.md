@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: "350/275 SEK"
 ticketUrl: ""
-image: "/assets/img/events/lumen-project-spring-64.png"
+image: "/assets/img/events/lumenproject-lumen-project-spring-64.png"
 description: |-
   :: Sunday April 6th 2025 ::
   :: 15:00 – 21:00 ::

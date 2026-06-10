@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/lumen-sunday-v-sofie-birch-postponed.png"
+image: "/assets/img/events/lumenproject-lumen-sunday-v-sofie-birch-postponed.png"
 description: |-
   SOFIE BIRCH (DK)
 

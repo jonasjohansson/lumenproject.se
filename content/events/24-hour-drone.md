@@ -6,7 +6,7 @@ venue: ""
 city: ""
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/24-hour-drone.jpg"
+image: "/assets/img/events/lumenproject-24-hour-drone.jpg"
 description: |-
   For Basilica Hudon’s 24 HOUR DRONE, Lumen Project presents:
 

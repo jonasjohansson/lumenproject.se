@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/hatha-yoga-deep-listening-and-glo.jpg"
+image: "/assets/img/events/lumenproject-hatha-yoga-deep-listening-and-glo.jpg"
 description: |-
   // THREE SEPERATE EVENTS //
 

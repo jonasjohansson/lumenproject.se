@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/transmission.png"
+image: "/assets/img/events/lumenproject-transmission.png"
 description: |-
   online only Sunday JUNE 14th 
 

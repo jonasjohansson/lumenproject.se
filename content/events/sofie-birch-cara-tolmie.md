@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/sofie-birch-cara-tolmie.png"
+image: "/assets/img/events/lumenproject-sofie-birch-cara-tolmie.png"
 description: |-
   Lumen Project // SOFIE BIRCH + CARA TOLMIE - MONDAY NOVEMBER 22nd
 

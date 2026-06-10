@@ -6,7 +6,7 @@ venue: "Hosoi"
 city: "Stockholm"
 price: "Free"
 ticketUrl: ""
-image: "/assets/img/events/lumen-project-hosoi.jpg"
+image: "/assets/img/events/lumenproject-lumen-project-hosoi.jpg"
 description: |-
   :: Sunday, 2 November 2025 ::
 

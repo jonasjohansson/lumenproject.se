@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: "350/250 SEK"
 ticketUrl: ""
-image: "/assets/img/events/lumen-project-spring-332024-6h-festival.png"
+image: "/assets/img/events/lumenproject-lumen-project-spring-332024-6h-festival.png"
 description: |-
   We are so glad to announce our next 6-hour long immersive festival of light and sound 🌑✨
 

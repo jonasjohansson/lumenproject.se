@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/occams-razor-by-c-p-s-kungl-konsthogskolan.jpg"
+image: "/assets/img/events/lumenproject-occams-razor-by-c-p-s-kungl-konsthogskolan.jpg"
 description: |-
   Lumen Project is excited to host research platform Composing / Public / Space (C / P / S).
 

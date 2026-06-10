@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/isak-sundstrom-victoria-verseau.png"
+image: "/assets/img/events/lumenproject-isak-sundstrom-victoria-verseau.png"
 description: |-
   Lumen Project // ISAK SUNDSTRÖM // VICTORIA VERSEAU
 

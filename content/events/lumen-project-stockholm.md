@@ -6,7 +6,7 @@ venue: "Basilica Hudson"
 city: ""
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/lumen-project-stockholm.jpg"
+image: "/assets/img/events/lumenproject-lumen-project-stockholm.jpg"
 description: |-
   Join us for a seamless 12 hour sound and light festival
 

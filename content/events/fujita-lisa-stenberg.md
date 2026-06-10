@@ -6,7 +6,7 @@ venue: "Hägerstensåsens Medborgarhus"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/fujita-lisa-stenberg.png"
+image: "/assets/img/events/lumenproject-fujita-lisa-stenberg.png"
 description: |-
   Collaboration with Fylkingen
 

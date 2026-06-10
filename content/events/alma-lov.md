@@ -6,7 +6,7 @@ venue: "Alma Löv"
 city: ""
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/alma-lov.jpg"
+image: "/assets/img/events/lumenproject-alma-lov.jpg"
 description: |-
   Lumen Project // ALMA LÖV
 

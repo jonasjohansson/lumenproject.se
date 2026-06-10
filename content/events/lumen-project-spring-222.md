@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: "350 SEK"
 ticketUrl: "https://nortic.se/ticket/show/316281"
-image: "/assets/img/events/lumen-project-spring-222.jpg"
+image: "/assets/img/events/lumenproject-lumen-project-spring-222.jpg"
 description: |-
   As the Earth slowly turns back toward the light and a new phase begins, we are delighted to invite you to our next longform festival of light and sound on February 22.
 

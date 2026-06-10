@@ -6,7 +6,7 @@ venue: ""
 city: ""
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/lumen-project-beirut-moon.png"
+image: "/assets/img/events/lumenproject-lumen-project-beirut-moon.png"
 description: |-
   a longform streamed experience with sound and image acknowledging the New Moon
 

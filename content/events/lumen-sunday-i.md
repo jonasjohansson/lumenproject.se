@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/lumen-sunday-i.jpg"
+image: "/assets/img/events/lumenproject-lumen-sunday-i.jpg"
 description: |-
   LUMEN SUNDAY I
 

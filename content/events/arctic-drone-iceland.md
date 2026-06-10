@@ -6,7 +6,7 @@ venue: "Húsavík"
 city: ""
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/arctic-drone-iceland.jpg"
+image: "/assets/img/events/lumenproject-arctic-drone-iceland.jpg"
 description: |-
   24 HR DRONE \\\/// 6 HR YOGA
 

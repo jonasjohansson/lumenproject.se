@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: "200 SEK"
 ticketUrl: ""
-image: "/assets/img/events/lumen-project-winter-1512.jpg"
+image: "/assets/img/events/lumenproject-lumen-project-winter-1512.jpg"
 description: |-
   As the season turns and the world quiets, we invite you to an experience with music, stillness, and warmth in the serene setting of Eric Ericsonhallen.
 

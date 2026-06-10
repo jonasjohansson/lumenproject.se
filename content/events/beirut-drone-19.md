@@ -6,7 +6,7 @@ venue: "Zoukak Studio"
 city: ""
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/beirut-drone-19.jpg"
+image: "/assets/img/events/lumenproject-beirut-drone-19.jpg"
 description: |-
   Ruptured & Lumen Project present
 

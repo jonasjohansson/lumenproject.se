@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/lumen-sunday-ii-emanate-cancelled.jpg"
+image: "/assets/img/events/lumenproject-lumen-sunday-ii-emanate-cancelled.jpg"
 description: |-
   LUMEN SUNDAY II - EMANATE
   Curated by Maria W Horn 

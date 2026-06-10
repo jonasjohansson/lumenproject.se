@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/lumen-sunday-iv-subchamber-ensmble.png"
+image: "/assets/img/events/lumenproject-lumen-sunday-iv-subchamber-ensmble.png"
 description: |-
   SUBCHAMBER ENSMBLE
 

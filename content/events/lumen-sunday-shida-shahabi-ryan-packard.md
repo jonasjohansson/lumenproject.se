@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/lumen-sunday-shida-shahabi-ryan-packard.jpg"
+image: "/assets/img/events/lumenproject-lumen-sunday-shida-shahabi-ryan-packard.jpg"
 description: |-
   :: Eric Ericsonhallen ::
 

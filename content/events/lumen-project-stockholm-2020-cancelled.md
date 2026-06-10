@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/lumen-project-stockholm-2020-cancelled.png"
+image: "/assets/img/events/lumenproject-lumen-project-stockholm-2020-cancelled.png"
 description: |-
   Lumen Project
   // STOCKHOLM 2020

@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/lumen-project-spring-123-6h-festival.png"
+image: "/assets/img/events/lumenproject-lumen-project-spring-123-6h-festival.png"
 description: |-
   :: Eric Ericsonhallen ::
 

@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/lumen-sunday-iii-shida-shahabi.png"
+image: "/assets/img/events/lumenproject-lumen-sunday-iii-shida-shahabi.png"
 description: |-
   SHIDA SHAHABI w special guest
 

@@ -6,7 +6,7 @@ venue: "Eric Ericsonhallen"
 city: "Stockholm"
 price: ""
 ticketUrl: ""
-image: "/assets/img/events/foerster-kramer-josefin-runsteen-andreaz-heden.png"
+image: "/assets/img/events/lumenproject-foerster-kramer-josefin-runsteen-andreaz-heden.png"
 description: |-
   Lumen Project // FOERSTER & KRAMER + JOSEFIN RUNSTEEN & ANDREAZ HEDÉN
 
