@@ -203,6 +203,10 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 /* over a (dark-scrimmed) hero, stay white */
 .site-nav--hero a { color: #fff; }
 .site-nav--hero a:hover { color: #fff; opacity: 0.75; }
+/* current page — underline the matching nav item (replaces the page heading) */
+.site-nav a[aria-current="page"] {
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px;
+}
 
 /* — Layout ————————————————————————————————————————————————— */
 .page { padding-top: var(--page-top); padding-bottom: clamp(4rem, 10vw, 8rem); }
@@ -257,24 +261,7 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
   margin-top: var(--space-sm); max-width: 40ch; font-size: var(--fs-lead); line-height: 1.4;
   color: color-mix(in srgb, var(--hhero-ink) 88%, transparent); text-wrap: balance;
 }
-/* landing-page section links, under the intro (replaces the top menu on home) */
-.hero__nav { margin-top: var(--space-md); display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; }
-.hero__scrolls { margin-top: var(--space-sm); display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; }
-.hero__cta {
-  font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide);
-  font-size: 0.95rem; color: var(--hhero-ink); border: 1px solid color-mix(in srgb, var(--hhero-ink) 50%, transparent);
-  padding: 0.7em 1.3em; border-radius: var(--pill); backdrop-filter: blur(4px);
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
-}
-.hero__cta:hover { background: var(--hhero-ink); color: var(--paper); border-color: var(--hhero-ink); }
-.hero__link {
-  font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide);
-  font-size: 0.95rem; color: var(--hhero-ink);
-  text-decoration: underline; text-underline-offset: 3px;
-  text-decoration-color: color-mix(in srgb, var(--hhero-ink) 50%, transparent);
-  transition: text-decoration-color var(--dur) var(--ease);
-}
-.hero__link:hover { text-decoration-color: var(--hhero-ink); }
+.hero__scrolls { margin-top: var(--space-md); display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; }
 
 .nextev { display: inline-flex; align-items: baseline; gap: 0.8ch; flex-wrap: wrap; color: var(--hhero-ink); font-size: 0.95rem; }
 .nextev .k { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 0.78rem; color: color-mix(in srgb, var(--hhero-ink) 70%, transparent); }

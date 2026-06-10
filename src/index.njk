@@ -26,14 +26,10 @@ permalink: /
     <h1 class="wordmark">Lumen<span class="l2">Project</span></h1>
     <p class="hero__tag">{{ lumen.settings.tagline }}</p>
 
-    <nav class="hero__nav" aria-label="Sections">
-      <a class="hero__cta" href="/events/">See events</a>
-      <a class="hero__link" href="/gallery/">Gallery</a>
-      <a class="hero__link" href="/about/">About</a>
-    </nav>
-
+    {% if lumen.nextEvent %}
     <div class="hero__scrolls">
-      {% if lumen.nextEvent %}<span class="nextev"><span class="k">Next</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a>, {{ lumen.nextEvent.Date | eventDate }}</span>{% endif %}
+      <span class="nextev"><span class="k">Next</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a>, {{ lumen.nextEvent.Date | eventDate }}</span>
     </div>
+    {% endif %}
   </div>
 </section>

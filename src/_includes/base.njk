@@ -56,17 +56,15 @@
 
   <a class="skip" href="#main">Skip to content</a>
 
-  {# header (subpages only): the wordmark/home link pins to the far-left image
-     edge; the section links align to the content gutter. The landing page omits
-     this menu entirely and offers the links under the hero intro instead. #}
-  {% if current != 'home' %}
-  <a class="site-nav__home{% if hasHero %} site-nav__home--hero{% endif %}" href="/">Lumen Project</a>
-  <nav class="site-nav site-nav--withlogo{% if hasHero %} site-nav--hero{% endif %}" aria-label="Sections">
-    <a href="/events/">Events</a>
-    <a href="/gallery/">Gallery</a>
-    <a href="/about/">About</a>
+  {# header: the wordmark/home link pins to the far-left image edge; the section
+     links align to the content gutter. On the home page the hero already carries
+     the big wordmark, so the small logo is omitted there. #}
+  {% if current != 'home' %}<a class="site-nav__home{% if hasHero %} site-nav__home--hero{% endif %}" href="/">Lumen Project</a>{% endif %}
+  <nav class="site-nav{% if current == 'home' or hasHero %} site-nav--hero{% endif %}{% if current != 'home' %} site-nav--withlogo{% endif %}" aria-label="Sections">
+    <a href="/events/"{% if current == 'events' %} aria-current="page"{% endif %}>Events</a>
+    <a href="/gallery/"{% if current == 'gallery' %} aria-current="page"{% endif %}>Gallery</a>
+    <a href="/about/"{% if current == 'about' %} aria-current="page"{% endif %}>About</a>
   </nav>
-  {% endif %}
 
   {# minimal floating cluster: day/night toggle + active socials #}
   <div class="chrome">
