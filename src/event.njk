@@ -38,6 +38,12 @@ eleventyComputed:
 
       <div>
         {% if ev.Description %}<div class="prose ev-desc">{{ ev.Description | eventBody | safe }}</div>{% endif %}
+        {% if ev.hasLineup %}
+        <section class="ev-cast-block">
+          <h2 class="ev-sub">Performances</h2>
+          <p class="ev-cast">{% for a in ev.lineup %}{% if not loop.first %}  /  {% endif %}{% if a.URL %}<a href="{{ a.URL }}" target="_blank" rel="noopener">{{ a.Name }}</a>{% else %}{{ a.Name }}{% endif %}{% endfor %}</p>
+        </section>
+        {% endif %}
       </div>
     </div>
 

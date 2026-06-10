@@ -43,7 +43,19 @@ content:
       - { name: ticketUrl, label: Ticket URL, type: string, pattern: '^$|^https?://' }
       - { name: image, label: Poster / graphic, type: image, options: { media: events }, description: "Shown at the top of the event page and in link previews" }
       - { name: photo, label: Event photo, type: image, options: { media: photos }, description: "Optional. A past event with no poster leads with this photo instead" }
-      - { name: description, label: Description, type: text, description: "Body text. A line-up written “Performances by: A // B // C” is detected automatically" }
+      - name: lineup
+        label: Line-up
+        type: object
+        description: "Performers, in order. Use this instead of listing them in the description — it drives the sitewide Artists list reliably."
+        list:
+          sortable: true
+          collapsible:
+            collapsed: true
+            summary: '{name}'
+        fields:
+          - { name: name, label: Artist / act, type: string, required: true }
+          - { name: url, label: Link, type: string, pattern: '^$|^https?://' }
+      - { name: description, label: Description, type: text, description: "Body text. Don't list performers here — use the Line-up field above. ALL-CAPS lines become headings; lines with web addresses are removed." }
 
   - name: settings
     label: Site settings

@@ -144,6 +144,7 @@ module.exports = function () {
       TicketURL: d.ticketUrl || "",
       ImageURL: d.image || "",
       Photo: d.photo || "",
+      Lineup: Array.isArray(d.lineup) ? d.lineup.filter((x) => x && x.name) : [],
       Description: (d.description != null ? String(d.description) : (g.content || "")).trim(),
       slug: f.replace(/\.md$/, "") || slugify(d.title),
     };
@@ -189,7 +190,11 @@ module.exports = function () {
       ogShare: ogShare,
       dims: dimsOf(e.ImageURL),
       leadDims: leadDims,
-      lineup: parseLineup(e.Description),
+      // structured Line-up field (CMS) wins; otherwise mine it from the prose
+      lineup: e.Lineup.length
+        ? e.Lineup.map((x) => ({ Name: String(x.name).trim(), URL: x.url || "" }))
+        : parseLineup(e.Description).map((n) => ({ Name: n, URL: "" })),
+      hasLineup: e.Lineup.length > 0,
     };
   });
 
@@ -236,19 +241,20 @@ module.exports = function () {
   const curated = new Map();
   for (const a of (s.artists || [])) if (a.name) curated.set(a.name.toUpperCase(), a);
   const artistMap = new Map();
-  const addArtist = (name) => {
+  const addArtist = (name, url) => {
     name = name.trim();
     if (ARTIST_ALIAS[name.toUpperCase()]) name = ARTIST_ALIAS[name.toUpperCase()];
     if (name.length < 2) return;
     const k = name.toUpperCase();
     if (!artistMap.has(k)) {
       const c = curated.get(k) || {};
-      artistMap.set(k, { Name: name, URL: c.url || "" });
+      artistMap.set(k, { Name: name, URL: url || c.url || "" });
     }
   };
   // index lists individuals: split billed duos ("A & B") into separate names
-  // (event pages keep the pairing — they render e.lineup directly).
-  for (const e of events) for (const billed of e.lineup) billed.split(/\s+&\s+/).forEach(addArtist);
+  // (event pages keep the pairing — they render e.lineup directly). e.lineup is
+  // a list of { Name, URL } (from the structured field or mined from prose).
+  for (const e of events) for (const a of e.lineup) a.Name.split(/\s+&\s+/).forEach((n) => addArtist(n, a.URL));
   for (const a of (s.artists || [])) {
     if (a.name && !artistMap.has(a.name.toUpperCase()))
       artistMap.set(a.name.toUpperCase(), { Name: a.name, Role: a.role || "", URL: a.url || "", Edition: a.edition || "" });
