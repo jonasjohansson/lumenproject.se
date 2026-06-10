@@ -20,7 +20,7 @@ description: |-
 
   From Gothenburg, moving in the borderlands between experiment and house.
 
-  Their sound — “slow-motion flutehouse” — a hypnotic, organic, and quietly ecstatic weave of tones. In early December, Datasal returns with Tyst Sol on Höga Nord Rekords.
+  Their sound, “slow-motion flutehouse”, a hypnotic, organic, and quietly ecstatic weave of tones. In early December, Datasal returns with Tyst Sol on Höga Nord Rekords.
 
   This is an evening presented in collaboration between Lumen Project and Hosoi.
 
@@ -32,9 +32,9 @@ description: |-
 
   // ABOUT
 
-  Lumen Project — a non-profit creating immersive experiences that fuse sound, light, and space to evoke awe and stillness.
+  Lumen Project, a non-profit creating immersive experiences that fuse sound, light, and space to evoke awe and stillness.
 
-  Hosoi — a hidden gem for deep listening: music at the center, design all around, and a room that feels like a secret meant to be shared.
+  Hosoi, a hidden gem for deep listening: music at the center, design all around, and a room that feels like a secret meant to be shared.
 
   // THANKS
 

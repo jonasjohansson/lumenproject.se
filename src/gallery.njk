@@ -2,8 +2,12 @@
 layout: base.njk
 current: gallery
 title: Gallery · Lumen Project
-description: Photographs from Lumen Project happenings — sound, light and space in churches and large rooms.
+description: Photographs from Lumen Project happenings of sound, light and space in churches and large rooms.
 permalink: /gallery/
+ogImage: assets/img/gallery/001-g02.jpg
+ogImageW: 1500
+ogImageH: 1000
+ogImageAlt: A photograph from a Lumen Project happening
 ---
 <div class="wrap page">
   <h1 class="page-title">Gallery</h1>
@@ -13,7 +17,9 @@ permalink: /gallery/
 <div class="gallery">
   {% for img in gallery %}
   <figure class="gallery__item">
-    <img src="{{ img.src }}" {% if img.width %}width="{{ img.width }}" height="{{ img.height }}" {% endif %}alt="A Lumen Project performance" loading="lazy" decoding="async" />
+    <a href="{{ img.src }}" aria-label="View full photograph">
+      <img src="{{ img.src }}" {% if img.width %}width="{{ img.width }}" height="{{ img.height }}" {% endif %}alt="A Lumen Project performance" loading="lazy" decoding="async" />
+    </a>
   </figure>
   {% endfor %}
 </div>

@@ -9,7 +9,7 @@ ticketUrl: ""
 image: "/assets/img/events/lumen-project-winter-2112.jpg"
 photo: "/assets/img/photos/piano-bw.jpg"
 description: |-
-  As the longest night approaches and the year draws to a still point, we invite you to gather in the calm of Eric Ericsonhallen for an evening of music, reflection, and quiet warmth.  Take a pause from the holiday rush — sit back, listen, and let the atmosphere hold you. 
+  As the longest night approaches and the year draws to a still point, we invite you to gather in the calm of Eric Ericsonhallen for an evening of music, reflection, and quiet warmth.  Take a pause from the holiday rush. Sit back, listen, and let the atmosphere hold you. 
 
   Performances by: CLARISSA CONNELLY // VIDA VOJIĆ // HAGA VOKALENSEMBLE // ENSEMBLE SÁGA
 
