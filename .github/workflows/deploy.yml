@@ -10,6 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+# run JS actions on Node 24 (clears the actions/cache@v4 Node 20 deprecation)
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 concurrency:
   group: pages
   cancel-in-progress: true
