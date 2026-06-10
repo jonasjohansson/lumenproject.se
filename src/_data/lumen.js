@@ -268,5 +268,7 @@ module.exports = function () {
       .map((p) => ({ Name: p.name, URL: p.url })),
     media: (s.media || []).filter((m) => m.title)
       .map((m) => ({ Title: m.title, URL: m.url })),
+    photographers: (s.photographers || []).filter((p) => p.name)
+      .map((p) => ({ Name: p.name, URL: p.url })),
   };
 };

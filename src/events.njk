@@ -14,7 +14,7 @@ ogImageAlt: A Lumen Project performance at night, lit from within
   {% include "partials/events-index.njk" %}
 
   <section class="ev-artists" aria-label="Artists">
-    <p class="page-intro">{{ lumen.artists.length }} musicians, composers and performers have shaped <strong class="brand">Lumen Project</strong> since 2017.</p>
+    <p class="page-intro">{{ lumen.artists.length }} {{ lumen.settings.artists_intro | replace("Lumen Project", '<strong class="brand">Lumen Project</strong>') | safe }}</p>
     {% include "partials/artists-list.njk" %}
   </section>
 </div>

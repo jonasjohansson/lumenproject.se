@@ -27,7 +27,7 @@ content:
     path: content/events
     filename: '{fields.title}.md'
     view:
-      fields: [title, date, venue]
+      fields: [title, date, venue, city]
       primary: title
       sort: [date]
       default:
@@ -36,57 +36,61 @@ content:
     fields:
       - { name: title, label: Title, type: string, required: true }
       - { name: date, label: Date, type: date, options: { format: yyyy-MM-dd } }
-      - { name: time, label: Time (e.g. 15:00-21:00), type: string }
+      - { name: time, label: Time, type: string, description: "e.g. 15:00-21:00 — drives the schedule and the event end time" }
       - { name: venue, label: Venue, type: string }
-      - { name: city, label: City, type: string }
-      - { name: price, label: Price (e.g. 350 SEK), type: string }
+      - { name: city, label: City, type: string, description: "Defaults to Stockholm if left blank" }
+      - { name: price, label: Admission, type: string, description: "e.g. “350 SEK” or “Free”" }
       - { name: ticketUrl, label: Ticket URL, type: string }
-      - { name: image, label: Poster / graphic, type: image, options: { media: events } }
-      - { name: photo, label: Event photo (past events lead with this), type: image, options: { media: photos } }
-      - { name: description, label: Description, type: text }
+      - { name: image, label: Poster / graphic, type: image, options: { media: events }, description: "Shown at the top of the event page and in link previews" }
+      - { name: photo, label: Event photo, type: image, options: { media: photos }, description: "Optional. A past event with no poster leads with this photo instead" }
+      - { name: description, label: Description, type: text, description: "Body text. A line-up written “Performances by: A // B // C” is detected automatically" }
 
   - name: settings
-    label: Settings
+    label: Site settings
     type: file
     path: content/settings.json
     fields:
       - name: settings
-        label: Site text & links
+        label: Text & links
         type: object
         fields:
           - { name: site_title, label: Site title, type: string }
-          - { name: tagline, type: string }
-          - { name: hero_heading, type: string }
-          - { name: hero_subheading, type: string }
-          - { name: hero_image, label: Hero image, type: image, options: { media: photos } }
-          - { name: about_image, label: About photo, type: image, options: { media: photos } }
+          - { name: tagline, label: Tagline (hero + meta description), type: text }
           - { name: about, label: About text, type: text }
-          - { name: founders, label: Team / founders, type: text }
           - { name: experience, label: How to experience it, type: text }
-          - { name: contact_email, type: string }
-          - { name: tickets_url, type: string }
-          - { name: mailing_url, type: string }
-          - { name: instagram, type: string }
-          - { name: facebook, type: string }
-          - { name: youtube, type: string }
-          - { name: photo_credit, type: string }
-      - name: artists
-        label: Artists
+          - { name: founders, label: Team / founders, type: text }
+          - { name: gallery_intro, label: Gallery intro line, type: text }
+          - { name: artists_intro, label: Artists line (after the number), type: text, description: "Shown on /events/ as “<count> <this text>”" }
+          - { name: about_photo_credit, label: About photo credit, type: string }
+          - { name: contact_email, label: Contact email, type: string }
+          - { name: mailing_url, label: Mailing-list URL, type: string }
+          - { name: instagram, label: Instagram URL, type: string }
+          - { name: facebook, label: Facebook URL, type: string }
+          - { name: youtube, label: YouTube URL, type: string }
+      - name: photographers
+        label: Photographers (gallery credit)
         type: list
         fields:
-          - { name: name, type: string }
-          - { name: role, type: string }
-          - { name: edition, type: string }
+          - { name: name, label: Name, type: string }
+          - { name: url, label: Instagram URL, type: string }
+      - name: artists
+        label: Artists (links & extras)
+        type: list
+        description: "Most artists are detected automatically from event line-ups. Add an entry here to attach a link, or to include someone who never appeared in a parsed line-up."
+        fields:
+          - { name: name, label: Name, type: string }
+          - { name: role, label: Role, type: string }
+          - { name: edition, label: Edition, type: string }
           - { name: url, label: URL, type: string }
       - name: partners
         label: Partners
         type: list
         fields:
-          - { name: name, type: string }
+          - { name: name, label: Name, type: string }
           - { name: url, label: URL, type: string }
       - name: media
-        label: Media / press
+        label: Press
         type: list
         fields:
-          - { name: title, type: string }
+          - { name: title, label: Headline – Outlet, type: string }
           - { name: url, label: URL, type: string }

@@ -11,7 +11,7 @@ ogImageAlt: A photograph from a Lumen Project happening
 ---
 <div class="wrap page gallery-head">
   <h1 class="visually-hidden">Gallery</h1>
-  <p class="page-intro">Moments from past happenings.<br />Photography by <a href="https://www.instagram.com/i.am.androsova.olga" target="_blank" rel="noopener">Olga Androsova</a> and <a href="https://www.instagram.com/mherlow" target="_blank" rel="noopener">Mattias Herlow</a>.</p>
+  <p class="page-intro">{{ lumen.settings.gallery_intro }}{% if lumen.photographers.length %}<br />Photography by {% for p in lumen.photographers %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif %}{% endif %}{% if p.URL %}<a href="{{ p.URL }}" target="_blank" rel="noopener">{{ p.Name }}</a>{% else %}{{ p.Name }}{% endif %}{% endfor %}.{% endif %}</p>
 </div>
 
 <div class="gallery">
