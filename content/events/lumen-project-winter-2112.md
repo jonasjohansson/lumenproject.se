@@ -15,11 +15,6 @@ description: |-
 
   This event is a special collaboration with Eric Ericson International Choral Centre.
 
-  :: Sunday 21th December 2025 :: 
-  :: 18:00–20:30 :: 
-  :: Eric Ericsonhallen :: 
-  :: 250 SEK (plus booking fee) ::
-
   Doors open at 5:50 PM. Please arrive on time, as the concert will begin promptly at 6:10 PM. We kindly ask that all guests are seated, gathered, and in silence by the start time.
 
   The event will last approximately 2.5 hours. If you need to leave before the end, please do so quietly and with consideration for those around you.
@@ -30,19 +25,15 @@ description: |-
 
   Water and tea will be provided. Unfortunately, no food will be served, so we recommend eating beforehand. If needed, you may bring a small snack.
 
-  ///
   ACCESSIBILITY
   Eric Ericsonhallen is fully wheelchair accessible with nearby parking.
 
-  ///
   TICKETING NOTE
   250 SEK – contact us if this range isn’t feasible.
 
-  ///
   ABOUT
   Lumen Project is a non-profit organisation creating immersive experiences, employing sound / light / and space to inspire awe and stillness.
 
-  ///
   In collaboration with Eric Ericson International Choral Centre. With support from: Kulturrådet, Region Stockholm and Stockholm Stad.
 
   Artwork: Maja Zetterberg

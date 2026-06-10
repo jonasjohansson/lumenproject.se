@@ -10,18 +10,7 @@ image: "/assets/img/events/lumenproject-isak-sundstrom-victoria-verseau.png"
 description: |-
   Lumen Project // ISAK SUNDSTRÖM // VICTORIA VERSEAU
 
-  :: Sunday Sept 11th ::
-
-  ﻿:: 18:30 sharp, doors open 18:10 :: 
-
-  :: Eric Ericsonhallen :: 
-
-  :: 200 SEK (plus booking fee) :: ﻿﻿
-
   Tickets
-
-
-
 
    ISAK SUNDSTRÖM is a musician and artist from Gotland, Sweden. He lives and works in Stockholm. Isak also makes music under the name IB Sundström and in other projects, such as Rocks & Waves Song Circle and Skriet.
 
@@ -30,9 +19,6 @@ description: |-
   Together with an oil barrel orchestra and Lumen Voices, Isak Sundström and Victoria Verseau will freely interpret Stina Nordenstam's song The World Is Saved.
 
   Oil barrel orchestras are often associated with carnivals, parties, and an almost brutal joy. In this performance, you will be immersed in the slowly growing soundscape of a sinking, low-key oil barrel orchestra at a carnival where everything has fallen asleep. The concert can be seen as a regret, a distorted prayer that the world is saved. 
-
-
-
 
    SUGGESTIONS FOR ENJOYING THIS EVENT 
 
@@ -48,15 +34,9 @@ description: |-
 
   Relax, sleep if you wish
 
-
-
-
    ACCESSIBILITY
 
   Eric Ericsonhallen has a wheelchair ramp and an accessible toilet. There is a parking space for disabled by the hall
-
-
-
 
    With support from and thanks to: 
 

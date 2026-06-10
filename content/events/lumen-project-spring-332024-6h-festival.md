@@ -20,8 +20,6 @@ description: |-
 
   Allow yourself to sink into this unique experience in the sacred space of the Eric Ericsonhallen and disconnect from the everyday noise. Sleep or meditate if you wish and feel free to come and go as you please.
 
-  ///
-
   SUGGESTIONS FOR ENJOYING THIS EVENT 
 
   Bring something to sit or recline on from home
@@ -36,24 +34,16 @@ description: |-
 
   Relax, sleep if you wish
 
-  ///
-
   ACCESSIBILITY
   Eric Ericsonhallen has a wheelchair ramp and an accessible toilet. There is a disabled parking space next to the hall.
-
-  ///
 
   TICKETING NOTE
 
   350 SEK suggested / 250 SEK reduced – however if this price range is not workable for you, DM or mail us anyway and we will work it out.
 
-  ///
-
   ABOUT
 
   Lumen Project is a non-profit organisation creating immersive experiences, employing sound / light / and space to inspire awe and stillness.
-
-  —
 
   THANKS
 

@@ -10,11 +10,6 @@ image: "/assets/img/events/lumenproject-lumen-sunday-i.jpg"
 description: |-
   LUMEN SUNDAY I
 
-  :: February 16 ::
-  :: 18.00-20.00 ::
-  :: Eric Ericsonhallen ::
-  :: Free of charge ::
-
   GUNNAR IDENSTAM / AINA MYRSTENER / LOLJUD / NATHAN LARSON / VILHELM BROMANDER / LUMEN VOICES
 
   SUGGESTIONS FOR ENJOYING THIS EVENT

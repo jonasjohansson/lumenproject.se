@@ -8,12 +8,6 @@ price: "350/275 SEK"
 ticketUrl: ""
 image: "/assets/img/events/lumenproject-lumen-project-spring-64.png"
 description: |-
-  :: Sunday April 6th 2025 ::
-  :: 15:00 – 21:00 ::
-  :: Eric Ericsonhallen ::
-  :: 350/275* SEK (plus booking fee) ::
-  :: a seamless 6-hour event ::
-
   performances by
 
   PARK JIHA // TOUCH ME NOT // ABDULLAH MINIAWY // C.LAVENDER // DAVID LICONA // ANTONINA NOWACKA // CANBERK ULAŞ // STORA ORD // LUMEN VOICES // BONECRUSHER // JULIA ADZUKI // GORAN KAJFES TROPIQUES

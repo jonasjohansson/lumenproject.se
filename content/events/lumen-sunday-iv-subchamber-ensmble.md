@@ -19,13 +19,9 @@ description: |-
   Applause is not necessary.
   Relax. Sleep if you wish.
 
-  ---
-
   Subchamber Ensemble was established by musician, film composer and sound artist Nathan Larson, with cellist Gerda Holmquist. The ensemble involves a rotating roster of classically trained and untrained musicians. Inspired by La Monte Young’s minimalism, as well as by Alice Coltrane’s cascade-like flow of acoustic sound, performances revolve around the harp, strings, clarinet, tuned metal tank drums, electronics and cassette tape manipulations. Their self-titled debut album is available on OONA records.
 
   This performance will feature Gerda Holmqvist, Tove Wadenius, Viktor Auregard, Olivia Rydqvist, Lydia Holmqvist, Elina Nygren, Nathan Larson, Samuel Lundström, and Ellen Pettersson
-
-  ---
 
   Lumen Project is a non-profit organisation creating immersive experiences, employing sound / light / and space to inspire awe and stillness.
 
@@ -40,9 +36,4 @@ description: |-
   @lumenprojectstockholm 
 
    LUMEN SUNDAY IV
-
-  :: October 18 ::
-  :: 16.00-17.00 & 19.00-20.00 ::
-  :: Eric Ericsonhallen ::
-  :: 150 SEK + fee ::
 ---

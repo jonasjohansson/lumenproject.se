@@ -21,11 +21,7 @@ description: |-
   Applause is not necessary.
   Relax. Sleep if you wish.
 
-  ---
-
   Shida Shahabi is a Stockholm-based pianist and composer, whose stunning debut album ’Homes’ (October 2018) drew widespread acclaim and announced her as an exciting new voice in the “neoclassical” genre - meshing a strong melodic sensibility with an intimate and deeply atmospheric exploration of space and timing. Her latest album is entitled SHIFTS.
-
-  --- 
 
   Lumen Project is a non-profit organisation creating immersive experiences, employing sound / light / and space to inspire awe and stillness.
 
@@ -40,9 +36,4 @@ description: |-
   @lumenprojectstockholm
 
    LUMEN SUNDAY III
-
-  :: September 27 ::
-  :: 16.00-17.00 & 19.00-20.00 ::
-  :: Eric Ericsonhallen ::
-  :: 150 SEK + fee ::
 ---

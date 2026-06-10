@@ -26,30 +26,17 @@ description: |-
 
   This event is a special collaboration with Eric Ericson International Choral Centre.
 
-  :: Sunday 15th December 2024 ::
-  :: 18:00 – 19:30 ::
-  :: Eric Ericsonhallen ::
-  :: 200 SEK (plus booking fee) ::
-
-  ///
-
   ACCESSIBILITY
 
   Eric Ericsonhallen is fully wheelchair accessible with nearby parking.
-
-  ///
 
   TICKETING NOTE
 
   200 SEK – contact us if this range isn’t feasible.
 
-  ///
-
   ABOUT
 
   Lumen Project is a non-profit organisation creating immersive experiences, employing sound / light / and space to inspire awe and stillness.
-
-  ///
 
   In collaboration with Eric Ericson International Choral Centre
 

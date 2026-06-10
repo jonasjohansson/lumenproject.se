@@ -8,10 +8,6 @@ price: ""
 ticketUrl: ""
 image: "/assets/img/events/lumenproject-lumen-sunday-shida-shahabi-ryan-packard.jpg"
 description: |-
-  :: Eric Ericsonhallen ::
-
-  :: 180 SEK (plus booking fee) ::
-
   Facebook event here
 
   SHIDA SHAHABI is a Stockholm-based pianist and composer, whose stunning debut album 'Homes' drew widespread acclaim world wide. In 2023, Shahabi releases her second album, Living Circle, a carefully calibrated blend of classical and electronic elements. Combining ambient and drone techniques with traditional structures, its emotional resonance floats elusively within profoundly atmospheric, uncluttered compositions rich in textural detail and pervaded by a low-end warmth. An unusually immersive style, this provides a refuge which invites a reaction as cerebral as it is sentimental.
@@ -24,9 +20,6 @@ description: |-
   Maya Bennardo, violin, voice
   Emma Augustsson, cello, voice
   Ryan Packard, voice organ, synth, composition
-
-
-
 
    LUMEN VOICES is a a dynamic ensemble that is flexible in size and character. A collective of professional and semi professional singers.
 
@@ -41,11 +34,6 @@ description: |-
   Jenny Hedman alto
 
   Katarina Henryson alto / singer and coordinator
-
-
-
-
-   ---
 
   SUGGESTIONS FOR ENJOYING THIS EVENT
 
@@ -63,13 +51,9 @@ description: |-
 
   Relax, sleep if you wish
 
-  ---
-
   ACCESSIBILITY
 
   Eric Ericsonhallen has a wheelchair ramp and an accessible toilet. There is a disabled parking space next to the hall. Contact us at info@lumenproject.se if you would like to reserve a wheelchair space. 
-
-  ---
 
   THANKS
 

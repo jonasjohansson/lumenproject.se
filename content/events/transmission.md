@@ -105,11 +105,6 @@ description: |-
   Music: Nathan Larson
   Artists: Nathalie Wahlberg and Elinor Samuelsson
 
-  :: Lumen Project is a non-profit organization creating immersive experiences, employing sound / light / and space to inspire awe and stillness. 
-
-  :: www.lumenproject.se
-  :: @lumenprojectstockholm
-
   This event is part of Lumen Project's ongoing collab with the Eric Ericson International Choral Centre 
 
   With support from:

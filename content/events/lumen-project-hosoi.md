@@ -8,14 +8,6 @@ price: "Free"
 ticketUrl: ""
 image: "/assets/img/events/lumenproject-lumen-project-hosoi.jpg"
 description: |-
-  :: Sunday, 2 November 2025 ::
-
-  :: Doors 17:00 :: Band 18:00
-
-  :: At Hosoi, Slakthusområdet ::
-
-  :: Free entry ::
-
   // DATASAL
 
   From Gothenburg, moving in the borderlands between experiment and house.

@@ -16,27 +16,14 @@ description: |-
 
   MARIA W HORN & MATS ERLANDSSON // EVE MATIN // MOHAMMAD REZA MORTAZAVI // HEINALI & ANDRIANA-YAROSLAVA SAIENKO PRESENT ГІЛЬДЕҐАРДА // JÄVERLING ◇ VON EULER // FOUDRE! // XTC IN THE XIV // SARA PERSICO // YOANN DURANT
 
-  :: Sunday 22 February 2026 ::
-  :: 15:00–21.00 ::
-  :: Eric Ericsonhallen ::
-  :: 350 SEK ::
-
-  ///
-
   TICKETING NOTE
   If you want to support our non-profit organisation further we also have a supporter ticket available. Thank you!
-
-  ///
 
   ACCESSIBILITY
   Eric Ericsonhallen has a wheelchair ramp and an accessible toilet. There is a disabled parking space next to the hall.
 
-  ///
-
   ABOUT
   Lumen Project is a non-profit organisation creating immersive experiences, employing sound / light / and space to inspire awe and stillness.
-
-  —
 
   In collaboration with Eric Ericson International Choral Centre
 

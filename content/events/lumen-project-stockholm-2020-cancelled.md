@@ -38,13 +38,6 @@ description: |-
 
   SUGGESTIONS FOR ENJOYING THIS EVENT
 
-  :: Turn off/put away your phone.
-  :: Remove shoes + uncomfortable clothing.
-  :: Come and go as you please, respectfully.
-  :: Grab a pillow and find a spot.
-  :: Applause is not necessary.
-  :: Relax. Sleep if you wish.
-
   Accessibility 
 
   Eric Ericsonhallen har rullstolsramp och handikappanpassad toalett. Det finns en handikapp-parkeringsplats vid hallen.

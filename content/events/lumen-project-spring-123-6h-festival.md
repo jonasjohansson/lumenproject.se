@@ -8,12 +8,6 @@ price: ""
 ticketUrl: ""
 image: "/assets/img/events/lumenproject-lumen-project-spring-123-6h-festival.png"
 description: |-
-  :: Eric Ericsonhallen ::
-
-  :: 300/200* SEK (plus booking fee) ::
-
-  :: a seamless 6-hour event ::
-
   Facebook event here
 
   performances by
@@ -29,8 +23,6 @@ description: |-
   We look forward to seeing you all! Mark the date in your calendar and get your tickets now ✨🌑 
 
   Listen to the artists on Spotify
-
-  ---
 
   SUGGESTIONS FOR ENJOYING THIS EVENT
 
@@ -48,25 +40,17 @@ description: |-
 
   Relax, sleep if you wish
 
-  ---
-
   ACCESSIBILITY
 
   Eric Ericsonhallen has a wheelchair ramp and an accessible toilet. There is a disabled parking space next to the hall. Contact us at info@lumenproject.se if you would like to reserve a wheelchair space. 
-
-  ---
 
   *TICKETING NOTE
 
   300 SEK suggested / 200 SEK reduced – however if this price range is not workable for you, DM or mail us anyway and we will work it out. We want you here! 
 
-  ---
-
   ABOUT
 
   Lumen Project is a non-profit organisation creating immersive experiences, employing sound / light / and space to inspire awe and stillness.
-
-  ---
 
   THANKS
 
