@@ -1,9 +1,24 @@
 # Pages CMS config — https://pagescms.org
 # Install the Pages CMS GitHub App on this repo, then edit at app.pagescms.org.
 
+# Each image folder the CMS should let you browse / upload to. `name` is how
+# image fields below reference a folder (options.media).
 media:
-  input: src/assets/img/events   # where uploaded posters are committed
-  output: /assets/img/events     # path written into the content files
+  - name: events
+    label: Event posters
+    input: src/assets/img/events
+    output: /assets/img/events
+    categories: [image]
+  - name: gallery
+    label: Gallery photos
+    input: src/assets/img/gallery
+    output: /assets/img/gallery
+    categories: [image]
+  - name: photos
+    label: Site photos (hero, about)
+    input: src/assets/img/photos
+    output: /assets/img/photos
+    categories: [image]
 
 content:
   - name: events
@@ -26,8 +41,8 @@ content:
       - { name: city, label: City, type: string }
       - { name: price, label: Price (e.g. 350 SEK), type: string }
       - { name: ticketUrl, label: Ticket URL, type: string }
-      - { name: image, label: Poster / graphic, type: image }
-      - { name: photo, label: Event photo (past events lead with this), type: image }
+      - { name: image, label: Poster / graphic, type: image, options: { media: events } }
+      - { name: photo, label: Event photo (past events lead with this), type: image, options: { media: photos } }
       - { name: description, label: Description, type: text }
 
   - name: settings
@@ -43,8 +58,8 @@ content:
           - { name: tagline, type: string }
           - { name: hero_heading, type: string }
           - { name: hero_subheading, type: string }
-          - { name: hero_image, label: Hero image, type: image }
-          - { name: about_image, label: About photo, type: image }
+          - { name: hero_image, label: Hero image, type: image, options: { media: photos } }
+          - { name: about_image, label: About photo, type: image, options: { media: photos } }
           - { name: about, label: About text, type: text }
           - { name: founders, label: Team / founders, type: text }
           - { name: experience, label: How to experience it, type: text }
