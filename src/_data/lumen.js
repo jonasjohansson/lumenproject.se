@@ -166,14 +166,13 @@ module.exports = function () {
     throw new Error("No events found in content/events — aborting build to avoid an empty site.");
   }
 
-  // a few "more events" suggestions per event — the next entries in the list,
-  // wrapping around, as lightweight refs (no circular data)
+  // prev/next neighbours for in-page navigation (events[] is newest-first, so
+  // the older event sits at i+1 and the newer one at i-1) — lightweight refs
+  const ref = (r) => (r ? { url: r.url, Title: r.Title } : null);
   events = events.map((e, i, arr) => ({
     ...e,
-    related: [1, 2, 3]
-      .map((k) => arr[(i + k) % arr.length])
-      .filter((r) => r.url !== e.url)
-      .map((r) => ({ url: r.url, Title: r.Title, meta: r.meta, isUpcoming: r.isUpcoming })),
+    olderEvent: ref(arr[i + 1]),
+    newerEvent: ref(arr[i - 1]),
   }));
 
   // upcoming soonest-first; past newest-first (events[] is already newest-first)

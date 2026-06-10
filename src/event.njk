@@ -38,20 +38,14 @@ eleventyComputed:
 
       <div>
         {% if ev.Description %}<div class="prose ev-desc">{{ ev.Description | eventBody | safe }}</div>{% endif %}
-        <p style="margin-top:2.4rem"><a class="backlink" href="/events/" onclick="if(history.length>1&&document.referrer.indexOf(location.origin)===0){history.back();return false;}">&larr; Back</a></p>
       </div>
     </div>
 
-    {% if ev.related.length %}
-    <section class="ev-more" aria-label="More events">
-      <h2 class="h2">More events</h2>
-      {% for e in ev.related %}
-      <a class="ev-row" href="{{ e.url }}">
-        <span class="ev-row__title">{{ e.Title }}{% if e.isUpcoming %} <span class="badge">Upcoming</span>{% endif %}</span>
-        <span class="ev-row__meta">{% if e.meta %}{{ e.meta }}{% endif %}</span>
-      </a>
-      {% endfor %}
-    </section>
+    {% if ev.olderEvent or ev.newerEvent %}
+    <nav class="ev-nav" aria-label="More events">
+      {% if ev.olderEvent %}<a class="ev-nav__link ev-nav__link--prev" href="{{ ev.olderEvent.url }}"><span class="ev-nav__k">&larr; Previous</span><span class="ev-nav__t">{{ ev.olderEvent.Title }}</span></a>{% else %}<span></span>{% endif %}
+      {% if ev.newerEvent %}<a class="ev-nav__link ev-nav__link--next" href="{{ ev.newerEvent.url }}"><span class="ev-nav__k">Next &rarr;</span><span class="ev-nav__t">{{ ev.newerEvent.Title }}</span></a>{% endif %}
+    </nav>
     {% endif %}
   </div>
 </article>
