@@ -104,7 +104,7 @@ module.exports = function (eleventyConfig) {
       if (letters.length > 1 && t === t.toUpperCase() && /^[\p{Lu}]/u.test(t) && !/[.!?]$/.test(t) && t.split(/\s+/).length <= 8) {
         flush(); html += '<h3 class="ev-sub">' + esc(titleCase(t)) + "</h3>"; continue;
       }
-      para.push(esc(t).replace(/Lumen Project/g, "<strong>Lumen Project</strong>"));
+      para.push(esc(t).replace(/Lumen Project/g, '<strong class="brand">Lumen Project</strong>'));
     }
     flush();
     return html;

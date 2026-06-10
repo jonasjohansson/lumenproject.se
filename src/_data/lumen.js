@@ -166,6 +166,12 @@ module.exports = function () {
     // hero leads with the event's project artwork (poster/graphic); falls back
     // to an event photo only when there is no artwork.
     const lead = e.ImageURL || e.Photo;
+    // only use the poster as the share image when it crops to a decent
+    // landscape card (~1.91:1); square/ultrawide posters fall back to the
+    // sitewide 1200×630 default (handled by base.njk when ogShare is empty).
+    const leadDims = dimsOf(lead);
+    const lr = leadDims && leadDims.width && leadDims.height ? leadDims.width / leadDims.height : 0;
+    const ogShare = lr >= 1.4 && lr <= 2.2 && leadDims.width >= 600 ? lead : "";
     return {
       ...e,
       url: `/events/${e.slug}/`,
@@ -180,8 +186,9 @@ module.exports = function () {
       excerpt: excerptOf(e.Description),
       isUpcoming: upcoming,
       LeadURL: lead,
+      ogShare: ogShare,
       dims: dimsOf(e.ImageURL),
-      leadDims: dimsOf(lead),
+      leadDims: leadDims,
       lineup: parseLineup(e.Description),
     };
   });

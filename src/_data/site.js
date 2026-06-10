@@ -4,9 +4,9 @@ module.exports = {
 
   // default Open Graph / Twitter card image (pages can override via ogImage*)
   ogImage: {
-    src: "assets/img/photos/hero-dusk.jpg",
-    width: 2200,
-    height: 1466,
+    src: "assets/img/share/share-default.jpg",
+    width: 1200,
+    height: 630,
     alt: "A Lumen Project performance in a sunlit hall, light streaming through the windows",
   },
 };

@@ -135,6 +135,8 @@ a:hover { color: var(--ink); }
 
 /* shared text helpers */
 .u-display { font-family: var(--font-display); text-transform: uppercase; }
+/* brand name set in caps wherever it appears in prose */
+.brand { text-transform: uppercase; letter-spacing: 0.02em; }
 /* visually hidden but available to screen readers / search (keeps the page h1) */
 .visually-hidden {
   position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;

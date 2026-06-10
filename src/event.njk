@@ -10,9 +10,9 @@ permalink: "{{ ev.url }}"
 eleventyComputed:
   title: "{{ ev.Title | safe }}{% if 'Lumen Project' not in ev.Title %} · Lumen Project{% endif %}"
   description: "{{ ev.excerpt | safe }}"
-  ogImage: "{{ ev.LeadURL or ev.ImageURL }}"
-  ogImageW: "{{ ev.leadDims.width if ev.leadDims else '' }}"
-  ogImageH: "{{ ev.leadDims.height if ev.leadDims else '' }}"
+  ogImage: "{{ ev.ogShare }}"
+  ogImageW: "{{ ev.leadDims.width if ev.ogShare else '' }}"
+  ogImageH: "{{ ev.leadDims.height if ev.ogShare else '' }}"
   ogImageAlt: "{{ ev.Title | safe }}"
   ogType: "article"
 ---
