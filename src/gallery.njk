@@ -10,14 +10,15 @@ ogImageH: 1000
 ogImageAlt: A photograph from a Lumen Project happening
 ---
 <div class="wrap page gallery-head">
+  <h1 class="visually-hidden">Gallery</h1>
   <p class="page-intro">Moments from past happenings.<br />Photography by <a href="https://www.instagram.com/i.am.androsova.olga" target="_blank" rel="noopener">Olga Androsova</a> and <a href="https://www.instagram.com/mherlow" target="_blank" rel="noopener">Mattias Herlow</a>.</p>
 </div>
 
 <div class="gallery">
   {% for img in gallery %}
   <figure class="gallery__item">
-    <a href="{{ img.src }}" aria-label="View full photograph">
-      <img src="{{ img.src }}" {% if img.width %}width="{{ img.width }}" height="{{ img.height }}" {% endif %}alt="A Lumen Project performance" loading="lazy" decoding="async" />
+    <a href="{{ img.src }}" aria-label="View full photograph {{ loop.index }} of {{ gallery.length }}">
+      {% galleryImg img.src, "", "(max-width: 640px) 92vw, (max-width: 1100px) 45vw, 320px" %}
     </a>
   </figure>
   {% endfor %}

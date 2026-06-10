@@ -56,12 +56,14 @@ eleventyComputed:
   "@type": "Event",
   "name": {{ ev.Title | dump | safe }},
   {% if ev.startISO %}"startDate": {{ ev.startISO | dump | safe }},{% endif %}
+  {% if ev.endISO %}"endDate": {{ ev.endISO | dump | safe }},{% endif %}
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  {% if ev.Venue %}"location": { "@type": "Place", "name": {{ ev.Venue | dump | safe }}, "address": {{ (ev.City or "Stockholm") | dump | safe }} },{% endif %}
+  {% if ev.Venue %}"location": { "@type": "Place", "name": {{ ev.Venue | dump | safe }}, "address": { "@type": "PostalAddress", "addressLocality": {{ (ev.City or "Stockholm") | dump | safe }}, "addressCountry": "SE" } },{% endif %}
   {% if ev.LeadURL %}"image": [{{ (ev.LeadURL | absImg) | dump | safe }}],{% endif %}
   {% if ev.Description %}"description": {{ ev.excerpt | dump | safe }},{% endif %}
-  {% if ev.isUpcoming and ev.TicketURL %}"offers": { "@type": "Offer", "url": {{ ev.TicketURL | dump | safe }}, "availability": "https://schema.org/InStock" },{% endif %}
-  "organizer": { "@type": "Organization", "name": "Lumen Project", "url": {{ site.url | dump | safe }} }
+  {% if ev.lineup.length %}"performer": [{% for p in ev.lineup %}{ "@type": "PerformingGroup", "name": {{ p | dump | safe }} }{% if not loop.last %}, {% endif %}{% endfor %}],{% endif %}
+  {% if ev.TicketURL or ev.priceNum or ev.isFree %}"offers": { "@type": "Offer", "availability": "https://schema.org/InStock"{% if ev.TicketURL %}, "url": {{ ev.TicketURL | dump | safe }}{% endif %}{% if ev.isFree %}, "price": "0", "priceCurrency": "SEK"{% elif ev.priceNum %}, "price": {{ ev.priceNum | dump | safe }}, "priceCurrency": "SEK"{% endif %} },{% endif %}
+  "organizer": { "@type": "Organization", "name": "Lumen Project", "url": {{ site.url | dump | safe }}, "sameAs": [{{ lumen.settings.instagram | dump | safe }}, {{ lumen.settings.facebook | dump | safe }}, {{ lumen.settings.youtube | dump | safe }}] }
 }
 </script>

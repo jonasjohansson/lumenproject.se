@@ -6,6 +6,7 @@ eleventyExcludeFromCollections: true
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>{{ site.url }}/</loc></url>
   <url><loc>{{ site.url }}/events/</loc></url>
+  <url><loc>{{ site.url }}/gallery/</loc></url>
   <url><loc>{{ site.url }}/about/</loc></url>
   {%- for e in lumen.events %}
   <url><loc>{{ site.url }}{{ e.url }}</loc></url>

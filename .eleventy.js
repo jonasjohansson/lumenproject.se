@@ -1,7 +1,29 @@
+const Image = require("@11ty/eleventy-img");
+const path = require("path");
+
 module.exports = function (eleventyConfig) {
   // static assets + custom-domain file copied straight through
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
+
+  // Responsive gallery images: emit AVIF/WebP/JPEG at several widths with
+  // srcset, so phones don't download 1500px originals. `webSrc` is the
+  // root-absolute path from gallery.js (e.g. /assets/img/gallery/001-g02.jpg).
+  eleventyConfig.addNunjucksAsyncShortcode("galleryImg", async function (webSrc, alt, sizes) {
+    const input = path.join("src", webSrc);
+    const metadata = await Image(input, {
+      widths: [400, 800, 1200],
+      formats: ["avif", "webp", "jpeg"],
+      outputDir: "./_site/assets/img/gallery/opt/",
+      urlPath: "/assets/img/gallery/opt/",
+    });
+    return Image.generateHTML(metadata, {
+      alt: alt || "",
+      sizes: sizes || "(max-width: 640px) 92vw, 320px",
+      loading: "lazy",
+      decoding: "async",
+    });
+  });
 
   // human date, matching the original: "Sunday, February 22, 2026"
   eleventyConfig.addFilter("eventDate", (iso) => {

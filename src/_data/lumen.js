@@ -111,6 +111,22 @@ function parseLineup(desc) {
   return out;
 }
 
+// Europe/Stockholm UTC offset for a given YYYY-MM-DD (handles CET/CEST DST).
+function tzOffset(ymdStr) {
+  try {
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Europe/Stockholm", timeZoneName: "longOffset",
+    }).formatToParts(new Date(ymdStr + "T12:00:00Z"));
+    const tz = (parts.find((p) => p.type === "timeZoneName") || {}).value || "";
+    return tz.replace("GMT", "") || "+01:00"; // e.g. "+01:00" / "+02:00"
+  } catch (e) { return "+01:00"; }
+}
+// Normalise a "15:00" / "9.00" clock value to "HH:MM:SS", or "" if unparseable.
+function hhmmss(s) {
+  const m = String(s || "").replace(".", ":").match(/^(\d{1,2}):(\d{2})$/);
+  return m ? `${String(m[1]).padStart(2, "0")}:${m[2]}:00` : "";
+}
+
 module.exports = function () {
   const dir = path.join(CONTENT, "events");
   const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith(".md")) : [];
@@ -140,7 +156,12 @@ module.exports = function () {
 
   events = events.map((e, i) => {
     const dated = /^\d{4}-\d{2}-\d{2}$/.test(e.Date);
-    const start = (e.Time || "").split("-")[0].trim();
+    const tparts = (e.Time || "").split(/\s*[–—-]\s*/);
+    const startC = hhmmss(tparts[0]);
+    const endC = hhmmss(tparts[1]);
+    const off = dated ? tzOffset(e.Date) : "";
+    const priceNum = (String(e.Price || "").match(/(\d+)/) || [])[1] || "";
+    const isFree = /\bfree\b|gratis|kostnadsfri/i.test(e.Price || "");
     const upcoming = dated && e.Date >= today;
     // hero leads with the event's project artwork (poster/graphic); falls back
     // to an event photo only when there is no artwork.
@@ -152,7 +173,10 @@ module.exports = function () {
       rootUrl: `/${e.slug}/`,
       year: dated ? e.Date.slice(0, 4) : "",
       meta: [e.Time, e.Venue, e.City].filter(Boolean).join(" · "),
-      startISO: dated ? `${e.Date}${start ? "T" + start : ""}` : "",
+      startISO: dated ? `${e.Date}${startC ? "T" + startC + off : ""}` : "",
+      endISO: dated && endC ? `${e.Date}T${endC}${off}` : "",
+      priceNum: priceNum,
+      isFree: isFree,
       excerpt: excerptOf(e.Description),
       isUpcoming: upcoming,
       LeadURL: lead,
