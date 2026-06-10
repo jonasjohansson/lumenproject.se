@@ -26,38 +26,14 @@ permalink: /
     <h1 class="wordmark">Lumen<span class="l2">Project</span></h1>
     <p class="hero__tag">{{ lumen.settings.tagline }}</p>
 
+    <nav class="hero__nav" aria-label="Sections">
+      <a class="hero__cta" href="/events/">See events</a>
+      <a class="hero__link" href="/gallery/">Gallery</a>
+      <a class="hero__link" href="/about/">About</a>
+    </nav>
+
     <div class="hero__scrolls">
-      <a class="hero__cta" href="#events">See events</a>
       {% if lumen.nextEvent %}<span class="nextev"><span class="k">Next</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a>, {{ lumen.nextEvent.Date | eventDate }}</span>{% endif %}
     </div>
-  </div>
-</section>
-
-<section class="home-sec" id="events" aria-label="Events">
-  <div class="wrap">
-    {% include "partials/events-sections.njk" %}
-  </div>
-</section>
-
-<section class="home-sec" id="artists" aria-label="Artists">
-  <div class="wrap">
-    <p class="page-intro">{{ lumen.artists.length }} musicians, composers and performers have shaped <strong>Lumen Project</strong> since 2017.</p>
-    {% include "partials/artists-list.njk" %}
-  </div>
-</section>
-
-<section class="home-sec" id="gallery" aria-label="Gallery">
-  <div class="wrap">
-    <a class="teaser-head" href="/gallery/">Gallery <span class="arrow">&rarr;</span></a>
-    <a class="teaser" href="/gallery/" aria-label="Open the photo gallery">
-      {% for img in gallery %}{% if loop.index <= 6 %}<img src="{{ img.src }}" {% if img.width %}width="{{ img.width }}" height="{{ img.height }}" {% endif %}alt="" loading="lazy" decoding="async" />{% endif %}{% endfor %}
-    </a>
-  </div>
-</section>
-
-<section class="home-sec" id="about" aria-label="About">
-  <div class="wrap">
-    {% include "partials/about-lead.njk" %}
-    {% include "partials/about-cols.njk" %}
   </div>
 </section>

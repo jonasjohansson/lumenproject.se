@@ -206,6 +206,8 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 
 /* — Layout ————————————————————————————————————————————————— */
 .page { padding-top: var(--page-top); padding-bottom: clamp(4rem, 10vw, 8rem); }
+/* artists block at the top of /events/ — separate it from the Events title */
+.ev-artists { margin-bottom: clamp(3rem, 7vw, 5.5rem); }
 .page-title {
   font-family: var(--font-display); font-weight: 700; line-height: 0.92;
   font-size: var(--fs-title); text-transform: uppercase; letter-spacing: 0.005em;
@@ -255,7 +257,9 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
   margin-top: var(--space-sm); max-width: 40ch; font-size: var(--fs-lead); line-height: 1.4;
   color: color-mix(in srgb, var(--hhero-ink) 88%, transparent); text-wrap: balance;
 }
-.hero__scrolls { margin-top: var(--space-md); display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; }
+/* landing-page section links, under the intro (replaces the top menu on home) */
+.hero__nav { margin-top: var(--space-md); display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; }
+.hero__scrolls { margin-top: var(--space-sm); display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; }
 .hero__cta {
   font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide);
   font-size: 0.95rem; color: var(--hhero-ink); border: 1px solid color-mix(in srgb, var(--hhero-ink) 50%, transparent);
@@ -263,6 +267,14 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
 .hero__cta:hover { background: var(--hhero-ink); color: var(--paper); border-color: var(--hhero-ink); }
+.hero__link {
+  font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide);
+  font-size: 0.95rem; color: var(--hhero-ink);
+  text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--hhero-ink) 50%, transparent);
+  transition: text-decoration-color var(--dur) var(--ease);
+}
+.hero__link:hover { text-decoration-color: var(--hhero-ink); }
 
 .nextev { display: inline-flex; align-items: baseline; gap: 0.8ch; flex-wrap: wrap; color: var(--hhero-ink); font-size: 0.95rem; }
 .nextev .k { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 0.78rem; color: color-mix(in srgb, var(--hhero-ink) 70%, transparent); }
