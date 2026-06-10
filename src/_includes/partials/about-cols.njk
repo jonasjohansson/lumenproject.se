@@ -1,20 +1,20 @@
 {# Shared About columns — used by the home #about section and /about/. #}
 <div class="about-cols">
   <div>
-    <h3 class="h2">Stay in touch</h3>
+    <h2 class="h2">Stay in touch</h2>
     <p class="prose">
       <a href="mailto:{{ lumen.settings.contact_email }}">{{ lumen.settings.contact_email }}</a><br />
       <a href="{{ lumen.settings.mailing_url }}" target="_blank" rel="noopener">Join the mailing list</a>
     </p>
   </div>
   <div>
-    <h3 class="h2">Partners</h3>
+    <h2 class="h2">Partners</h2>
     <ul class="linklist">
       {% for p in lumen.partners %}<li>{% if p.URL %}<a href="{{ p.URL }}" target="_blank" rel="noopener">{{ p.Name }}</a>{% else %}{{ p.Name }}{% endif %}</li>{% endfor %}
     </ul>
   </div>
   <div id="press">
-    <h3 class="h2">Press</h3>
+    <h2 class="h2">Press</h2>
     <ul class="linklist linklist--media">
       {% for m in lumen.media %}<li>{% if m.URL %}<a href="{{ m.URL }}" target="_blank" rel="noopener" title="{{ m.Title }}">{{ m.Title }}</a>{% else %}{{ m.Title }}{% endif %}</li>{% endfor %}
     </ul>

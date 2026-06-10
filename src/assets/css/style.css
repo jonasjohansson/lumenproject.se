@@ -76,7 +76,7 @@ html[data-theme="day"] {
   --paper: #e9e7d6;  --paper-2: #e1dec8;
   --ink:   #191b2b;  --ink-dim: #565849;
   --line:  rgba(25, 27, 43, 0.16);
-  --accent: #b5532a; --accent-ink: #9a3d00;
+  --accent: #b5532a; --accent-ink: #9a3d00; --on-accent: #fff;  /* white badge text → AA on the warm day accent */
   --glow:  248, 168, 78;
   --hhero-ink: #181a28; --hhero-veil: 0; --hhero-glow: 0;   /* day: dark text, clean fade, no veil */
   color-scheme: light;
@@ -470,8 +470,11 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
    the wordmark wraps back to two lines to reclaim width */
 @media (max-width: 600px) {
   .site-nav__home { white-space: normal; max-width: 6rem; line-height: 1; font-size: 0.85rem; }
-  .site-nav { --nav-logo-clear: 5.5rem; gap: 0.8rem; font-size: 0.74rem; }
-  .chrome__toggle, .chrome__ic { width: 31px; height: 31px; }
+  .site-nav { gap: 0.9rem; font-size: 0.74rem; }
+  .site-nav--withlogo { --nav-logo-clear: 5.5rem; }  /* only subpages have the logo to clear */
+  /* roomier tap targets on touch (hit area grows without shifting the layout) */
+  .site-nav a { padding-block: 0.5rem; margin-block: -0.5rem; }
+  .chrome__toggle, .chrome__ic { width: 36px; height: 36px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
