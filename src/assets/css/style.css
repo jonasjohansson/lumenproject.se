@@ -168,15 +168,34 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 .corner-home--hero { color: #fff; }
 .corner-home--hero:hover { color: #fff; }
 
-/* — Section nav: fixed, centred, matches the corner-home language ——— */
-.site-nav {
+/* — Header ————————————————————————————————————————————————————
+   The wordmark/home link pins to the far-left (image edge); the section links
+   align to the content gutter (where page titles & the hero wordmark sit).
+   Both are vertically centred on the corner social icons (34px). */
+.site-nav__home {
   position: fixed; z-index: 50; top: clamp(0.8rem, 2vw, 1.3rem);
-  left: 50%; transform: translateX(-50%);
-  display: flex; gap: clamp(0.85rem, 2.6vw, 1.8rem);
+  left: var(--pad); height: 34px; display: flex; align-items: center;
+  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+  letter-spacing: var(--tracking-wide); font-size: 0.95rem; line-height: 0.98;
+  color: var(--ink);
+}
+.site-nav__home:hover { color: var(--accent-ink); }
+.site-nav__home--hero, .site-nav__home--hero:hover { color: #fff; }
+
+.site-nav {
+  --nav-logo-clear: 0px;  /* no home link on the home page → align straight to gutter */
+  position: fixed; z-index: 50; top: clamp(0.8rem, 2vw, 1.3rem);
+  /* align links to the content gutter; never let them crowd the home link */
+  left: max(calc(var(--pad) + var(--nav-logo-clear)), calc((100vw - var(--maxw)) / 2 + var(--pad)));
+  height: 34px;  /* match the social-icon buttons so we share their centre line */
+  display: flex; align-items: center; gap: clamp(0.85rem, 2.6vw, 1.8rem);
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
   letter-spacing: var(--tracking-wide); font-size: clamp(0.78rem, 2.4vw, 0.95rem);
   line-height: 1; white-space: nowrap;
 }
+/* inner pages have the home link on the left (~62px wide) — keep the section
+   links just clear of it; they snap to the content gutter once it's wide enough */
+.site-nav--withlogo { --nav-logo-clear: 4.75rem; }
 .site-nav a { color: var(--ink); transition: color var(--dur) var(--ease), opacity var(--dur) var(--ease); }
 .site-nav a:hover { color: var(--accent-ink); }
 /* over a (dark-scrimmed) hero, stay white */
@@ -184,7 +203,7 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 .site-nav--hero a:hover { color: #fff; opacity: 0.75; }
 
 /* — Layout ————————————————————————————————————————————————— */
-.page { padding-top: var(--page-top); }
+.page { padding-top: var(--page-top); padding-bottom: clamp(4rem, 10vw, 8rem); }
 .page-title {
   font-family: var(--font-display); font-weight: 700; line-height: 0.92;
   font-size: var(--fs-title); text-transform: uppercase; letter-spacing: 0.005em;

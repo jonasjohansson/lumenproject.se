@@ -56,13 +56,15 @@
 
   <a class="skip" href="#main">Skip to content</a>
 
-  {% if current != 'home' %}<a class="corner-home{% if hasHero %} corner-home--hero{% endif %}" href="/">Lumen<br />Project</a>{% endif %}
-
-  {# section nav — anchors on the one-page home; returns home from inner pages #}
-  <nav class="site-nav{% if current == 'home' or hasHero %} site-nav--hero{% endif %}" aria-label="Sections">
-    <a href="/#events">Events</a>
-    <a href="/#press">Press</a>
-    <a href="/#about">About</a>
+  {# header: the wordmark/home link sits on the far-left (image edge); the
+     section links align to the content gutter (where page titles sit). On the
+     home page the hero carries the big wordmark, so the small logo is omitted. #}
+  {% if current != 'home' %}<a class="site-nav__home{% if hasHero %} site-nav__home--hero{% endif %}" href="/">Lumen<br />Project</a>{% endif %}
+  <nav class="site-nav{% if current == 'home' or hasHero %} site-nav--hero{% endif %}{% if current != 'home' %} site-nav--withlogo{% endif %}" aria-label="Sections">
+    {# on the home page these scroll to in-page sections; elsewhere they navigate #}
+    <a href="{% if current == 'home' %}#events{% else %}/events/{% endif %}">Events</a>
+    <a href="/gallery/">Gallery</a>
+    <a href="{% if current == 'home' %}#about{% else %}/about/{% endif %}">About</a>
   </nav>
 
   {# minimal floating cluster: day/night toggle + active socials #}
