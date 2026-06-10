@@ -218,6 +218,7 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
   margin-bottom: var(--gap);
 }
 .page-intro { max-width: 46ch; font-size: var(--fs-lead); color: var(--ink-dim); margin-bottom: var(--gap); }
+.page-intro a { text-decoration: underline; text-underline-offset: 2px; }
 
 .section { padding-block: var(--section-y); }
 /* the centred manifest sits between hero and events; its bottom spacing is
@@ -336,7 +337,10 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 }
 
 /* — Gallery ————————————————————————————————————————————————— */
-.gallery { columns: 320px; column-gap: var(--space-sm); margin-top: var(--space-md); padding: 0 var(--pad) var(--section-y); }
+/* the gallery grid carries its own spacing, so the intro block above it drops
+   the page's bottom padding to avoid a big empty gap */
+.gallery-head { padding-bottom: 0; }
+.gallery { columns: 320px; column-gap: var(--space-sm); padding: 0 var(--pad) var(--section-y); }
 .gallery__item { break-inside: avoid; margin: 0 0 var(--space-sm); }
 .gallery__item a { display: block; border-radius: var(--radius-sm); overflow: hidden; }
 .gallery__item img { width: 100%; height: auto; display: block; transition: opacity var(--dur) var(--ease); }
