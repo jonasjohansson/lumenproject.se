@@ -35,12 +35,12 @@ content:
         order: desc
     fields:
       - { name: title, label: Title, type: string, required: true }
-      - { name: date, label: Date, type: date, options: { format: yyyy-MM-dd } }
-      - { name: time, label: Time, type: string, description: "e.g. 15:00-21:00 — drives the schedule and the event end time" }
+      - { name: date, label: Date, type: date, required: true, options: { format: yyyy-MM-dd } }
+      - { name: time, label: Time, type: string, pattern: '^$|^\s*\d{1,2}[:.]\d{2}\s*[–-]\s*\d{1,2}[:.]\d{2}\s*$', description: "e.g. 15:00-21:00 (24h, start-end) — drives the schedule and the event end time" }
       - { name: venue, label: Venue, type: string }
       - { name: city, label: City, type: string, description: "Defaults to Stockholm if left blank" }
       - { name: price, label: Admission, type: string, description: "e.g. “350 SEK” or “Free”" }
-      - { name: ticketUrl, label: Ticket URL, type: string }
+      - { name: ticketUrl, label: Ticket URL, type: string, pattern: '^$|^https?://' }
       - { name: image, label: Poster / graphic, type: image, options: { media: events }, description: "Shown at the top of the event page and in link previews" }
       - { name: photo, label: Event photo, type: image, options: { media: photos }, description: "Optional. A past event with no poster leads with this photo instead" }
       - { name: description, label: Description, type: text, description: "Body text. A line-up written “Performances by: A // B // C” is detected automatically" }
@@ -62,15 +62,16 @@ content:
           - { name: gallery_intro, label: Gallery intro line, type: text }
           - { name: artists_intro, label: Artists line (after the number), type: text, description: "Shown on /events/ as “<count> <this text>”" }
           - { name: about_photo_credit, label: About photo credit, type: string }
-          - { name: contact_email, label: Contact email, type: string }
-          - { name: mailing_url, label: Mailing-list URL, type: string }
-          - { name: instagram, label: Instagram URL, type: string }
-          - { name: facebook, label: Facebook URL, type: string }
-          - { name: youtube, label: YouTube URL, type: string }
+          - { name: contact_email, label: Contact email, type: string, pattern: '^$|^[^@\s]+@[^@\s]+\.[^@\s]+$' }
+          - { name: mailing_url, label: Mailing-list URL, type: string, pattern: '^$|^https?://' }
+          - { name: instagram, label: Instagram URL, type: string, pattern: '^$|^https?://' }
+          - { name: facebook, label: Facebook URL, type: string, pattern: '^$|^https?://' }
+          - { name: youtube, label: YouTube URL, type: string, pattern: '^$|^https?://' }
       - name: photographers
         label: Photographers (gallery credit)
         type: object
         list:
+          sortable: true
           collapsible:
             collapsed: true
             summary: '{name}'
@@ -82,6 +83,7 @@ content:
         type: object
         description: "Most artists are detected automatically from event line-ups. Add an entry here to attach a link, or to include someone who never appeared in a parsed line-up."
         list:
+          sortable: true
           collapsible:
             collapsed: true
             summary: '{name}'
@@ -94,6 +96,7 @@ content:
         label: Partners
         type: object
         list:
+          sortable: true
           collapsible:
             collapsed: true
             summary: '{name}'
@@ -104,6 +107,7 @@ content:
         label: Press
         type: object
         list:
+          sortable: true
           collapsible:
             collapsed: true
             summary: '{title}'

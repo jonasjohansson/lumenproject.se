@@ -4,8 +4,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:          # manual "rebuild now" button
-  schedule:
-    - cron: "0 4 * * *"       # daily 04:00 UTC — picks up sheet edits
 
 permissions:
   contents: read
@@ -26,6 +24,14 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run validate          # fail fast on malformed content
+      # reuse generated AVIF/WebP/JPEG gallery variants across runs (keyed on
+      # the source images) so the build doesn't re-encode them every time
+      - name: Cache generated gallery images
+        uses: actions/cache@v4
+        with:
+          path: _site/assets/img/gallery/opt
+          key: gallery-opt-${{ hashFiles('src/assets/img/gallery/**') }}
       - run: npm run build
       - uses: actions/upload-pages-artifact@v5
         with:
