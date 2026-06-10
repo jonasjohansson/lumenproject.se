@@ -2,7 +2,8 @@
 layout: base.njk
 current: gallery
 title: Gallery · Lumen Project
-description: Photographs from Lumen Project happenings of sound, light and space in churches and large rooms.
+eleventyComputed:
+  description: "{{ lumen.settings.gallery_description }}"
 permalink: /gallery/
 ogImage: assets/img/share/lumenproject-share-gallery.jpg
 ogImageW: 1200
@@ -17,8 +18,8 @@ ogImageAlt: A photograph from a Lumen Project happening
 <div class="gallery">
   {% for img in gallery %}
   <figure class="gallery__item">
-    <a href="{{ img.src }}" aria-label="View full photograph {{ loop.index }} of {{ gallery.length }}">
-      {% galleryImg img.src, "", "(max-width: 640px) 92vw, (max-width: 1100px) 45vw, 320px" %}
+    <a href="{{ img.src }}" aria-label="{% if img.alt %}{{ img.alt }} — view full photograph{% else %}View full photograph {{ loop.index }} of {{ gallery.length }}{% endif %}">
+      {% galleryImg img.src, img.alt, "(max-width: 640px) 92vw, (max-width: 1100px) 45vw, 320px" %}
     </a>
   </figure>
   {% endfor %}

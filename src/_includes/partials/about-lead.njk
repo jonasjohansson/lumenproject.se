@@ -1,4 +1,4 @@
-{# Shared About intro — used by the home #about section and /about/. #}
+{# About intro (lead + team) — used by /about/. #}
 <div class="prose about-lead">
   <p>{{ lumen.settings.about | replace("Lumen Project", '<strong class="brand">Lumen Project</strong>') | safe }}</p>
   {% if lumen.settings.experience %}<p>{{ lumen.settings.experience }}</p>{% endif %}

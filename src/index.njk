@@ -2,8 +2,9 @@
 layout: base.njk
 current: home
 title: Lumen Project
-description: A non-profit redefining the concert as a communal happening through sound, light and space. Lie down, sleep, come and go. Stockholm.
 permalink: /
+eleventyComputed:
+  description: "{{ lumen.settings.home_description }}"
 ---
 <section class="hero">
   {# only the active phase's image loads first (LCP); the other two load after

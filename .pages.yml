@@ -57,6 +57,24 @@ content:
           - { name: url, label: Link, type: string, pattern: '^$|^https?://' }
       - { name: description, label: Description, type: text, description: "Body text. Don't list performers here — use the Line-up field above. ALL-CAPS lines become headings; lines with web addresses are removed." }
 
+  - name: gallery
+    label: Gallery
+    type: file
+    path: content/gallery.json
+    fields:
+      - name: photos
+        label: Photos
+        type: object
+        description: "Drag to reorder. Upload into the “Gallery photos” folder, then give each a short alt-text description."
+        list:
+          sortable: true
+          collapsible:
+            collapsed: true
+            summary: '{alt}'
+        fields:
+          - { name: image, label: Photo, type: image, options: { media: gallery, rename: safe } }
+          - { name: alt, label: Alt text (short description), type: string }
+
   - name: settings
     label: Site settings
     type: file
@@ -74,6 +92,10 @@ content:
           - { name: gallery_intro, label: Gallery intro line, type: text }
           - { name: artists_intro, label: Artists line (after the number), type: text, description: "Shown on /events/ as “<count> <this text>”" }
           - { name: about_photo_credit, label: About photo credit, type: string }
+          - { name: home_description, label: "SEO: Home description", type: text, description: "Search / link-preview text for the home page (~150 chars)" }
+          - { name: events_description, label: "SEO: Events description", type: text }
+          - { name: gallery_description, label: "SEO: Gallery description", type: text }
+          - { name: about_description, label: "SEO: About description", type: text }
           - { name: contact_email, label: Contact email, type: string, pattern: '^$|^[^@\s]+@[^@\s]+\.[^@\s]+$' }
           - { name: mailing_url, label: Mailing-list URL, type: string, pattern: '^$|^https?://' }
           - { name: instagram, label: Instagram URL, type: string, pattern: '^$|^https?://' }

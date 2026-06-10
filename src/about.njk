@@ -2,7 +2,8 @@
 layout: base.njk
 current: about
 title: About · Lumen Project
-description: Lumen Project is a non-profit redefining the concert as a spiritual communal happening through sound, light and space.
+eleventyComputed:
+  description: "{{ lumen.settings.about_description }}"
 permalink: /about/
 ogImage: assets/img/share/lumenproject-share-about.jpg
 ogImageW: 1200
