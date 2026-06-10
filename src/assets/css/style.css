@@ -318,6 +318,9 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 }
 .featured .badge { position: absolute; top: var(--space-sm); left: var(--space-sm); }
 
+/* "More events" suggestions at the foot of an event page */
+.ev-more { margin-top: clamp(3rem, 7vw, 5.5rem); padding-top: clamp(2rem, 5vw, 3.5rem); border-top: var(--border); }
+
 /* text index (no artwork) — the standalone /events/ page */
 .ev-row {
   display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-md);

@@ -41,6 +41,18 @@ eleventyComputed:
         <p style="margin-top:2.4rem"><a class="backlink" href="/events/" onclick="if(history.length>1&&document.referrer.indexOf(location.origin)===0){history.back();return false;}">&larr; Back</a></p>
       </div>
     </div>
+
+    {% if ev.related.length %}
+    <section class="ev-more" aria-label="More events">
+      <h2 class="h2">More events</h2>
+      {% for e in ev.related %}
+      <a class="ev-row" href="{{ e.url }}">
+        <span class="ev-row__title">{{ e.Title }}{% if e.isUpcoming %} <span class="badge">Upcoming</span>{% endif %}</span>
+        <span class="ev-row__meta">{% if e.meta %}{{ e.meta }}{% endif %}</span>
+      </a>
+      {% endfor %}
+    </section>
+    {% endif %}
   </div>
 </article>
 

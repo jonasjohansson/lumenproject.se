@@ -166,6 +166,16 @@ module.exports = function () {
     throw new Error("No events found in content/events — aborting build to avoid an empty site.");
   }
 
+  // a few "more events" suggestions per event — the next entries in the list,
+  // wrapping around, as lightweight refs (no circular data)
+  events = events.map((e, i, arr) => ({
+    ...e,
+    related: [1, 2, 3]
+      .map((k) => arr[(i + k) % arr.length])
+      .filter((r) => r.url !== e.url)
+      .map((r) => ({ url: r.url, Title: r.Title, meta: r.meta, isUpcoming: r.isUpcoming })),
+  }));
+
   // upcoming soonest-first; past newest-first (events[] is already newest-first)
   const upcoming = events.filter((e) => e.isUpcoming).sort((a, b) => a.Date.localeCompare(b.Date));
   const past = events.filter((e) => !e.isUpcoming);
