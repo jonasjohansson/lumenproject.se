@@ -40,24 +40,33 @@ eleventyExcludeFromCollections: true
     button.primary:hover { background: #3a78e6; }
     .hint { padding: 12px 18px; opacity: .65; font-size: 14px; }
     .grid {
-      columns: 320px;
-      column-gap: 12px;
+      display: flex; flex-wrap: wrap;
+      gap: 12px;
       padding: 0 12px 60px;
     }
     figure {
-      margin: 0 0 12px;
-      break-inside: avoid;
+      margin: 0;
+      width: 240px;
       position: relative;
-      cursor: pointer;
+      cursor: grab;
       border-radius: 8px;
       overflow: hidden;
       outline: 3px solid transparent;
-      transition: outline-color .12s ease;
+      transition: outline-color .12s ease, opacity .12s ease;
+      user-select: none;
     }
-    figure img { display: block; width: 100%; height: auto; transition: opacity .12s ease, filter .12s ease; }
+    figure:active { cursor: grabbing; }
+    figure img {
+      display: block; width: 100%; height: 180px; object-fit: cover;
+      pointer-events: none;
+      transition: opacity .12s ease, filter .12s ease;
+    }
     /* discarded state */
     figure[aria-pressed="false"] img { opacity: .28; filter: grayscale(1); }
     figure[aria-pressed="true"] { outline-color: #3fbf6a; }
+    figure.dragging { opacity: .4; }
+    figure.drop-before { outline-color: #2d6cdf; outline-offset: 2px; }
+    figure.drop-after  { outline-color: #2d6cdf; outline-offset: 2px; }
     .badge {
       position: absolute; top: 8px; right: 8px;
       width: 28px; height: 28px; border-radius: 50%;
@@ -69,6 +78,14 @@ eleventyExcludeFromCollections: true
     figure[aria-pressed="true"] .badge { background: #3fbf6a; }
     figure[aria-pressed="false"] .badge::after { content: "✕"; }
     figure[aria-pressed="true"]  .badge::after { content: "✓"; }
+    .pos {
+      position: absolute; top: 8px; left: 8px;
+      min-width: 26px; height: 22px; padding: 0 6px; border-radius: 11px;
+      display: grid; place-items: center;
+      font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums;
+      background: rgba(0,0,0,.6); color: #fff;
+      pointer-events: none;
+    }
     .name {
       position: absolute; left: 0; right: 0; bottom: 0;
       padding: 6px 8px;
@@ -85,19 +102,22 @@ eleventyExcludeFromCollections: true
     <span class="spacer"></span>
     <button id="keepAll">Keep all</button>
     <button id="clearAll">Clear all</button>
+    <button id="resetOrder">Reset order</button>
     <button id="download" class="primary">Download JSON</button>
   </header>
 
   <p class="hint">
-    Click a photo to toggle it. Green check = <b>keep</b>, dimmed ✕ = <b>remove</b>.
-    Your choices are saved automatically in this browser. When done, click
+    <b>Click</b> a photo to toggle keep (green ✓) / remove (dimmed ✕).
+    <b>Drag</b> photos to reorder them — the number in the corner is the position.
+    Choices &amp; order are saved automatically in this browser. When done, click
     <b>Download JSON</b> and send the file back.
   </p>
 
   <div class="grid" id="grid">
     {% for img in gallery %}
-    <figure data-src="{{ img.src }}">
-      <img src="{{ img.src }}" {% if img.width %}width="{{ img.width }}" height="{{ img.height }}" {% endif %}alt="" loading="lazy" decoding="async" />
+    <figure draggable="true" data-src="{{ img.src }}">
+      <img src="{{ img.src }}" alt="" loading="lazy" decoding="async" />
+      <span class="pos"></span>
       <span class="badge"></span>
       <span class="name"></span>
     </figure>
@@ -106,59 +126,120 @@ eleventyExcludeFromCollections: true
 
   <script>
     (function () {
-      var STORAGE_KEY = "lumen-gallery-review-v1";
-      var figs = Array.prototype.slice.call(document.querySelectorAll("figure"));
+      var STORAGE_KEY = "lumen-gallery-review-v2";
+      var grid = document.getElementById("grid");
       var keptEl = document.getElementById("kept");
       var totalEl = document.getElementById("total");
-      totalEl.textContent = figs.length;
 
+      function figs() { return Array.prototype.slice.call(grid.querySelectorAll("figure")); }
       function fileOf(src) { return src.split("/").pop(); }
+      var all = figs();
+      totalEl.textContent = all.length;
 
-      // Load saved state: a map of filename -> boolean keep. Default keep = true.
+      // Map filename -> element, and remember the original order for "Reset order".
+      var byFile = {};
+      var originalOrder = all.map(function (f) { return fileOf(f.dataset.src); });
+      all.forEach(function (f) { byFile[fileOf(f.dataset.src)] = f; });
+
+      // Load saved state: { order: [file...], keep: { file: bool } }
       var saved;
       try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch (e) { saved = {}; }
 
-      function save() {
-        var map = {};
-        figs.forEach(function (f) {
-          map[fileOf(f.dataset.src)] = f.getAttribute("aria-pressed") === "true";
-        });
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(map)); } catch (e) {}
-      }
-
-      function updateCount() {
-        var n = figs.filter(function (f) { return f.getAttribute("aria-pressed") === "true"; }).length;
-        keptEl.textContent = n;
-      }
-
       function setState(f, keep) { f.setAttribute("aria-pressed", keep ? "true" : "false"); }
 
-      figs.forEach(function (f) {
+      // Apply saved order (any files not in saved order keep their place at the end).
+      if (saved.order && saved.order.length) {
+        saved.order.forEach(function (file) { if (byFile[file]) grid.appendChild(byFile[file]); });
+        originalOrder.forEach(function (file) {
+          if (saved.order.indexOf(file) === -1 && byFile[file]) grid.appendChild(byFile[file]);
+        });
+      }
+
+      // Apply saved keep flags (default: keep).
+      all.forEach(function (f) {
         var file = fileOf(f.dataset.src);
         f.querySelector(".name").textContent = file;
-        var keep = saved.hasOwnProperty(file) ? !!saved[file] : true; // default: keep
+        var keep = saved.keep && saved.keep.hasOwnProperty(file) ? !!saved.keep[file] : true;
         setState(f, keep);
-        f.addEventListener("click", function () {
-          setState(f, f.getAttribute("aria-pressed") !== "true");
-          updateCount(); save();
-        });
       });
-      updateCount();
 
+      function refresh() {
+        var list = figs();
+        keptEl.textContent = list.filter(function (f) { return f.getAttribute("aria-pressed") === "true"; }).length;
+        list.forEach(function (f, i) { f.querySelector(".pos").textContent = i + 1; });
+      }
+
+      function save() {
+        var order = figs().map(function (f) { return fileOf(f.dataset.src); });
+        var keep = {};
+        figs().forEach(function (f) { keep[fileOf(f.dataset.src)] = f.getAttribute("aria-pressed") === "true"; });
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ order: order, keep: keep })); } catch (e) {}
+      }
+
+      // --- toggle on click (suppressed right after a drag) ---
+      var justDragged = false;
+      grid.addEventListener("click", function (e) {
+        var f = e.target.closest("figure");
+        if (!f || justDragged) return;
+        setState(f, f.getAttribute("aria-pressed") !== "true");
+        refresh(); save();
+      });
+
+      // --- drag to reorder (native HTML5 DnD) ---
+      var dragged = null;
+      grid.addEventListener("dragstart", function (e) {
+        dragged = e.target.closest("figure");
+        if (!dragged) return;
+        dragged.classList.add("dragging");
+        e.dataTransfer.effectAllowed = "move";
+        try { e.dataTransfer.setData("text/plain", fileOf(dragged.dataset.src)); } catch (err) {}
+      });
+      grid.addEventListener("dragover", function (e) {
+        e.preventDefault();
+        var over = e.target.closest("figure");
+        figs().forEach(function (f) { f.classList.remove("drop-before", "drop-after"); });
+        if (!over || over === dragged) return;
+        var r = over.getBoundingClientRect();
+        var after = (e.clientX - r.left) > r.width / 2;
+        over.classList.add(after ? "drop-after" : "drop-before");
+      });
+      grid.addEventListener("drop", function (e) {
+        e.preventDefault();
+        var over = e.target.closest("figure");
+        figs().forEach(function (f) { f.classList.remove("drop-before", "drop-after"); });
+        if (!dragged || !over || over === dragged) return;
+        var r = over.getBoundingClientRect();
+        var after = (e.clientX - r.left) > r.width / 2;
+        grid.insertBefore(dragged, after ? over.nextSibling : over);
+        refresh(); save();
+      });
+      grid.addEventListener("dragend", function () {
+        if (dragged) dragged.classList.remove("dragging");
+        figs().forEach(function (f) { f.classList.remove("drop-before", "drop-after"); });
+        dragged = null;
+        justDragged = true;
+        setTimeout(function () { justDragged = false; }, 0);
+      });
+
+      // --- buttons ---
       document.getElementById("keepAll").addEventListener("click", function () {
-        figs.forEach(function (f) { setState(f, true); }); updateCount(); save();
+        figs().forEach(function (f) { setState(f, true); }); refresh(); save();
       });
       document.getElementById("clearAll").addEventListener("click", function () {
-        figs.forEach(function (f) { setState(f, false); }); updateCount(); save();
+        figs().forEach(function (f) { setState(f, false); }); refresh(); save();
       });
-
+      document.getElementById("resetOrder").addEventListener("click", function () {
+        originalOrder.forEach(function (file) { if (byFile[file]) grid.appendChild(byFile[file]); });
+        refresh(); save();
+      });
       document.getElementById("download").addEventListener("click", function () {
-        var keep = [], remove = [];
-        figs.forEach(function (f) {
+        var order = [], keep = [], remove = [];
+        figs().forEach(function (f) {
           var file = fileOf(f.dataset.src);
+          order.push(file);
           (f.getAttribute("aria-pressed") === "true" ? keep : remove).push(file);
         });
-        var data = { keep: keep, remove: remove, total: figs.length };
+        var data = { order: order, keep: keep, remove: remove, total: figs().length };
         var blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
         var a = document.createElement("a");
         a.href = URL.createObjectURL(blob);
@@ -166,6 +247,8 @@ eleventyExcludeFromCollections: true
         document.body.appendChild(a); a.click(); a.remove();
         setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
       });
+
+      refresh();
     })();
   </script>
 </body>
