@@ -69,14 +69,22 @@ content:
           - { name: youtube, label: YouTube URL, type: string }
       - name: photographers
         label: Photographers (gallery credit)
-        type: list
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{name}'
         fields:
           - { name: name, label: Name, type: string }
           - { name: url, label: Instagram URL, type: string }
       - name: artists
         label: Artists (links & extras)
-        type: list
+        type: object
         description: "Most artists are detected automatically from event line-ups. Add an entry here to attach a link, or to include someone who never appeared in a parsed line-up."
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{name}'
         fields:
           - { name: name, label: Name, type: string }
           - { name: role, label: Role, type: string }
@@ -84,13 +92,21 @@ content:
           - { name: url, label: URL, type: string }
       - name: partners
         label: Partners
-        type: list
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{name}'
         fields:
           - { name: name, label: Name, type: string }
           - { name: url, label: URL, type: string }
       - name: media
         label: Press
-        type: list
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{title}'
         fields:
           - { name: title, label: Headline – Outlet, type: string }
           - { name: url, label: URL, type: string }
