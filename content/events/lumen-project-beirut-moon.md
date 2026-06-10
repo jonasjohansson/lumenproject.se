@@ -1,5 +1,5 @@
 ---
-title: "Lumen Project // Beirut Moon"
+title: "Lumen Project / Beirut Moon"
 date: "2021-03-13"
 time: "17:00-22:00"
 venue: ""
