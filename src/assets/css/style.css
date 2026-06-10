@@ -210,8 +210,8 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 
 /* — Layout ————————————————————————————————————————————————— */
 .page { padding-top: var(--page-top); padding-bottom: clamp(4rem, 10vw, 8rem); }
-/* artists block at the top of /events/ — separate it from the Events title */
-.ev-artists { margin-bottom: clamp(3rem, 7vw, 5.5rem); }
+/* artists block below the event listing — separate it from the events above */
+.ev-artists { margin-top: clamp(3rem, 7vw, 5.5rem); }
 .page-title {
   font-family: var(--font-display); font-weight: 700; line-height: 0.92;
   font-size: var(--fs-title); text-transform: uppercase; letter-spacing: 0.005em;

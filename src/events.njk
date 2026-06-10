@@ -10,10 +10,10 @@ ogImageH: 1466
 ogImageAlt: A Lumen Project performance at night, lit from within
 ---
 <div class="wrap page">
+  {% include "partials/events-index.njk" %}
+
   <section class="ev-artists" aria-label="Artists">
     <p class="page-intro">{{ lumen.artists.length }} musicians, composers and performers have shaped <strong>Lumen Project</strong> since 2017.</p>
     {% include "partials/artists-list.njk" %}
   </section>
-
-  {% include "partials/events-index.njk" %}
 </div>
