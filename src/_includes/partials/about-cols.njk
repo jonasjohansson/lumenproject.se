@@ -13,10 +13,10 @@
       {% for p in lumen.partners %}<li>{% if p.URL %}<a href="{{ p.URL }}" target="_blank" rel="noopener">{{ p.Name }}</a>{% else %}{{ p.Name }}{% endif %}</li>{% endfor %}
     </ul>
   </div>
-  <div>
+  <div id="press">
     <h3 class="h2">Press</h3>
     <ul class="linklist linklist--media">
-      {% for m in lumen.media %}<li>{% if m.URL %}<a href="{{ m.URL }}" target="_blank" rel="noopener">{{ m.Title }}</a>{% else %}{{ m.Title }}{% endif %}</li>{% endfor %}
+      {% for m in lumen.media %}<li>{% if m.URL %}<a href="{{ m.URL }}" target="_blank" rel="noopener" title="{{ m.Title }}">{{ m.Title }}</a>{% else %}{{ m.Title }}{% endif %}</li>{% endfor %}
     </ul>
   </div>
   <div>

@@ -168,6 +168,21 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 .corner-home--hero { color: #fff; }
 .corner-home--hero:hover { color: #fff; }
 
+/* — Section nav: fixed, centred, matches the corner-home language ——— */
+.site-nav {
+  position: fixed; z-index: 50; top: clamp(0.8rem, 2vw, 1.3rem);
+  left: 50%; transform: translateX(-50%);
+  display: flex; gap: clamp(0.85rem, 2.6vw, 1.8rem);
+  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+  letter-spacing: var(--tracking-wide); font-size: clamp(0.78rem, 2.4vw, 0.95rem);
+  line-height: 1; white-space: nowrap;
+}
+.site-nav a { color: var(--ink); transition: color var(--dur) var(--ease), opacity var(--dur) var(--ease); }
+.site-nav a:hover { color: var(--accent-ink); }
+/* over a (dark-scrimmed) hero, stay white */
+.site-nav--hero a { color: #fff; }
+.site-nav--hero a:hover { color: #fff; opacity: 0.75; }
+
 /* — Layout ————————————————————————————————————————————————— */
 .page { padding-top: var(--page-top); }
 .page-title {
@@ -373,7 +388,14 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 .about-cols .prose { font-size: var(--fs-base); line-height: 1.55; max-width: none; }
 .linklist { list-style: none; display: grid; gap: var(--space-xs); }
 .linklist a { text-transform: uppercase; letter-spacing: var(--tracking); font-size: 0.86rem; text-decoration: underline; text-underline-offset: 2px; }
-.linklist--media a { text-transform: none; letter-spacing: 0; font-size: 0.95rem; }
+.linklist--media { grid-auto-columns: minmax(0, 1fr); }
+.linklist--media li { min-width: 0; }
+/* one line each, truncated with an ellipsis (full title shows on hover) */
+.linklist--media a {
+  text-transform: none; letter-spacing: 0; font-size: 0.95rem;
+  display: block; max-width: 100%;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 
 /* — Responsive ——————————————————————————————————————————————— */
 @media (max-width: 760px) {

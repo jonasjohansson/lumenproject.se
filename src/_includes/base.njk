@@ -58,6 +58,13 @@
 
   {% if current != 'home' %}<a class="corner-home{% if hasHero %} corner-home--hero{% endif %}" href="/">Lumen<br />Project</a>{% endif %}
 
+  {# section nav — anchors on the one-page home; returns home from inner pages #}
+  <nav class="site-nav{% if current == 'home' or hasHero %} site-nav--hero{% endif %}" aria-label="Sections">
+    <a href="/#events">Events</a>
+    <a href="/#press">Press</a>
+    <a href="/#about">About</a>
+  </nav>
+
   {# minimal floating cluster: day/night toggle + active socials #}
   <div class="chrome">
     <button class="chrome__toggle" type="button" aria-label="Switch day / dusk / night" title="Day · Dusk · Night">
