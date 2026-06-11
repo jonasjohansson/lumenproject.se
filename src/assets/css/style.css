@@ -276,6 +276,11 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
   font-size: var(--fs-mega); line-height: 0.84; letter-spacing: 0.005em; color: var(--hhero-ink);
   text-shadow: 0 0 60px rgba(var(--glow), var(--hhero-glow));   /* luminous glow (off in day), no drop shadow */
+  /* Optical alignment: the display glyph's left side-bearing (~0.044em) leaves
+     the giant cap visibly inset from the gutter, so it reads as misaligned with
+     the nav and tagline (whose tiny side-bearing is negligible). Pull it back by
+     that bearing so the painted left edge lands on the content gutter. */
+  margin-left: -0.044em;
 }
 .wordmark .l2 { display: block; }
 .hero__tag {

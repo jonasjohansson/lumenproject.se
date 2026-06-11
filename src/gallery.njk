@@ -18,7 +18,7 @@ ogImageAlt: A photograph from a Lumen Project happening
 <div class="gallery">
   {% for img in gallery %}
   <figure class="gallery__item">
-    <a href="{{ img.src }}" aria-label="{% if img.alt %}{{ img.alt }} — view full photograph{% else %}View full photograph {{ loop.index }} of {{ gallery.length }}{% endif %}">
+    <a href="{{ img.src }}" target="_blank" rel="noopener" aria-label="{% if img.alt %}{{ img.alt }} — view full photograph{% else %}View full photograph {{ loop.index }} of {{ gallery.length }}{% endif %}">
       {% galleryImg img.src, img.alt, "(max-width: 640px) 92vw, (max-width: 1100px) 45vw, 320px" %}
     </a>
   </figure>
