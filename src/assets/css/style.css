@@ -2,7 +2,7 @@
  *  LUMEN PROJECT — "Transit"
  *
  *  Light + sound moving through the day. The theme shifts by the
- *  visitor's local hour — day (pale) · dusk (amber) · night (blue-black) —
+ *  visitor's local hour — day (pale) · night (blue-black) —
  *  set as data-theme on <html>. All design decisions live as tokens in
  *  :root; components below only consume tokens, never raw values.
  *
@@ -80,15 +80,6 @@ html[data-theme="day"] {
   --glow:  248, 168, 78;
   --hhero-ink: #181a28; --hhero-veil: 0; --hhero-glow: 0;   /* day: dark text, clean fade, no veil */
   color-scheme: light;
-}
-html[data-theme="dusk"] {
-  --paper: #15100c;  --paper-2: #201810;
-  --ink:   #f3e7d3;  --ink-dim: #b39c80;
-  --line:  rgba(243, 231, 211, 0.16);
-  --accent: #ffb259; --accent-ink: #ffbf73;
-  --glow:  255, 150, 60;
-  --hhero-veil: 0.5; --hhero-glow: 0.42;   /* dusk: dark ground, keep white text + veil */
-  color-scheme: dark;
 }
 html[data-theme="night"] { color-scheme: dark; }   /* uses :root defaults */
 
@@ -169,7 +160,6 @@ a:hover { color: var(--ink); }
 .chrome__toggle .g { display: none; }
 .chrome__toggle .g svg { width: 17px; height: 17px; }
 html[data-theme="day"]   .chrome__toggle .g-day,
-html[data-theme="dusk"]  .chrome__toggle .g-dusk,
 html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 
 /* small home link (top-left) on inner pages */
@@ -256,12 +246,11 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 
 /* — Hero ———————————————————————————————————————————————————— */
 .hero { position: relative; min-height: 100svh; display: grid; align-items: end; isolation: isolate; overflow: hidden; }
-.hero__img {   /* three stacked frames; the active phase fades in */
+.hero__img {   /* two stacked frames; the active phase fades in */
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; z-index: -2; opacity: 0; transition: opacity 1.1s var(--ease);
 }
 html[data-theme="day"]   .hero__img--day,
-html[data-theme="dusk"]  .hero__img--dusk,
 html[data-theme="night"] .hero__img--night { opacity: 1; }
 .hero::before {   /* dark only behind the wordmark (upper-mid); bottom fades cleanly to the page */
   content: ""; position: absolute; inset: 0; z-index: -1; transition: background var(--dur-slow) var(--ease);
