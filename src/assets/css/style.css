@@ -481,7 +481,10 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
   .site-nav--withlogo { --nav-logo-clear: 5.5rem; }  /* only subpages have the logo to clear */
   /* roomier tap targets on touch (hit area grows without shifting the layout) */
   .site-nav a { padding-block: 0.5rem; margin-block: -0.5rem; }
-  .chrome__toggle, .chrome__ic { width: 36px; height: 36px; }
+  .chrome__ic { width: 36px; height: 36px; }
+  /* drop the day/night toggle on phones — it crowds the nav so the last link
+     ("About") gets pushed off-screen; the time-of-day default still applies */
+  .chrome__toggle { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
