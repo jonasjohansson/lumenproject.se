@@ -1,12 +1,10 @@
 ---
-title: "Transmission"
-date: "2020-06-14"
-time: "14:00-23:00"
-venue: "Eric Ericsonhallen"
-city: "Stockholm"
-price: ""
-ticketUrl: ""
-image: "/assets/img/events/lumenproject-transmission.png"
+title: Lumen Project // Transmission
+date: 2020-06-14
+time: 14:00-23:00
+venue: Eric Ericsonhallen
+city: Stockholm
+image: /assets/img/events/lumenproject-transmission.png
 description: |-
   online only Sunday JUNE 14th 
 
