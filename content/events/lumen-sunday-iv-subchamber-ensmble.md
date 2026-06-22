@@ -1,5 +1,5 @@
 ---
-title: Lumen Sunday IV // Subchamber Ensmble
+title: Lumen Sunday IV // Subchamber Ensemble
 date: 2020-10-18
 time: 16:00-20:00
 venue: Eric Ericsonhallen
