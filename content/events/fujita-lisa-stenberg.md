@@ -1,12 +1,10 @@
 ---
-title: "FUJI||||||||||TA & Lisa Stenberg"
-date: "2024-09-10"
-time: "19:30-20:30"
-venue: "Hägerstensåsens Medborgarhus"
-city: "Stockholm"
-price: ""
-ticketUrl: ""
-image: "/assets/img/events/lumenproject-fujita-lisa-stenberg.png"
+title: Lumen Project x Fylkingen
+date: 2024-09-10
+time: 19:30-20:30
+venue: Hägerstensåsens Medborgarhus
+city: Stockholm
+image: /assets/img/events/lumenproject-fujita-lisa-stenberg.png
 description: |-
   Collaboration with Fylkingen
 
