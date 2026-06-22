@@ -4,6 +4,7 @@ date: 2026-09-18
 time: 18:00-21:00
 venue: Markuskyrkan
 city: Stockholm
+price: Free
 description: >-
   Performances by:
 
