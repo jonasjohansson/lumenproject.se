@@ -1,12 +1,10 @@
 ---
-title: "Lumen Project Stockholm 2020 - Cancelled"
-date: "2020-05-01"
-time: "15:00-23:59"
-venue: "Eric Ericsonhallen"
-city: "Stockholm"
-price: ""
-ticketUrl: ""
-image: "/assets/img/events/lumenproject-lumen-project-stockholm-2020-cancelled.png"
+title: Lumen Project // Stockholm - Cancelled
+date: 2020-05-01
+time: 15:00-23:59
+venue: Eric Ericsonhallen
+city: Stockholm
+image: /assets/img/events/lumenproject-lumen-project-stockholm-2020-cancelled.png
 description: |-
   Lumen Project
   // STOCKHOLM 2020
