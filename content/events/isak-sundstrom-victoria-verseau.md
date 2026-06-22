@@ -1,5 +1,5 @@
 ---
-title: Lumen Sunday / Isak Sundström / Victoria Verseau
+title: Lumen Sunday // Isak Sundström / Victoria Verseau
 date: 2022-09-11
 time: 18:30-20:00
 venue: Eric Ericsonhallen
