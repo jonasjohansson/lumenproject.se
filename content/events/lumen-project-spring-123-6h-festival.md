@@ -1,5 +1,5 @@
 ---
-title: Lumen Project / Spring 12.3
+title: Lumen Project // Spring 12.3
 date: 2023-03-12
 time: 15:00-21:00
 venue: Eric Ericsonhallen
