@@ -107,6 +107,9 @@ module.exports = function (eleventyConfig) {
       para.push(esc(t).replace(/Lumen Project/g, '<strong class="brand">Lumen Project</strong>'));
     }
     flush();
+    // drop subheadings with no content beneath them (a heading immediately
+    // followed by another heading or the end of the text)
+    html = html.replace(/<h3 class="ev-sub">.*?<\/h3>(?=<h3 class="ev-sub">|$)/g, "");
     return html;
   });
 

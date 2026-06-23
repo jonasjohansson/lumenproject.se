@@ -28,7 +28,7 @@ eleventyComputed:
 
     {% if lumen.nextEvent %}
     <div class="hero__scrolls">
-      <span class="nextev"><span class="k">Next</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a>, {{ lumen.nextEvent.Date | eventDate }}</span>
+      <span class="nextev"><span class="k">Upcoming</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a>, {{ lumen.nextEvent.Date | eventDate }}</span>
     </div>
     {% endif %}
   </div>

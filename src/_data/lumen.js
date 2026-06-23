@@ -135,7 +135,7 @@ module.exports = function () {
     const g = matter(fs.readFileSync(path.join(dir, f), "utf8"));
     const d = g.data || {};
     return {
-      Title: (d.title || "").replace(/\s*\/\/+\s*/g, " / "),
+      Title: (d.title || "").replace(/\s*\/\/+\s*/g, " / ").trim(),
       Date: ymd(d.date),
       Time: d.time || "",
       Venue: d.venue || "",
