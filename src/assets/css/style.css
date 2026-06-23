@@ -357,9 +357,10 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 .ev-row__title {
   font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
   font-size: clamp(1.15rem, 2.4vw, 1.6rem); line-height: 1.05; color: var(--ink);
-  display: inline-flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
+  display: inline-flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
 }
 .ev-row:hover .ev-row__title { color: var(--accent-ink); }
+.ev-row__title .badge { border-radius: var(--radius-sm); }
 .ev-row__meta { color: var(--ink-dim); font-size: 0.85rem; text-align: right; white-space: nowrap; }
 .ev-row__date { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking); color: var(--accent-ink); }
 @media (max-width: 600px) {

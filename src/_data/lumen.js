@@ -225,6 +225,17 @@ module.exports = function () {
     g.events.push(e);
   }
 
+  // all events grouped by year (newest year first; events[] is already
+  // newest-first within each year) — upcoming editions keep their badge so the
+  // index reads as one chronology rather than a split upcoming/past list.
+  const byYear = [];
+  for (const e of events) {
+    const y = e.year || "Undated";
+    let g = byYear.find((g) => g.year === y);
+    if (!g) { g = { year: y, events: [] }; byYear.push(g); }
+    g.events.push(e);
+  }
+
   // 301-style redirect stubs from every prior URL shape (dated + root) -> /events/<slug>/
   const redirects = [];
   for (const e of events) {
@@ -267,6 +278,7 @@ module.exports = function () {
     upcoming,
     past,
     pastByYear,
+    byYear,
     nextEvent,
     redirects,
     artists,

@@ -1,21 +1,13 @@
-{# Text index of events (no artwork) — used by the /events/ page. #}
-{% if lumen.upcoming.length %}
-{% for e in lumen.upcoming %}
-<a class="ev-row ev-row--up" href="{{ e.url }}">
-  <span class="ev-row__title">{{ e.Title }} <span class="badge">Upcoming</span></span>
-  <span class="ev-row__meta"><span class="ev-row__date">{{ e.Date | eventDate }}</span>{% if e.meta %} · {{ e.meta }}{% endif %}</span>
-</a>
-{% endfor %}
-{% endif %}
-
-{% for group in lumen.pastByYear %}
+{# Text index of events (no artwork) — used by the /events/ page. One
+   chronology grouped by year; upcoming editions carry a badge + full date. #}
+{% for group in lumen.byYear %}
 <section class="year">
   <div class="year__head"><h2 class="year__n">{{ group.year }}</h2></div>
   <div class="ev-index">
     {% for e in group.events %}
-    <a class="ev-row" href="{{ e.url }}">
-      <span class="ev-row__title">{{ e.Title }}</span>
-      <span class="ev-row__meta">{% if e.meta %}{{ e.meta }}{% endif %}</span>
+    <a class="ev-row{% if e.isUpcoming %} ev-row--up{% endif %}" href="{{ e.url }}">
+      <span class="ev-row__title">{{ e.Title }}{% if e.isUpcoming %} <span class="badge">Upcoming</span>{% endif %}</span>
+      <span class="ev-row__meta">{% if e.isUpcoming %}<span class="ev-row__date">{{ e.Date | eventDate }}</span>{% if e.meta %} · {% endif %}{% endif %}{% if e.meta %}{{ e.meta }}{% endif %}</span>
     </a>
     {% endfor %}
   </div>
