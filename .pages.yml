@@ -44,9 +44,9 @@ content:
       - { name: image, label: Poster / graphic, type: image, options: { media: events }, description: "Shown at the top of the event page and in link previews" }
       - { name: photo, label: Event photo, type: image, options: { media: photos }, description: "Optional. A past event with no poster leads with this photo instead" }
       - name: lineup
-        label: Line-up
+        label: Performances
         type: object
-        description: "Performers, in order. Use this instead of listing them in the description — it drives the sitewide Artists list reliably."
+        description: "Performers, in order. List them here (not in the body) — this drives the event's Performances section and the sitewide Artists list reliably. Leave empty if the line-up is still TBA."
         list:
           sortable: true
           collapsible:
@@ -55,13 +55,27 @@ content:
         fields:
           - { name: name, label: Artist / act, type: string, required: true }
           - { name: url, label: Link, type: string, pattern: '^$|^https?://' }
-      - { name: description, label: Description, type: text, description: "Body text. Don't list performers here — use the Line-up field above. ALL-CAPS lines become headings; lines with web addresses are removed." }
+      - { name: credits, label: Credits & support, type: text, description: "Collaborations, funders and thanks — e.g. “In collaboration with X” / “With support from Kulturrådet and Stockholms Stad”. One per line. Shown at the foot of the event." }
+      - { name: about, label: About (override), type: text, description: "Leave blank to show the standard Lumen Project blurb (set in Site settings → Event About blurb). Fill in only to override it for this event." }
+      - { name: description, label: More info / body, type: text, description: "Optional notes about this event. Performances, credits and the About blurb have their own fields above — leave this as “More info TBA” for events not yet announced. ALL-CAPS lines become headings; link lines are removed." }
 
   - name: gallery
     label: Gallery
     type: file
     path: content/gallery.json
     fields:
+      - name: videos
+        label: Videos (YouTube)
+        type: object
+        description: "Paste a YouTube link for each video — shown at the top of the Gallery page. Drag to reorder."
+        list:
+          sortable: true
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+          - { name: url, label: YouTube URL, type: string, pattern: '^$|^https?://' }
+          - { name: title, label: Title (shown to screen readers), type: string }
       - name: photos
         label: Photos
         type: object
@@ -87,6 +101,7 @@ content:
           - { name: site_title, label: Site title, type: string }
           - { name: tagline, label: Tagline (hero + meta description), type: text }
           - { name: about, label: About text, type: text }
+          - { name: event_about, label: Event About blurb (shown on every event), type: text, description: "The standard “About Lumen Project” paragraph rendered on every event page (unless an event overrides it)." }
           - { name: experience, label: How to experience it, type: text }
           - { name: founders, label: Team / founders, type: text }
           - { name: gallery_intro, label: Gallery intro line, type: text }

@@ -1,15 +1,14 @@
 ---
-title: "Lumen Project × Hosoi"
+title: Lumen Project × Hosoi
 date: "2025-11-02"
-time: "17:00-20:00"
-venue: "Hosoi"
-city: "Stockholm"
-price: "Free"
-ticketUrl: ""
-image: "/assets/img/events/lumenproject-lumen-project-hosoi.jpg"
+time: 17:00-20:00
+venue: Hosoi
+city: Stockholm
+price: Free
+image: /assets/img/events/lumenproject-lumen-project-hosoi.jpg
+lineup:
+  - name: DATASAL
 description: |-
-  // DATASAL
-
   From Gothenburg, moving in the borderlands between experiment and house.
 
   Their sound, “slow-motion flutehouse”, a hypnotic, organic, and quietly ecstatic weave of tones. In early December, Datasal returns with Tyst Sol on Höga Nord Rekords.
@@ -17,8 +16,6 @@ description: |-
   This is an evening presented in collaboration between Lumen Project and Hosoi.
 
   Lumen will play records before and after the live set.
-
-  // INFO
 
   As the venue Hosoi has limited space, we ask that you sign up only if you can make it to the event. Please make sure you are at the venue before 17:50 as we will close doors before the band starts.
 

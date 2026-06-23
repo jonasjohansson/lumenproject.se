@@ -1,24 +1,12 @@
 ---
 title: "Lumen Project // Autumn 18.9 "
-date: 2026-09-18
+date: "2026-09-18"
 time: 18:00-21:00
 venue: Markuskyrkan
 city: Stockholm
 price: Free
-description: >-
-  Performances by:
-
-  TBA
-
-
-  ABOUT
-
-  Lumen Project is a non-profit organisation creating immersive experiences,
-  employing sound / light / and space to inspire awe and stillness.
-
-
+credits: |-
   In collaboration with Markuskyrkan
-
-
   With support from and thanks to: Kulturrådet and Stockholms Stad
+description: More info TBA
 ---

@@ -1,111 +1,24 @@
 ---
 title: Lumen Project // Transmission
-date: 2020-06-14
+date: "2020-06-14"
 time: 14:00-23:00
 venue: Eric Ericsonhallen
 city: Stockholm
 image: /assets/img/events/lumenproject-transmission.png
-description: |-
-  online only Sunday JUNE 14th 
-
-  Available here:
-  https://youtu.be/DAjZ2etmTZQ
-
-  NYC: 08-17
-  Reykjavik: 12-21
-  Stockholm: 14-23
-  Beirut: 15-24
-
-  Link to event to be updated. More info here: https://www.facebook.com/events/587048341921613/
-
-  a longform experience with sound and image // to disconnect // connect to // to participate // immerse in. 
-
-  performances from NYC // STOCKHOLM // BEIRUT // PARIS // REYKJAVÍK // BOVALLSTRAND // MALMÖ
-
-  with MARIAM THE BELIEVER // FANTA YAYO // SHIDA SHAHABI & LINNEA OLSSON // KINLAW // SARA PARKMAN & HAMPUS NORÉN // BORGAR MAGNASON // SIRI KARLSSON & JONNA LÖFGREN // YOUMNA SABA // MARIA W HORN // SUBCHAMBER ENSMBLE // LUMEN VOICES // JAD ATOUI // ANTHONY SAHYOUN // LAMINE CISSOKHO // CARA TOLMIE // AGHILI/KARLSSON // COCOONING
-
-  https://open.spotify.com/playlist/6en9tavHnW7Zw8twOkBSun?si=Ig5zQrOIRIKtB0yoHtTz5A
-
-  More info to come! 
-
-  FREE FOR ALL ---- DONATIONS ARE APPRECIATED 
-  Swish (Sweden only): 1233076577 
-  PayPal: https://www.paypal.me/lumenproject
-
-  CREDITS
-
-  Direction and editing: Erik Sandberg / Studio Kupol
-
-  Additional editing and assembly: Nathan Larson
-
-  Produced by Lumen Project in Sweden - Lina Enqvist, Maria Lyth, and Nathan Larson
-
-  STOCKHOLM: FANTA YAYO // SHIDA SHAHABI & LINNEA OLSSON // SARA PARKMAN & HAMPUS NORÉN // SIRI KARLSSON & JONNA LÖFGREN // MARIA W HORN // // LUMEN VOICES // CARA TOLMIE //
-  Direction and editing: Erik Sandberg / Studio Kupol 
-  Set & light design: Tove Berglund
-  Light technician: Luka Curk
-  Sound recording and mixing: Anton Sundell 
-  Camera operation: Erik Sandberg, David Palmberg and Nathan Larson 
-  Thanks to: Eric Ericsonhallen, MDT Stockholm, Katarina Henryson, Eric Ericson International Choral Centre
-  Lumen Voices consists of Lisa Holmgren, Vilma Ogenblad, Paula Wegman, Marco Carlson, Joel Henryson, Christian Rutemark, Bo Nilsson, Christian Holst, Katarina Henryson
-  Singers with Maria Horn: trio from Ensemble Format: Paula Wegman, Vilma Ogenblad, Lisa Holmgren and Katarina Henryson 
-
-  PARIS: YOUMNA SABA //
-  Video by: Youssef Chebbi
-  Special thanks to Jakub Šimčik, Djamel Kerkar and La Cité International des Arts, Paris
-
-  BEIRUT: JAD ATOUI // ANTHONY SAHYOUN //
-  A film by Joe Saade
-  Gaffer: Mario Aaade
-  Additional videos by: Joelle Abou Chabke, Georges Saadeh, Cynthia-ël Hasbani, Patrick Mouzawak, Ghinwa Daher, Samir Syriani, Amanda Bailly, Cyril Aris, Mounia Akl, Pauline Maroun, Firas Hallak
-  Special thanks: Georges Flouty, Ziad Moukarzel
-
-  BOVALLSTRAND: MARIAM THE BELIEVER // 
-  Film made in collboration with Fredrik Egerstrand, Daniel Kedem and Andreas Werliin 
-  Thank you to Tura Scandinavia, Chris Westerstrom, Sony Venice och Fredrik Hansson 
-  Chuck & Bruno Productions
-
-  NYC: KINLAW //
-  Concept, direction, and sound by Kinlaw, shot in Wilmington, North Carolina
-
-  MALMÖ: SUBCHAMBER ENSMBLE // LAMINE CISSOKHO //
-  Music by Gerda Holmqvist/ Tove Wadenius/ Viktor Auregard / Olivia Rydqvist/ Anna Bervall / Lydia Holmqvist/ Elina Nygren/ Nathan Larson 
-  Camera operation: Robin Nicolaij Mang, Johan Tholson and Nathan Larson
-  Sound recording: Judith Parts and Nathan Larson
-  Thanks to OBRA Gallery, Tomas Giraldo, Petra Bindel 
-
-  REYKJAVIK - BORGAR MAGNASON // 
-  Filmed and edited by Blair Alexander
-
-  VINTAGE FILM INTERLUDES //
-  Vintage film interludes courtesy of the Prelinger Archives, San Francisco, CA. USA
-  “Fruits and Flowers”, 1922 (US)
-  “How the Eye Works”, 1941 (US)
-  “How the Ear Works”, 1940 (US) 
-  “The Moon Comes By”, 1940 (US) 
-  Chimes, piano, harp: Vincent Towlait
-  Harp/guitar: Anna Bergvall
-  Electronics: Nathan Larson
-
-  GUIDED MEDITATION // 
-  Guided Meditation read by Zawe Ashton
-
-  SONIC MEDITATIONS BY PAULINE OLIVEROS //
-  Ear Piece and The Earth Worm Also Sings by Pauline Oliveros, read by Cara Tolmie
-  Shot by Robin Nicolaij Mang / Nathan Larson / Erik Sandberg
-
-  AGHILI/KARLSSON // 
-  Video by Erik Sandberg / Studio Kupol
-
-  COCOONING //
-  Filming: Elinor Samuelsson and Julia Samuelsson
-  Script and editing: Elinor Samuelsson
-  Music: Nathan Larson
-  Artists: Nathalie Wahlberg and Elinor Samuelsson
-
-  This event is part of Lumen Project's ongoing collab with the Eric Ericson International Choral Centre 
-
-  With support from:
-  Stockholms stad
-  Musikverket
+lineup:
+  - name: FANTA YAYO
+  - name: SHIDA SHAHABI & LINNEA OLSSON
+  - name: KINLAW
+  - name: SARA PARKMAN & HAMPUS NORÉN
+  - name: BORGAR MAGNASON
+  - name: SIRI KARLSSON & JONNA LÖFGREN
+  - name: YOUMNA SABA
+  - name: MARIA W HORN
+  - name: SUBCHAMBER ENSMBLE
+  - name: JAD ATOUI
+  - name: ANTHONY SAHYOUN
+  - name: LAMINE CISSOKHO
+  - name: CARA TOLMIE
+  - name: AGHILI
+description: "online only Sunday JUNE 14th \n\nAvailable here:\nhttps://youtu.be/DAjZ2etmTZQ\n\nNYC: 08-17\nReykjavik: 12-21\nStockholm: 14-23\nBeirut: 15-24\n\nLink to event to be updated. More info here: https://www.facebook.com/events/587048341921613/\n\na longform experience with sound and image // to disconnect // connect to // to participate // immerse in. \n\nhttps://open.spotify.com/playlist/6en9tavHnW7Zw8twOkBSun?si=Ig5zQrOIRIKtB0yoHtTz5A\n\nMore info to come! \n\nFREE FOR ALL ---- DONATIONS ARE APPRECIATED \nSwish (Sweden only): 1233076577 \nPayPal: https://www.paypal.me/lumenproject\n\nCREDITS\n\nDirection and editing: Erik Sandberg / Studio Kupol\n\nAdditional editing and assembly: Nathan Larson\n\nProduced by Lumen Project in Sweden - Lina Enqvist, Maria Lyth, and Nathan Larson\n\nDirection and editing: Erik Sandberg / Studio Kupol\_\nSet & light design: Tove Berglund\nLight technician: Luka Curk\nSound recording and mixing: Anton Sundell\_\nCamera operation: Erik Sandberg, David Palmberg and Nathan Larson\_\nThanks to: Eric Ericsonhallen, MDT Stockholm, Katarina Henryson, Eric Ericson International Choral Centre\nLumen Voices consists of Lisa Holmgren, Vilma Ogenblad, Paula Wegman, Marco Carlson, Joel Henryson, Christian Rutemark, Bo Nilsson, Christian Holst, Katarina Henryson\nSingers with Maria Horn: trio from Ensemble Format: Paula Wegman, Vilma Ogenblad, Lisa Holmgren and Katarina Henryson\_\n\nPARIS: YOUMNA SABA //\nVideo by: Youssef Chebbi\nSpecial thanks to Jakub Šimčik, Djamel Kerkar and La Cité International des Arts, Paris\n\nA film by Joe Saade\nGaffer: Mario Aaade\nAdditional videos by: Joelle Abou Chabke, Georges Saadeh, Cynthia-ël Hasbani, Patrick Mouzawak, Ghinwa Daher, Samir Syriani, Amanda Bailly, Cyril Aris, Mounia Akl, Pauline Maroun, Firas Hallak\nSpecial thanks: Georges Flouty, Ziad Moukarzel\n\nBOVALLSTRAND: MARIAM THE BELIEVER //\_\nFilm made in collboration with Fredrik Egerstrand, Daniel Kedem and Andreas Werliin\_\nThank you to Tura Scandinavia, Chris Westerstrom, Sony Venice och Fredrik Hansson\_\nChuck & Bruno Productions\n\nNYC: KINLAW //\nConcept, direction, and sound by Kinlaw, shot in Wilmington, North Carolina\n\nMusic by Gerda Holmqvist/ Tove Wadenius/ Viktor Auregard / Olivia Rydqvist/ Anna Bervall / Lydia Holmqvist/ Elina Nygren/ Nathan Larson\_\nCamera operation: Robin Nicolaij Mang, Johan Tholson and Nathan Larson\nSound recording: Judith Parts and Nathan Larson\nThanks to OBRA Gallery, Tomas Giraldo, Petra Bindel\_\n\nREYKJAVIK - BORGAR MAGNASON //\_\nFilmed and edited by Blair Alexander\n\nVINTAGE FILM INTERLUDES //\nVintage film interludes courtesy of the Prelinger Archives, San Francisco, CA. USA\n“Fruits and Flowers”, 1922 (US)\n“How the Eye Works”, 1941 (US)\n“How the Ear Works”, 1940 (US)\_\n“The Moon Comes By”, 1940 (US)\_\nChimes, piano, harp: Vincent Towlait\nHarp/guitar: Anna Bergvall\nElectronics: Nathan Larson\n\nGUIDED MEDITATION //\_\nGuided Meditation read by Zawe Ashton\n\nSONIC MEDITATIONS BY PAULINE OLIVEROS //\nEar Piece and The Earth Worm Also Sings by Pauline Oliveros, read by Cara Tolmie\nShot by Robin Nicolaij Mang / Nathan Larson / Erik Sandberg\n\nAGHILI/KARLSSON //\_\nVideo by Erik Sandberg / Studio Kupol\n\nCOCOONING //\nFilming: Elinor Samuelsson and Julia Samuelsson\nScript and editing: Elinor Samuelsson\nMusic: Nathan Larson\nArtists: Nathalie Wahlberg and Elinor Samuelsson\n\nThis event is part of Lumen Project's ongoing collab with the Eric Ericson International Choral Centre \n\nWith support from:\nStockholms stad\nMusikverket"
 ---

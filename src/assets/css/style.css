@@ -372,6 +372,11 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 /* the gallery grid carries its own spacing, so the intro block above it drops
    the page's bottom padding to avoid a big empty gap */
 .gallery-head { padding-bottom: 0; }
+/* YouTube embeds above the photo grid */
+.gallery-videos { display: grid; grid-template-columns: 1fr; gap: var(--space-sm); padding: 0 var(--pad) var(--space-lg); }
+@media (min-width: 720px) { .gallery-videos { grid-template-columns: 1fr 1fr; } }
+.gallery-video { margin: 0; aspect-ratio: 16 / 9; border-radius: var(--radius-sm); overflow: hidden; background: var(--paper-2); }
+.gallery-video iframe { width: 100%; height: 100%; border: 0; display: block; }
 .gallery { columns: 320px; column-gap: var(--space-sm); padding: 0 var(--pad) var(--section-y); }
 .gallery__item { break-inside: avoid; margin: 0 0 var(--space-sm); }
 .gallery__item a { display: block; border-radius: var(--radius-sm); overflow: hidden; }
@@ -437,6 +442,9 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 }
 .ev-cast a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--ink) 35%, transparent); }
 .ev-cast a:hover { text-decoration-color: var(--ink); }
+/* About blurb + credits/support at the foot of an event */
+.ev-credits { margin-top: var(--space-lg); color: var(--ink-dim); font-size: var(--fs-base); }
+.ev-credits p + p { margin-top: var(--space-2xs); }
 .ev-cta { margin-top: var(--space-md); padding: 0.8em 1.4em; }   /* uses .badge */
 .ev-cta:hover { opacity: 0.85; }
 .backlink { display: inline-block; margin-top: var(--space-xl); font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 0.82rem; }

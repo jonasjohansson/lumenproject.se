@@ -1,12 +1,20 @@
 ---
-title: "Lumen Project Stockholm"
+title: Lumen Project Stockholm
 date: "2019-02-23"
-time: "10:00-22:00"
-venue: "Basilica Hudson"
-city: ""
-price: ""
-ticketUrl: ""
-image: "/assets/img/events/lumenproject-lumen-project-stockholm.jpg"
+time: 10:00-22:00
+venue: Basilica Hudson
+image: /assets/img/events/lumenproject-lumen-project-stockholm.jpg
+lineup:
+  - name: MOOR MOTHER
+  - name: JULIANNA BARWICK
+  - name: NOVELLER
+  - name: LAU NAU
+  - name: KALI MALONE
+  - name: SOFIA JERNBERG
+  - name: SARAH VAN BUREN
+  - name: PUCE MARY
+  - name: ERIK ENOCKSSON
+  - name: CHRISTER BOTHÉN
 description: |-
   Join us for a seamless 12 hour sound and light festival
 
@@ -20,25 +28,15 @@ description: |-
 
   Doors open at 9:00 for gong meditation led by Mateusz Krawiec
 
-  PERFORMANCES BY
-
-  MOOR MOTHER // JULIANNA BARWICK // NOVELLER
-
   MARIAM THE BELIEVER // MIKA TAKEHARA
 
   ROBERT AUBREY AIKI LOWE // REBEKKA KARIJORD
 
   MELISSA AUF DER MAUR // NATHAN LARSON
 
-  TIME IS A MOUNTAIN // LAU NAU // KALI MALONE
-
-  SOFIA JERNBERG // SARAH VAN BUREN // PUCE MARY
-
   SUBCHAMBER ENSMBLE // CÆCILIE TRIER
 
   MARTA FORSBERG // SONJA LABIANCA
-
-  ERIK ENOCKSSON // CHRISTER BOTHÉN // LUMEN VOICES
 
   Presented by Lumen Project, LE GUESS WHO?, BASILICA HUDSON, CAFE MIDNATT, and TEMPLET
 

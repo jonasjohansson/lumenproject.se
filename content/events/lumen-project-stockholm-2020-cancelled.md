@@ -1,13 +1,29 @@
 ---
 title: Lumen Project // Stockholm - Cancelled
-date: 2020-05-01
+date: "2020-05-01"
 time: 15:00-23:59
 venue: Eric Ericsonhallen
 city: Stockholm
 image: /assets/img/events/lumenproject-lumen-project-stockholm-2020-cancelled.png
+lineup:
+  - name: BORGAR MAGNASON
+  - name: SHIDA SHAHABI
+  - name: MARIA W HORN
+  - name: MARIAM THE BELIEVER
+  - name: MME CHANDELIER
+  - name: NADINE BYRNE
+  - name: YOUMNA SABA
+  - name: JAD ATOUI
+  - name: SUBCHAMBER ENSMBLE
+  - name: NSDOS
+  - name: FANTA YAYO
+  - name: LAMINE CISSOKHO
+  - name: SIRI KARLSSON
+  - name: JONNA LÖFGREN
+  - name: SARAH KINLAW
+  - name: EL PERRO DEL MAR
 description: |-
   Lumen Project
-  // STOCKHOLM 2020
 
   Join us for a seamless 9 hour sound and light festival in Eric Ericsonhallen at Skeppsholmen, Stockholm! 
 
@@ -17,10 +33,6 @@ description: |-
   TICKETS ON SALE NOW
 
   Facebook event: https://www.facebook.com/events/1271645386367644/
-
-  Performances by 
-
-  BORGAR MAGNASON / SHIDA SHAHABI / MARIA W HORN / MARIAM THE BELIEVER / MME CHANDELIER / NADINE BYRNE / YOUMNA SABA / JAD ATOUI / LUMEN VOICES / SUBCHAMBER ENSMBLE / NSDOS / FANTA YAYO / LAMINE CISSOKHO / SIRI KARLSSON / JONNA LÖFGREN / SARAH KINLAW / EL PERRO DEL MAR
 
   This year's artists on Spotify: https://open.spotify.com/playlist/6en9tavHnW7Zw8twOkBSun?si=Ig5zQrOIRIKtB0yoHtTz5A
 
@@ -44,7 +56,7 @@ description: |-
 
   This event is part of Lumen Project's ongoing collab with the Eric Ericson International Choral Centre - THANK YOU!
 
-  Lumen Project is a non-profit organisation creating immersive experiences, employing sound / light / and space to inspire awe and stillness. 
+   
 
   www.lumenproject.se
 

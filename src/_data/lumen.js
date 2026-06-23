@@ -146,6 +146,8 @@ module.exports = function () {
       Photo: d.photo || "",
       Lineup: Array.isArray(d.lineup) ? d.lineup.filter((x) => x && x.name) : [],
       Description: (d.description != null ? String(d.description) : (g.content || "")).trim(),
+      Credits: (d.credits != null ? String(d.credits) : "").trim(),
+      AboutOverride: (d.about != null ? String(d.about) : "").trim(),
       slug: f.replace(/\.md$/, "") || slugify(d.title),
     };
   }).filter((e) => e.Title);

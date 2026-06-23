@@ -1,4 +1,8 @@
 {
+  "videos": [
+    { "url": "https://youtu.be/HQBc-7K4Vig", "title": "Lumen Project / Spring 6.4" },
+    { "url": "https://youtu.be/FZOdE_64Xio", "title": "Lumen Project / Spring 22.2" }
+  ],
   "photos": [
     {
       "image": "/assets/img/gallery/lumenproject-001.jpg",

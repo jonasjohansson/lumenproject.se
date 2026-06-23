@@ -15,6 +15,16 @@ ogImageAlt: A photograph from a Lumen Project happening
   <p class="page-intro">{{ lumen.settings.gallery_intro }}{% if lumen.photographers.length %}<br />Photography by {% for p in lumen.photographers %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif %}{% endif %}{% if p.URL %}<a href="{{ p.URL }}" target="_blank" rel="noopener">{{ p.Name }}</a>{% else %}{{ p.Name }}{% endif %}{% endfor %}.{% endif %}</p>
 </div>
 
+{% if galleryVideos.length %}
+<div class="gallery-videos">
+  {% for v in galleryVideos %}
+  <figure class="gallery-video">
+    <iframe src="{{ v.embed }}" title="{{ v.title or 'Lumen Project video' }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </figure>
+  {% endfor %}
+</div>
+{% endif %}
+
 <div class="gallery">
   {% for img in gallery %}
   <figure class="gallery__item">

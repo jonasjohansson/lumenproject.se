@@ -36,14 +36,22 @@ eleventyComputed:
         {% if ev.isUpcoming and ev.TicketURL %}<a class="badge ev-cta" href="{{ ev.TicketURL }}" target="_blank" rel="noopener">Tickets &rarr;</a>{% endif %}
       </aside>
 
-      <div>
-        {% if ev.Description %}<div class="prose ev-desc">{{ ev.Description | eventBody | safe }}</div>{% endif %}
+      <div class="ev-content">
         {% if ev.hasLineup %}
         <section class="ev-cast-block">
           <h2 class="ev-sub">Performances</h2>
           <p class="ev-cast">{% for a in ev.lineup %}{% if not loop.first %}  /  {% endif %}{% if a.URL %}<a href="{{ a.URL }}" target="_blank" rel="noopener">{{ a.Name }}</a>{% else %}{{ a.Name }}{% endif %}{% endfor %}</p>
         </section>
         {% endif %}
+        {% if ev.Description %}<div class="prose ev-desc">{{ ev.Description | eventBody | safe }}</div>{% endif %}
+        {% set aboutText = ev.AboutOverride or lumen.settings.event_about %}
+        {% if aboutText %}
+        <section class="ev-about">
+          <h2 class="ev-sub">About</h2>
+          <div class="prose">{{ aboutText | eventBody | safe }}</div>
+        </section>
+        {% endif %}
+        {% if ev.Credits %}<div class="ev-credits prose">{{ ev.Credits | eventBody | safe }}</div>{% endif %}
       </div>
     </div>
 
