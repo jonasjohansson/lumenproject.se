@@ -23,13 +23,18 @@ catch (e) { fail("content/settings.json", "invalid JSON — " + e.message); }
 
 // events
 const TIME_RE = /^\s*\d{1,2}[:.]\d{2}\s*[–-]\s*\d{1,2}[:.]\d{2}\s*$/;
+// Pages CMS writes dates unquoted, so gray-matter/js-yaml hands us a Date
+// object rather than a string; normalise to YYYY-MM-DD the same way the build
+// (src/_data/lumen.js ymd()) does, so the validator matches what actually ships.
+const dateStr = (v) =>
+  v instanceof Date ? (isNaN(v) ? "" : v.toISOString().slice(0, 10)) : String(v);
 const evDir = path.join(root, "content/events");
 for (const f of fs.readdirSync(evDir).filter((f) => f.endsWith(".md"))) {
   let data;
   try { data = matter(fs.readFileSync(path.join(evDir, f), "utf8")).data; }
   catch (e) { fail(f, "unparseable frontmatter — " + e.message); continue; }
   if (!data.title || !String(data.title).trim()) fail(f, "missing title");
-  if (!data.date || !/^\d{4}-\d{2}-\d{2}$/.test(String(data.date)))
+  if (!data.date || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr(data.date)))
     fail(f, `date must be YYYY-MM-DD (got ${JSON.stringify(data.date)})`);
   if (data.time && !TIME_RE.test(String(data.time)))
     fail(f, `time should be a range like 15:00-21:00 (got ${JSON.stringify(data.time)})`);
