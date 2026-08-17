@@ -5,6 +5,7 @@ time: 18:00-21:00
 venue: Markuskyrkan
 city: Stockholm
 price: Free
+image: /assets/img/events/lumenproject-lumen-autumn.jpg
 credits: |-
   In collaboration with Markuskyrkan
   With support from and thanks to: Kulturrådet and Stockholms Stad
