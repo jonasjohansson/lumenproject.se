@@ -66,7 +66,7 @@
   --hero-ink:   #fff;             /* text over the dark hero scrim (event hero) */
   --hhero-ink:  #fff;             /* home hero text — theme-aware (see below) */
   --hhero-veil: 0.55;             /* home hero dark scrim strength */
-  --hhero-glow: 0.5;              /* home hero wordmark glow */
+  --hhero-glow: 0.12;              /* home hero wordmark glow */
   --glow:       120, 150, 255;    /* rgb — bloom / glow */
   color-scheme: dark;
 }
@@ -105,7 +105,7 @@ body {
 /* film grain — fixed, faint, over everything */
 body::after {
   content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none;
-  opacity: 0.05; mix-blend-mode: overlay;
+  opacity: 0.02; mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -161,9 +161,9 @@ html.is-past-hero .site-nav__home--hero:hover { color: var(--accent-ink); opacit
 }
 .chrome__toggle, .chrome__ic {
   width: 34px; height: 34px; display: grid; place-items: center; cursor: pointer;
-  border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent); border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); border-radius: 50%;
   color: var(--ink); background: color-mix(in srgb, var(--paper) 30%, transparent);
-  -webkit-backdrop-filter: blur(9px); backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
   transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur-slow) var(--ease);
 }
 .chrome__toggle:hover, .chrome__ic:hover { color: var(--accent-ink); border-color: var(--accent); }
@@ -195,7 +195,7 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
   height: 34px;  /* match the social-icon buttons so we share their centre line */
   display: flex; align-items: center; gap: clamp(0.85rem, 2.6vw, 1.8rem);
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-  letter-spacing: var(--tracking-wide); font-size: clamp(0.78rem, 2.4vw, 0.95rem);
+  letter-spacing: 0.08em; font-size: clamp(0.78rem, 2.4vw, 0.95rem);
   line-height: 1; white-space: nowrap;
 }
 /* inner pages have the home link on the left (~113px wide single line) — keep
@@ -254,7 +254,7 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 .hero::before {   /* dark only behind the wordmark (upper-mid); bottom fades cleanly to the page */
   content: ""; position: absolute; inset: 0; z-index: -1; transition: background var(--dur-slow) var(--ease);
   background:
-    linear-gradient(180deg, transparent 64%, var(--paper) 100%),                                                                  /* dissolve into the page */
+    linear-gradient(180deg, transparent 74%, var(--paper) 100%),                                                                  /* dissolve into the page */
     linear-gradient(180deg, rgba(7, 8, 13, calc(var(--hhero-veil) * 1.05)) 0%, rgba(7, 8, 13, calc(var(--hhero-veil) * 0.7)) 45%,
                             rgba(7, 8, 13, calc(var(--hhero-veil) * 0.85)) 66%, rgba(7, 8, 13, 0) 92%),                             /* dark veil only when text is white */
     radial-gradient(120% 80% at 50% 8%, rgba(var(--glow), 0.16), transparent 60%);                                                /* luminous halo */
@@ -438,7 +438,7 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 .ev-hero__title {
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase; color: var(--hero-ink);
   font-size: var(--fs-mega); line-height: 0.86; letter-spacing: 0.005em; margin-top: var(--space-2xs);
-  text-shadow: 0 0 50px rgba(var(--glow), 0.4); text-wrap: balance;   /* luminous glow, no drop shadow */
+  text-shadow: 0 0 50px rgba(var(--glow), 0.1); text-wrap: balance;   /* luminous glow, no drop shadow */
 }
 
 .ev-body { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 3.5rem); padding-block: clamp(2.4rem, 6vw, 4.5rem); }
