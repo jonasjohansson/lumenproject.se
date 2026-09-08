@@ -26,7 +26,7 @@ description: >-
 
   :: Friday 18th September 2026 ::
 
-  :: 19:00–21:00 ::
+  :: 18:30–21:00 ::
 
   :: Markuskyrkan ::
 
