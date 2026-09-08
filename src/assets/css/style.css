@@ -173,18 +173,6 @@ html.is-past-hero .site-nav__home--hero:hover { color: var(--accent-ink); opacit
 html[data-theme="day"]   .chrome__toggle .g-day,
 html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 
-/* small home link (top-left) on inner pages */
-.corner-home {
-  position: fixed; z-index: 50; top: clamp(0.8rem, 2vw, 1.3rem); left: clamp(0.9rem, 3vw, 2rem);
-  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-  letter-spacing: var(--tracking-wide); font-size: 1.05rem; line-height: 1;
-  color: var(--ink);   /* adapts to the page background (dark on light, light on dark) */
-}
-.corner-home:hover { color: var(--accent-ink); }
-/* over a (dark-scrimmed) hero, stay white */
-.corner-home--hero { color: #fff; }
-.corner-home--hero:hover { color: #fff; }
-
 /* — Header ————————————————————————————————————————————————————
    The wordmark/home link pins to the far-left (image edge); the section links
    align to the content gutter (where page titles & the hero wordmark sit).
