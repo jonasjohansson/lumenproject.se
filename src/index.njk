@@ -31,5 +31,11 @@ eleventyComputed:
       <span class="nextev"><span class="k">Upcoming</span> <a href="{{ lumen.nextEvent.url }}">{{ lumen.nextEvent.Title }}</a></span>
     </div>
     {% endif %}
+
+    {% if lumen.settings.mailing_url %}
+    <p class="hero__cta">
+      <a class="badge badge--cta" href="{{ lumen.settings.mailing_url }}" target="_blank" rel="noopener">Newsletter <span class="badge__arrow" aria-hidden="true">&rarr;</span></a>
+    </p>
+    {% endif %}
   </div>
 </section>

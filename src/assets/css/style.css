@@ -332,6 +332,20 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 }
 .featured .badge { position: absolute; top: var(--space-sm); left: var(--space-sm); }
 
+/* newsletter call-to-action pill in the home hero — the badge fill, sized up to
+   read as a button. Hover mixes the accent toward the hero ink, so it lifts in
+   night (white ink) and deepens in day (dark ink) without a second colour. */
+.hero__cta { margin-top: var(--space-sm); }
+.badge--cta {
+  display: inline-flex; align-items: center; gap: 0.7ch;
+  padding: 0.62em 1.15em; font-size: 0.78rem;
+  transition: background var(--dur) var(--ease);
+}
+.badge--cta:hover { background: color-mix(in srgb, var(--accent) 80%, var(--hhero-ink)); }
+.badge__arrow { transition: transform var(--dur) var(--ease); }
+.badge--cta:hover .badge__arrow { transform: translateX(2px); }
+@media (prefers-reduced-motion: reduce) { .badge__arrow { transition: none; } }
+
 /* prev/next event navigation at the foot of an event page */
 .ev-nav {
   margin-top: clamp(2.4rem, 6vw, 4.5rem); padding-top: clamp(1.6rem, 4vw, 2.6rem);
