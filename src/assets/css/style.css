@@ -142,6 +142,17 @@ a:hover { color: var(--ink); }
   background: linear-gradient(180deg, var(--paper) 0%, var(--paper) 52%, transparent 100%);
 }
 
+/* a hero supplies its own scrim, so this one stays down until the hero has
+   scrolled past; .is-past-hero is set by the observer in base.njk */
+.topfade--hero { opacity: 0; transition: opacity var(--dur-med) var(--ease); }
+html.is-past-hero .topfade--hero { opacity: 1; }
+/* ...and past the hero the header is over paper, so the hard white goes back to
+   the theme ink — on the day theme white-on-pale is otherwise unreadable */
+html.is-past-hero .site-nav--hero a,
+html.is-past-hero .site-nav__home--hero { color: var(--ink); }
+html.is-past-hero .site-nav--hero a:hover,
+html.is-past-hero .site-nav__home--hero:hover { color: var(--accent-ink); opacity: 1; }
+
 /* — Chrome: fixed corner controls (no header/footer) ——————————— */
 .chrome {
   position: fixed; z-index: 50; display: flex; align-items: center; gap: var(--space-2xs);
@@ -345,6 +356,10 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 .badge__arrow { transition: transform var(--dur) var(--ease); }
 .badge--cta:hover .badge__arrow { transform: translateX(2px); }
 @media (prefers-reduced-motion: reduce) { .badge__arrow { transition: none; } }
+
+/* an event page can't use .page — its hero replaces the top padding — but it
+   still needs .page's bottom room, or the prev/next nav ends flush to the fold */
+.ev-page { padding-bottom: clamp(4rem, 10vw, 8rem); }
 
 /* prev/next event navigation at the foot of an event page */
 .ev-nav {
