@@ -19,6 +19,11 @@ media:
     input: src/assets/img/photos
     output: /assets/img/photos
     categories: [image]
+  - name: newsletter
+    label: Newsletter photos
+    input: src/assets/img/newsletter
+    output: /assets/img/newsletter
+    categories: [image]
 
 content:
   - name: events
