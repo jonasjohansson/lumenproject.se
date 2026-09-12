@@ -331,16 +331,17 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 }
 .featured .badge { position: absolute; top: var(--space-sm); left: var(--space-sm); }
 
-/* newsletter call-to-action pill in the home hero — the badge fill, sized up to
+/* newsletter call-to-action pill in the home navigation — the badge fill, sized up to
    read as a button. Hover mixes the accent toward the hero ink, so it lifts in
    night (white ink) and deepens in day (dark ink) without a second colour. */
-.hero__cta { margin-top: var(--space-sm); }
 .badge--cta {
   display: inline-flex; align-items: center; gap: 0.7ch;
   padding: 0.62em 1.15em; font-size: 0.78rem;
   transition: background var(--dur) var(--ease);
 }
 .badge--cta:hover { background: color-mix(in srgb, var(--accent) 80%, var(--hhero-ink)); }
+.site-nav.site-nav--hero .site-nav__newsletter,
+.site-nav.site-nav--hero .site-nav__newsletter:hover { color: var(--on-accent); opacity: 1; }
 .badge__arrow { transition: transform var(--dur) var(--ease); }
 .badge--cta:hover .badge__arrow { transform: translateX(2px); }
 @media (prefers-reduced-motion: reduce) { .badge__arrow { transition: none; } }
@@ -500,6 +501,10 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
   /* drop the day/night toggle on phones — it crowds the nav so the last link
      ("About") gets pushed off-screen; the time-of-day default still applies */
   .chrome__toggle { display: none; }
+}
+/* Keep the home newsletter beside the section links, with socials below on phones. */
+@media (max-width: 480px) {
+  .chrome--home { top: calc(clamp(0.8rem, 2vw, 1.3rem) + 44px); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
