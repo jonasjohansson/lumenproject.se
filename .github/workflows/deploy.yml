@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:          # manual "rebuild now" button
+  schedule:
+    # nightly rebuild just after midnight Stockholm so events that have
+    # passed drop their "Upcoming" badge without needing a content push
+    - cron: "15 23 * * *"
 
 permissions:
   contents: read

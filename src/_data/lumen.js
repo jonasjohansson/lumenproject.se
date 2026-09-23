@@ -155,7 +155,8 @@ module.exports = function () {
   // newest first
   events.sort((a, b) => (b.Date || "").localeCompare(a.Date || ""));
 
-  const today = new Date().toISOString().slice(0, 10);
+  // Stockholm calendar date (sv-SE formats as YYYY-MM-DD), not UTC
+  const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Stockholm" });
 
   events = events.map((e, i) => {
     const dated = /^\d{4}-\d{2}-\d{2}$/.test(e.Date);
