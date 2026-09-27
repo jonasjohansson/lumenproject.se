@@ -83,6 +83,26 @@ html[data-theme="day"] {
 }
 html[data-theme="night"] { color-scheme: dark; }   /* uses :root defaults */
 
+/* Gradients can't be transitioned, so a theme toggle fades the tokens themselves:
+   registered as typed properties they interpolate, and every background, gradient
+   and text colour built from them moves in lockstep. */
+@property --paper      { syntax: "<color>";  inherits: true; initial-value: #0a0b11; }
+@property --paper-2    { syntax: "<color>";  inherits: true; initial-value: #12131e; }
+@property --ink        { syntax: "<color>";  inherits: true; initial-value: #e6e9f3; }
+@property --ink-dim    { syntax: "<color>";  inherits: true; initial-value: #9aa0b8; }
+@property --line       { syntax: "<color>";  inherits: true; initial-value: transparent; }
+@property --accent     { syntax: "<color>";  inherits: true; initial-value: #8aa2ff; }
+@property --accent-ink { syntax: "<color>";  inherits: true; initial-value: #a7b8ff; }
+@property --on-accent  { syntax: "<color>";  inherits: true; initial-value: #0a0b11; }
+@property --hhero-ink  { syntax: "<color>";  inherits: true; initial-value: #fff; }
+@property --hhero-veil { syntax: "<number>"; inherits: true; initial-value: 0.55; }
+@property --hhero-glow { syntax: "<number>"; inherits: true; initial-value: 0.12; }
+:root {
+  transition-property: --paper, --paper-2, --ink, --ink-dim, --line, --accent, --accent-ink,
+                       --on-accent, --hhero-ink, --hhero-veil, --hhero-glow;
+  transition-duration: var(--dur-slow); transition-timing-function: var(--ease);
+}
+
 /* — Reset ——————————————————————————————————————————————————— */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -99,7 +119,6 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
-  transition: background var(--dur-slow) var(--ease), color var(--dur-slow) var(--ease);
 }
 
 /* film grain — fixed, faint, over everything */
@@ -164,7 +183,7 @@ html.is-past-hero .site-nav__home--hero:hover { color: var(--accent-ink); opacit
   border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); border-radius: 50%;
   color: var(--ink); background: color-mix(in srgb, var(--paper) 30%, transparent);
   -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
-  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur-slow) var(--ease);
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
 .chrome__toggle:hover, .chrome__ic:hover { color: var(--accent-ink); border-color: var(--accent); }
 .chrome svg { width: 16px; height: 16px; fill: currentColor; }
@@ -252,7 +271,7 @@ html[data-theme="night"] .chrome__toggle .g-night { display: grid; }
 html[data-theme="day"]   .hero__img--day,
 html[data-theme="night"] .hero__img--night { opacity: 1; }
 .hero::before {   /* dark only behind the wordmark (upper-mid); bottom fades cleanly to the page */
-  content: ""; position: absolute; inset: 0; z-index: -1; transition: background var(--dur-slow) var(--ease);
+  content: ""; position: absolute; inset: 0; z-index: -1;
   background:
     linear-gradient(180deg, transparent 74%, var(--paper) 100%),                                                                  /* dissolve into the page */
     linear-gradient(180deg, rgba(7, 8, 13, calc(var(--hhero-veil) * 1.05)) 0%, rgba(7, 8, 13, calc(var(--hhero-veil) * 0.7)) 45%,
@@ -429,14 +448,13 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 .ev-hero { position: relative; min-height: 72svh; display: grid; align-items: end; isolation: isolate; overflow: hidden; }
 .ev-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
 .ev-hero::before {   /* dark behind the title, eased; the bottom dissolves into the page on an ease-in-out curve */
-  content: ""; position: absolute; inset: 0; z-index: -1; transition: background var(--dur-slow) var(--ease);
-  --p: var(--paper);
+  content: ""; position: absolute; inset: 0; z-index: -1;
   background:
     linear-gradient(180deg, transparent 58%,
-      color-mix(in srgb, var(--p) 4%, transparent) 63%, color-mix(in srgb, var(--p) 15%, transparent) 68%,
-      color-mix(in srgb, var(--p) 31%, transparent) 73%, color-mix(in srgb, var(--p) 50%, transparent) 78%,
-      color-mix(in srgb, var(--p) 69%, transparent) 83%, color-mix(in srgb, var(--p) 85%, transparent) 88%,
-      color-mix(in srgb, var(--p) 96%, transparent) 93%, var(--p) 97%),   /* solid paper before the edge: no seam */
+      color-mix(in srgb, var(--paper) 4%, transparent) 63%, color-mix(in srgb, var(--paper) 15%, transparent) 68%,
+      color-mix(in srgb, var(--paper) 31%, transparent) 73%, color-mix(in srgb, var(--paper) 50%, transparent) 78%,
+      color-mix(in srgb, var(--paper) 69%, transparent) 83%, color-mix(in srgb, var(--paper) 85%, transparent) 88%,
+      color-mix(in srgb, var(--paper) 96%, transparent) 93%, var(--paper) 97%),   /* solid paper before the edge: no seam */
     linear-gradient(180deg,
       rgba(7, 8, 13, 0.4) 0%, rgba(7, 8, 13, 0.2) 12%, rgba(7, 8, 13, 0.06) 24%, rgba(7, 8, 13, 0) 32%,
       rgba(7, 8, 13, 0.08) 42%, rgba(7, 8, 13, 0.24) 52%, rgba(7, 8, 13, 0.4) 62%, rgba(7, 8, 13, 0.46) 72%,
