@@ -11,8 +11,6 @@ credits: |-
   In collaboration with Nordiska Museet.
   With support from and thanks to: Kulturrådet and Stockholms Stad.
   Artwork: Ernst Lilja
-about: |-
-  Lumen Project is a non-profit organisation creating concert experiences, employing sound / light / and space to inspire awe and stillness.
 description: |-
   For one night, Lumen Project takes over Nordiska Museet after dark, transforming the Great Hall into a space for sound, light and deep listening.
 
