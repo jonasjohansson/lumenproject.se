@@ -295,6 +295,13 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
   color: color-mix(in srgb, var(--hhero-ink) 88%, transparent); text-wrap: balance;
 }
 .hero__scrolls { margin-top: var(--space-md); display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; }
+/* wide screens: the upcoming event sits in its own column, right of the wordmark + tagline */
+@media (min-width: 900px) {
+  .hero__inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--space-lg); }
+  .hero__inner > :not(.hero__scrolls) { grid-column: 1; }
+  .hero__scrolls { grid-column: 2; grid-row: 1 / span 2; align-self: end; margin-top: 0; }
+  .hero__scrolls .nextev { flex-direction: column; align-items: flex-end; gap: 0.35rem; text-align: right; max-width: 30ch; }
+}
 
 .nextev { display: inline-flex; align-items: baseline; gap: 0.8ch; flex-wrap: wrap; color: var(--hhero-ink); font-size: clamp(1.1rem, 0.95rem + 0.7vw, 1.45rem); }
 .nextev .k { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 0.85rem; color: color-mix(in srgb, var(--hhero-ink) 70%, transparent); }
