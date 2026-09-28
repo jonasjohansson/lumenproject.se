@@ -296,9 +296,9 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 }
 .hero__scrolls { margin-top: var(--space-md); display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; }
 
-.nextev { display: inline-flex; align-items: baseline; gap: 0.8ch; flex-wrap: wrap; color: var(--hhero-ink); font-size: 0.95rem; }
-.nextev .k { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 0.78rem; color: color-mix(in srgb, var(--hhero-ink) 70%, transparent); }
-.nextev a { color: var(--hhero-ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--hhero-ink) 50%, transparent); }
+.nextev { display: inline-flex; align-items: baseline; gap: 0.8ch; flex-wrap: wrap; color: var(--hhero-ink); font-size: clamp(1.1rem, 0.95rem + 0.7vw, 1.45rem); }
+.nextev .k { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 0.85rem; color: color-mix(in srgb, var(--hhero-ink) 70%, transparent); }
+.nextev a { color: var(--hhero-ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: color-mix(in srgb, var(--hhero-ink) 50%, transparent); }
 .nextev a:hover { text-decoration-color: var(--hhero-ink); }
 
 /* — Manifest ———————————————————————————————————————————————— */
