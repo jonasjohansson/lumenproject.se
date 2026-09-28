@@ -300,13 +300,22 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
   .hero__inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--space-lg); }
   .hero__inner > :not(.hero__scrolls) { grid-column: 1; }
   .hero__scrolls { grid-column: 2; grid-row: 1 / span 2; align-self: end; margin-top: 0; }
-  .hero__scrolls .nextev { flex-direction: column; align-items: flex-end; gap: 0.35rem; text-align: right; max-width: 30ch; }
 }
 
-.nextev { display: inline-flex; align-items: baseline; gap: 0.8ch; flex-wrap: wrap; color: var(--hhero-ink); font-size: clamp(1.1rem, 0.95rem + 0.7vw, 1.45rem); }
+.nextev {
+  display: grid; gap: 0.3rem; padding: 1rem 1.25rem; max-width: 28rem;
+  color: var(--hhero-ink); text-decoration: none;
+  background: color-mix(in srgb, var(--hhero-ink) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--hhero-ink) 28%, transparent); border-radius: 0.75rem;
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.nextev:hover { background: color-mix(in srgb, var(--hhero-ink) 14%, transparent); border-color: color-mix(in srgb, var(--hhero-ink) 55%, transparent); }
 .nextev .k { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 0.85rem; color: color-mix(in srgb, var(--hhero-ink) 70%, transparent); }
-.nextev a { color: var(--hhero-ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: color-mix(in srgb, var(--hhero-ink) 50%, transparent); }
-.nextev a:hover { text-decoration-color: var(--hhero-ink); }
+.nextev__t { font-size: clamp(1.15rem, 0.95rem + 0.8vw, 1.5rem); line-height: 1.25; }
+.nextev__arr { display: inline-block; transition: transform 0.2s ease; }
+.nextev:hover .nextev__arr { transform: translateX(0.2em); }
+.nextev__m { font-size: 0.95rem; color: color-mix(in srgb, var(--hhero-ink) 75%, transparent); }
 
 /* — Manifest ———————————————————————————————————————————————— */
 .manifest {
