@@ -313,8 +313,6 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 .nextev:hover { background: color-mix(in srgb, var(--hhero-ink) 14%, transparent); border-color: color-mix(in srgb, var(--hhero-ink) 55%, transparent); }
 .nextev .k { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 0.85rem; color: color-mix(in srgb, var(--hhero-ink) 70%, transparent); }
 .nextev__t { font-size: clamp(1.15rem, 0.95rem + 0.8vw, 1.5rem); line-height: 1.25; }
-.nextev__arr { display: inline-block; transition: transform 0.2s ease; }
-.nextev:hover .nextev__arr { transform: translateX(0.2em); }
 .nextev__m { font-size: 0.95rem; color: color-mix(in srgb, var(--hhero-ink) 75%, transparent); }
 
 /* — Manifest ———————————————————————————————————————————————— */

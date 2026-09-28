@@ -30,7 +30,7 @@ eleventyComputed:
     <div class="hero__scrolls">
       <a class="nextev" href="{{ lumen.nextEvent.url }}">
         <span class="k">Upcoming</span>
-        <span class="nextev__t">{{ lumen.nextEvent.Title }}&nbsp;<span class="nextev__arr" aria-hidden="true">&rarr;</span></span>
+        <span class="nextev__t">{{ lumen.nextEvent.Title }}</span>
         <span class="nextev__m">{{ lumen.nextEvent.Date | eventDate }}{% if lumen.nextEvent.Venue %} &middot; {{ lumen.nextEvent.Venue }}{% endif %}</span>
       </a>
     </div>
