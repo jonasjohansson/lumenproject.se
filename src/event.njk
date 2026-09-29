@@ -29,6 +29,7 @@ eleventyComputed:
   <div class="wrap ev-page">
     <div class="ev-body">
       <aside class="ev-facts">
+        {% if ev.Date %}<div class="fact"><p class="fact__k">Date</p><p class="fact__v"><time datetime="{{ ev.Date }}">{{ ev.Date | eventDate }}</time></p></div>{% endif %}
         {% if ev.Time %}<div class="fact"><p class="fact__k">Time</p><p class="fact__v">{{ ev.Time }}</p></div>{% endif %}
         {% if ev.Venue %}<div class="fact"><p class="fact__k">Venue</p><p class="fact__v">{{ ev.Venue }}</p></div>{% endif %}
         {% if ev.City %}<div class="fact"><p class="fact__k">City</p><p class="fact__v">{{ ev.City }}</p></div>{% endif %}

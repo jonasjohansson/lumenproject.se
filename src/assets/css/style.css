@@ -484,7 +484,7 @@ html[data-theme="night"] .hero__img--night { opacity: 1; }
 }
 
 .ev-body { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 3.5rem); padding-block: clamp(2.4rem, 6vw, 4.5rem); }
-@media (min-width: 860px) { .ev-body { grid-template-columns: 18rem 1fr; } }
+@media (min-width: 860px) { .ev-body { grid-template-columns: 22rem 1fr; } }
 .ev-facts { display: grid; gap: var(--space-sm); align-content: start; }
 .fact { border-top: var(--border); padding-top: var(--space-xs); }
 .fact__k { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 0.72rem; color: var(--ink-dim); }
