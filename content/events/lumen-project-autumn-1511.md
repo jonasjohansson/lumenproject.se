@@ -11,24 +11,43 @@ credits: |-
   In collaboration with Nordiska Museet.
   With support from and thanks to: Kulturrådet and Stockholms Stad.
   Artwork: Ernst Lilja
-description: |-
-  For one night, Lumen Project takes over Nordiska Museet after dark, transforming the Great Hall into a space for sound, light and deep listening.
+description: >-
+  For one night, Lumen Project takes over Nordiska Museet after dark,
+  transforming the Great Hall into a space for sound, light and deep listening.
 
-  Step inside the “palace for the people” after opening hours and experience the museum in a way you rarely get to see it — beneath its soaring 24-metre-high ceiling, surrounded by darkness, music and light.
 
-  An immersive evening where the monumental architecture of Nordiska Museet becomes part of the experience.
+  Step inside the “palace for the people” after opening hours and experience the
+  museum in a way you rarely get to see it — beneath its soaring 24-metre-high
+  ceiling, surrounded by darkness, music and light.
 
-  Performances to be announced.
 
-  ♡ Be respectful of your neighbour and surroundings. Take a break from conversation to create space for rest, contemplation and presence.
+  An immersive evening where the monumental architecture of Nordiska Museet
+  becomes part of the experience.
+
+
+  Performances by:
+
+  JOLANDA MOLETTA // KIRI RA! // ÓSKAR FREYR GUÐNASON
+
+
+  ♡ Be respectful of your neighbour and surroundings. Take a break from
+  conversation to create space for rest, contemplation and presence.
+
   ♡ Please turn off or put away your phone.
+
   ♡ Applause is not necessary.
+
 
   TICKETING NOTE
 
-  250 SEK. However if this price range is not workable for you, DM or mail us anyway and we will work it out.
+
+  250 SEK. However if this price range is not workable for you, DM or mail us
+  anyway and we will work it out.
+
 
   ACCESSIBILITY
 
-  Nordiska Museet is wheelchair accessible, please find more information at their website.
+
+  Nordiska Museet is wheelchair accessible, please find more information at
+  their website.
 ---
