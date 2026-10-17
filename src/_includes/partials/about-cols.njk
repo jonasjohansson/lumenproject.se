@@ -4,6 +4,8 @@
     <h2 class="h2">Stay in touch</h2>
     <p class="prose">
       <a href="mailto:{{ lumen.settings.contact_email }}">{{ lumen.settings.contact_email }}</a><br />
+      {% if lumen.settings.press_email %}Press: <a href="mailto:{{ lumen.settings.press_email }}">{{ lumen.settings.press_email }}</a><br />{% endif %}
+      {% if lumen.settings.booking_email %}Booking: <a href="mailto:{{ lumen.settings.booking_email }}">{{ lumen.settings.booking_email }}</a><br />{% endif %}
       <a href="{{ lumen.settings.mailing_url }}" target="_blank" rel="noopener">Join the mailing list</a>
     </p>
   </div>

@@ -46,7 +46,7 @@ The description is plain text, lightly auto-formatted. To avoid surprises:
 One screen for sitewide text and lists:
 
 - **Text & links** — tagline, about, team, the gallery/artists intro lines,
-  contact email, mailing-list and social URLs.
+  the general, press and booking emails, mailing-list and social URLs.
 - **Photographers / Artists / Partners / Press** — drag to reorder; each row
   expands to edit its fields. *Artists* are mostly detected automatically from
   event line-ups; add a row here only to attach a link or include someone who

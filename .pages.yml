@@ -116,7 +116,9 @@ content:
           - { name: events_description, label: "SEO: Events description", type: text }
           - { name: gallery_description, label: "SEO: Gallery description", type: text }
           - { name: about_description, label: "SEO: About description", type: text }
-          - { name: contact_email, label: Contact email, type: string, pattern: '^$|^[^@\s]+@[^@\s]+\.[^@\s]+$' }
+          - { name: contact_email, label: Contact email (general), type: string, pattern: '^$|^[^@\s]+@[^@\s]+\.[^@\s]+$' }
+          - { name: press_email, label: Press email, type: string, pattern: '^$|^[^@\s]+@[^@\s]+\.[^@\s]+$' }
+          - { name: booking_email, label: Booking email, type: string, pattern: '^$|^[^@\s]+@[^@\s]+\.[^@\s]+$' }
           - { name: mailing_url, label: Mailing-list URL, type: string, pattern: '^$|^https?://' }
           - { name: instagram, label: Instagram URL, type: string, pattern: '^$|^https?://' }
           - { name: facebook, label: Facebook URL, type: string, pattern: '^$|^https?://' }
