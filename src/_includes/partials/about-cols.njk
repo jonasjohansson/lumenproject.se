@@ -10,6 +10,7 @@
       {% if lumen.settings.booking_email %}<dt>Booking</dt>
       <dd><a href="mailto:{{ lumen.settings.booking_email }}">{{ lumen.settings.booking_email }}</a></dd>{% endif %}
     </dl>
+    {% if lumen.settings.org_number %}<p class="prose">Lumen Project, {{ lumen.settings.legal_form }}<br>Org. no. {{ lumen.settings.org_number }}</p>{% endif %}
     <p class="prose">
       <a href="{{ lumen.settings.mailing_url }}" target="_blank" rel="noopener">Join the mailing list</a>
     </p>
