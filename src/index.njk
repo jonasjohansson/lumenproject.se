@@ -8,7 +8,7 @@ eleventyComputed:
 ---
 <section class="hero">
   {# only the active phase's image loads first (LCP); the other loads after
-     window load so it's ready to crossfade on a theme toggle #}
+     window load so it's ready to swap in on a theme toggle #}
   <img class="hero__img hero__img--day" data-srcset="/assets/img/photos/olga-androsova-lumenproject-hero-day-sm.jpg 1100w, /assets/img/photos/olga-androsova-lumenproject-hero-day.jpg 2200w" data-src="/assets/img/photos/olga-androsova-lumenproject-hero-day.jpg" sizes="100vw" alt="A Lumen Project performance, photographed by Olga Androsova" decoding="async" />
   <img class="hero__img hero__img--night" data-srcset="/assets/img/photos/olga-androsova-lumenproject-hero-night-sm.jpg 1100w, /assets/img/photos/olga-androsova-lumenproject-hero-night.jpg 2200w" data-src="/assets/img/photos/olga-androsova-lumenproject-hero-night.jpg" sizes="100vw" alt="" aria-hidden="true" decoding="async" />
   <script>
