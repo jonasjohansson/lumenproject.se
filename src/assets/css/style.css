@@ -13,8 +13,8 @@
 
 :root {
   /* — Type ——————————————————————————————————————————————— */
-  --font-display: "Barlow Condensed", "DIN Condensed", "Oswald", sans-serif;
-  --font-body:    "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "din-2014-narrow", "DIN Condensed", "Oswald", sans-serif;
+  --font-body:    "din-2014", "DIN Alternate", "Helvetica Neue", Arial, sans-serif;
 
   --fs-mega:  clamp(3rem, 12vw, 10rem);          /* wordmark / event titles */
   --fs-title: clamp(2.1rem, 7vw, 5.5rem);        /* page titles */
