@@ -502,27 +502,71 @@ html[data-theme="day"] .hero__inner { --hhero-ink: #fff; }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
+/* — Interviews ——————————————————————————————————————————————— */
+.iv-index { border-bottom: var(--border); }
+.iv-row { display: grid; gap: var(--space-sm); padding-block: var(--space-md); border-top: var(--border); color: var(--ink); }
+@media (min-width: 700px) { .iv-row--img { grid-template-columns: 16rem 1fr; gap: var(--space-lg); align-items: center; } }
+.iv-row__media { aspect-ratio: 3 / 2; overflow: hidden; border-radius: var(--radius); background: var(--paper-2); }
+.iv-row__media img { width: 100%; height: 100%; object-fit: cover; }
+.iv-row__text { display: grid; gap: var(--space-2xs); }
+.iv-row__date { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking); color: var(--accent-ink); font-size: 0.85rem; }
+.iv-row__title { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: clamp(1.6rem, 4vw, 2.8rem); line-height: 0.98; }
+.iv-row:hover .iv-row__title { color: var(--accent-ink); }
+.iv-row__intro { color: var(--ink-dim); max-width: 60ch; }
+
+.iv-head { margin-bottom: var(--gap); }
+.iv-kicker { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--accent-ink); font-size: 0.9rem; margin-bottom: var(--space-xs); }
+.iv-title { margin-bottom: var(--space-md); }
+.iv-intro { max-width: 52ch; font-size: var(--fs-lead); line-height: 1.45; color: var(--ink-dim); }
+.iv-by { margin-top: var(--space-sm); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--ink-dim); }
+.iv-photo { margin-bottom: var(--gap); }
+.iv-photo img { width: min(100%, 980px); height: auto; border-radius: var(--radius); margin-bottom: var(--space-xs); }
+/* questions: a bold-only paragraph from the editor, or a heading */
+.iv-body .iv-q, .iv-body h2, .iv-body h3 {
+  font-family: var(--font-body); font-weight: 600; font-size: var(--fs-lead);
+  line-height: 1.45; color: var(--accent-ink);
+  margin: var(--space-xl) 0 var(--flow);
+}
+.iv-body > :first-child { margin-top: 0; }
+.iv-body ul, .iv-body ol { padding-left: 1.2em; margin-block: var(--flow); }
+.iv-body li + li { margin-top: var(--space-2xs); }
+.iv-body blockquote { border-left: 2px solid var(--accent); padding-left: var(--space-sm); margin-block: var(--flow); color: var(--ink-dim); }
+.iv-body img { height: auto; border-radius: var(--radius); margin-block: var(--space-md); }
+.iv-event { max-width: 62ch; margin-top: var(--gap); border-top: var(--border); padding-top: var(--space-xs); }
+.iv-event__title { display: block; margin-top: var(--space-2xs); font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: clamp(1.3rem, 2.6vw, 1.9rem); line-height: 1.02; color: var(--ink); }
+.iv-event__title:hover { color: var(--accent-ink); }
+.iv-event__meta { margin-top: var(--space-2xs); color: var(--ink-dim); }
+.iv .ev-nav { max-width: 62ch; }
+/* on an event page: link to the interview(s) that point at it */
+.iv-link { display: inline-block; margin-bottom: var(--space-md); font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 0.9rem; text-decoration: underline; text-underline-offset: 4px; }
+
 /* — Responsive ——————————————————————————————————————————————— */
 @media (max-width: 760px) {
   .featured { grid-template-columns: 1fr; }
   .featured__media { aspect-ratio: 16 / 10; }
 }
-/* tighten the header on phones so logo + links + icons never collide:
-   the wordmark wraps back to two lines to reclaim width */
+/* phones: logo, links and icons don't fit one line, so the header takes two
+   rows. Subpages keep the logo and icons on top with the section links beneath;
+   the home page (no logo) keeps its links on top, with the newsletter pill and
+   icons beneath. The scrim and the page's top padding grow to clear both rows. */
+@media (max-width: 680px) {
+  :root { --row2: calc(clamp(0.8rem, 2vw, 1.3rem) + 48px); }
+  .site-nav--withlogo { --nav-logo-clear: 0px; top: var(--row2); }
+  .chrome--home { top: var(--row2); }
+  .site-nav .site-nav__newsletter { position: fixed; top: calc(var(--row2) + 3px); left: var(--pad); margin-block: 0; }
+  .topfade { height: calc(var(--row2) + 64px); }
+  .page { padding-top: calc(var(--row2) + 4rem); }
+}
 @media (max-width: 600px) {
-  .site-nav__home { white-space: normal; max-width: 6rem; line-height: 1; font-size: 0.85rem; }
+  .site-nav__home { font-size: 0.85rem; }
   .site-nav { gap: 0.9rem; font-size: 0.74rem; }
-  .site-nav--withlogo { --nav-logo-clear: 5.5rem; }  /* only subpages have the logo to clear */
   /* roomier tap targets on touch (hit area grows without shifting the layout) */
   .site-nav a { padding-block: 0.5rem; margin-block: -0.5rem; }
-  .chrome__ic { width: 36px; height: 36px; }
-  /* drop the day/night toggle on phones — it crowds the nav so the last link
-     ("About") gets pushed off-screen; the time-of-day default still applies */
-  .chrome__toggle { display: none; }
+  .chrome__ic, .chrome__toggle { width: 36px; height: 36px; }
 }
-/* Keep the home newsletter beside the section links, with socials below on phones. */
-@media (max-width: 480px) {
-  .chrome--home { top: calc(clamp(0.8rem, 2vw, 1.3rem) + 44px); }
+/* the narrowest phones: the home's second row can't fit the pill and four icons */
+@media (max-width: 340px) {
+  .chrome--home .chrome__toggle { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

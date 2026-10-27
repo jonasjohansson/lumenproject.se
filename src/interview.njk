@@ -1,0 +1,65 @@
+---
+layout: base.njk
+current: interviews
+pagination:
+  data: lumen.interviews
+  size: 1
+  alias: iv
+permalink: "{{ iv.url }}"
+eleventyComputed:
+  title: "{{ iv.Title | safe }} · Interview · Lumen Project"
+  description: "{{ iv.excerpt | safe }}"
+  ogImage: "{{ iv.ogShare }}"
+  ogImageW: "{{ iv.dims.width if iv.ogShare else '' }}"
+  ogImageH: "{{ iv.dims.height if iv.ogShare else '' }}"
+  ogImageAlt: "{{ (iv.ImageAlt or iv.Title) | safe }}"
+  ogType: "article"
+---
+<article class="wrap page iv">
+  <header class="iv-head">
+    <p class="iv-kicker">Interview{% if iv.Date %} · <time datetime="{{ iv.Date }}">{{ iv.Date | postDate }}</time>{% endif %}</p>
+    <h1 class="page-title iv-title">{{ iv.Title }}</h1>
+    {% if iv.Intro %}<div class="iv-intro">{{ iv.Intro | safe }}</div>{% endif %}
+    {% if iv.By %}<p class="iv-by">Interview by {{ iv.By }}</p>{% endif %}
+  </header>
+
+  {% if iv.ImageURL %}
+  <figure class="iv-photo">
+    <img src="{{ iv.ImageURL | img }}" alt="{{ iv.ImageAlt or iv.Title }}"{% if iv.dims %} width="{{ iv.dims.width }}" height="{{ iv.dims.height }}"{% endif %} fetchpriority="high" decoding="async" />
+    {% if iv.ImageCredit %}<figcaption class="photo-credit">Photo: {{ iv.ImageCredit }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
+
+  <div class="prose iv-body">{{ iv.Body | safe }}</div>
+
+  {% if iv.event %}
+  <aside class="iv-event" aria-label="Event">
+    <p class="fact__k">{% if iv.event.isUpcoming %}See it live{% else %}Event{% endif %}</p>
+    <a class="iv-event__title" href="{{ iv.event.url }}">{{ iv.event.Title }}</a>
+    <p class="iv-event__meta">{% if iv.event.Date %}{{ iv.event.Date | eventDate }}{% if iv.event.meta %} · {% endif %}{% endif %}{{ iv.event.meta }}</p>
+    {% if iv.event.isUpcoming and iv.event.TicketURL %}<a class="badge ev-cta" href="{{ iv.event.TicketURL }}" target="_blank" rel="noopener">Tickets &rarr;</a>{% endif %}
+  </aside>
+  {% endif %}
+
+  {% if iv.olderInterview or iv.newerInterview %}
+  <nav class="ev-nav" aria-label="More interviews">
+    {% if iv.olderInterview %}<a class="ev-nav__link ev-nav__link--prev" href="{{ iv.olderInterview.url }}"><span class="ev-nav__k">&larr; Previous</span><span class="ev-nav__t">{{ iv.olderInterview.Title }}</span></a>{% else %}<span></span>{% endif %}
+    {% if iv.newerInterview %}<a class="ev-nav__link ev-nav__link--next" href="{{ iv.newerInterview.url }}"><span class="ev-nav__k">Next &rarr;</span><span class="ev-nav__t">{{ iv.newerInterview.Title }}</span></a>{% endif %}
+  </nav>
+  {% endif %}
+  <a class="backlink" href="/interviews/">&larr; All interviews</a>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ iv.Title | dump | safe }},
+  {% if iv.Date %}"datePublished": {{ iv.Date | dump | safe }},{% endif %}
+  {% if iv.excerpt %}"description": {{ iv.excerpt | dump | safe }},{% endif %}
+  {% if iv.ImageURL %}"image": [{{ (iv.ImageURL | absImg) | dump | safe }}],{% endif %}
+  {% if iv.By %}"author": { "@type": "Person", "name": {{ iv.By | dump | safe }} },{% endif %}
+  "url": {{ (site.url + iv.url) | dump | safe }},
+  "publisher": { "@type": "Organization", "name": "Lumen Project", "url": {{ site.url | dump | safe }} }
+}
+</script>

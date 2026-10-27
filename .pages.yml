@@ -19,6 +19,11 @@ media:
     input: src/assets/img/photos
     output: /assets/img/photos
     categories: [image]
+  - name: interviews
+    label: Interview photos
+    input: src/assets/img/interviews
+    output: /assets/img/interviews
+    categories: [image]
   - name: newsletter
     label: Newsletter photos
     input: src/assets/img/newsletter
@@ -63,6 +68,29 @@ content:
       - { name: credits, label: Credits & support, type: text, description: "Collaborations, funders and thanks — e.g. “In collaboration with X” / “With support from Kulturrådet and Stockholms Stad”. One per line. Shown at the foot of the event." }
       - { name: about, label: About (override), type: text, description: "Leave blank to show the standard Lumen Project blurb (set in Site settings → Event About blurb). Fill in only to override it for this event." }
       - { name: description, label: More info / body, type: text, description: "Optional notes about this event. Performances, credits and the About blurb have their own fields above — leave this as “More info TBA” for events not yet announced. ALL-CAPS lines become headings; link lines are removed." }
+
+  - name: interviews
+    label: Interviews
+    type: collection
+    path: content/interviews
+    filename: '{fields.title}.md'
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Title, type: string, required: true, description: "Usually the artist's name. Also builds the web address (lumenproject.se/interviews/…), so don't rename a published interview." }
+      - { name: date, label: Date published, type: date, required: true, options: { format: yyyy-MM-dd } }
+      - { name: intro, label: Intro, type: text, description: "One or two sentences above the interview. Also used in link previews and search results." }
+      - { name: by, label: Interview by, type: string, description: "Optional, e.g. the interviewer's name" }
+      - { name: image, label: Photo, type: image, options: { media: interviews }, description: "Optional. Shown above the interview; a landscape photo (about 2:1) also becomes the link-preview image" }
+      - { name: image_alt, label: Photo description (alt text), type: string }
+      - { name: image_credit, label: Photo credit, type: string }
+      - { name: event, label: Related event, type: reference, options: { collection: events, search: title, value: '{path}', label: '{title}' }, description: "Optional. Links the interview and the event page to each other" }
+      - { name: body, label: Interview, type: rich-text, options: { format: markdown, media: interviews }, description: "Make each question bold (its own line, all of it bold); the answers are normal paragraphs underneath." }
 
   - name: gallery
     label: Gallery
@@ -110,11 +138,13 @@ content:
           - { name: experience, label: How to experience it, type: text }
           - { name: founders, label: Team / founders, type: text }
           - { name: gallery_intro, label: Gallery intro line, type: text }
+          - { name: interviews_intro, label: Interviews intro line, type: text, description: "Shown at the top of /interviews/" }
           - { name: artists_intro, label: Artists line (after the number), type: text, description: "Shown on /events/ as “<count> <this text>”" }
           - { name: about_photo_credit, label: About photo credit, type: string }
           - { name: home_description, label: "SEO: Home description", type: text, description: "Search / link-preview text for the home page (~150 chars)" }
           - { name: events_description, label: "SEO: Events description", type: text }
           - { name: gallery_description, label: "SEO: Gallery description", type: text }
+          - { name: interviews_description, label: "SEO: Interviews description", type: text }
           - { name: about_description, label: "SEO: About description", type: text }
           - { name: contact_email, label: Contact email (general), type: string, pattern: '^$|^[^@\s]+@[^@\s]+\.[^@\s]+$' }
           - { name: press_email, label: Press email, type: string, pattern: '^$|^[^@\s]+@[^@\s]+\.[^@\s]+$' }

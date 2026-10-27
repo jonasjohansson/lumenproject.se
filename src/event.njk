@@ -44,6 +44,7 @@ eleventyComputed:
           <p class="ev-cast">{% for a in ev.lineup %}{% if not loop.first %}  /  {% endif %}{% if a.URL %}<a href="{{ a.URL }}" target="_blank" rel="noopener">{{ a.Name }}</a>{% else %}{{ a.Name }}{% endif %}{% endfor %}</p>
         </section>
         {% endif %}
+        {% for iv in ev.interviews %}<a class="iv-link" href="{{ iv.url }}">Read the interview: {{ iv.Title }} &rarr;</a>{% endfor %}
         {% if ev.Description %}<div class="prose ev-desc">{{ ev.Description | eventBody | safe }}</div>{% endif %}
         {% set aboutText = ev.AboutOverride or lumen.settings.event_about %}
         {% if aboutText %}

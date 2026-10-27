@@ -12,6 +12,8 @@ They edit only:
 
 - **Events** — `content/events/*.md` (title, date, time, venue, price, ticket
   link, poster, line-up, description).
+- **Interviews** — `content/interviews/*.md` (title, date, intro, photo,
+  related event, and the interview text as Markdown).
 - **Site settings** — `content/settings.json` (tagline, about, team, intros,
   contact/social links, photographers, artists, partners, press).
 - **Images** — uploads into `src/assets/img/{events,gallery,photos}` via the

@@ -1,0 +1,29 @@
+---
+layout: base.njk
+current: interviews
+title: Interviews · Lumen Project
+eleventyComputed:
+  description: "{{ lumen.settings.interviews_description or 'Conversations with the artists of Lumen Project.' }}"
+permalink: /interviews/
+---
+<div class="wrap page">
+  <h1 class="visually-hidden">Interviews</h1>
+  <p class="page-intro">{{ lumen.settings.interviews_intro or "Conversations with the artists who perform at Lumen Project." }}</p>
+
+  {% if lumen.interviews.length %}
+  <div class="iv-index">
+    {% for iv in lumen.interviews %}
+    <a class="iv-row{% if iv.ImageURL %} iv-row--img{% endif %}" href="{{ iv.url }}">
+      {% if iv.ImageURL %}<span class="iv-row__media"><img src="{{ iv.ImageURL | img }}" alt="" loading="lazy" decoding="async" /></span>{% endif %}
+      <span class="iv-row__text">
+        {% if iv.Date %}<span class="iv-row__date">{{ iv.Date | postDate }}</span>{% endif %}
+        <span class="iv-row__title">{{ iv.Title }}</span>
+        {% if iv.IntroText or iv.excerpt %}<span class="iv-row__intro">{{ iv.IntroText or iv.excerpt }}</span>{% endif %}
+      </span>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="iv-row__intro">No interviews yet.</p>
+  {% endif %}
+</div>

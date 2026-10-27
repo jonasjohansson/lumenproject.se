@@ -41,6 +41,30 @@ The description is plain text, lightly auto-formatted. To avoid surprises:
 - You don't need the old `Performances by: A // B // C` line anymore — use the
   **Line-up** field instead.
 
+## Interviews
+
+Long-form interviews with artists, at
+[lumenproject.se/interviews](https://lumenproject.se/interviews/). Each
+interview is a form:
+
+- **Title** — usually the artist's name. It also builds the web address
+  (`/interviews/jolanda-moletta/`), so **don't rename a published interview**.
+- **Date published** — `YYYY-MM-DD`; the list is newest first.
+- **Intro** — one or two sentences above the interview. Also used in link
+  previews and search results.
+- **Photo** (optional) — uploads into the `interviews` folder. Fill in the
+  photo description and credit too. A landscape photo (about 2:1) also becomes
+  the image shown when the link is shared.
+- **Related event** (optional) — pick the event. The interview then shows the
+  event (with the ticket button while it's upcoming), and the event page links
+  back to the interview.
+- **Interview** — the text itself, in a normal text editor. Make **each
+  question bold** (the whole question, on its own line); it is then styled as a
+  question. Answers are ordinary paragraphs underneath. Italics and links work
+  as you'd expect.
+
+To link to it from the newsletter, copy the address of the published page.
+
 ## Site settings
 
 One screen for sitewide text and lists:

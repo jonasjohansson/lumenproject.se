@@ -24,8 +24,10 @@ Config for all of the above lives in [`.pages.yml`](./.pages.yml).
 
 ```
 content/events/*.md        one Markdown file per event (frontmatter)
+content/interviews/*.md    one Markdown file per interview (frontmatter + body)
 content/settings.json      site text/links + artists, partners, media
 src/assets/img/events/     event posters (uploaded via the CMS)
+src/assets/img/interviews/ interview photos (uploaded via the CMS)
 src/assets/img/            hero + about photo
 ```
 
@@ -64,6 +66,7 @@ src/
   _data/site.js         canonical base URL
   _includes/base.njk    shared header/footer layout
   index.njk events.njk about.njk event.njk
+  interviews.njk interview.njk   /interviews/ and /interviews/<slug>/
   404.njk sitemap.njk robots.njk
   CNAME
   assets/css/style.css

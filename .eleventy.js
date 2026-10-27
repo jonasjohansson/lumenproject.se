@@ -33,6 +33,14 @@ module.exports = function (eleventyConfig) {
     return d.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
   });
 
+  // publication date for interviews: "October 27, 2026"
+  eleventyConfig.addFilter("postDate", (iso) => {
+    if (!iso) return "";
+    const d = new Date(iso + "T00:00:00");
+    if (isNaN(d)) return iso;
+    return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+  });
+
   // local image paths (from the sheet) -> root-absolute; pass external URLs through
   eleventyConfig.addFilter("img", (v) => {
     if (!v) return "";

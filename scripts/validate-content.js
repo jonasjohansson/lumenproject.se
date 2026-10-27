@@ -5,6 +5,7 @@
      - every event has a title and a valid YYYY-MM-DD date
      - time, if present, looks like a start-end range (matches the CMS pattern)
      - image/photo paths, if present, are root-absolute
+     - every interview has a title, a valid date and (if set) an existing event
    Exits non-zero (with a readable list) when anything fails. */
 const fs = require("fs");
 const path = require("path");
@@ -42,6 +43,21 @@ for (const f of fs.readdirSync(evDir).filter((f) => f.endsWith(".md"))) {
     if (data[k] && !String(data[k]).startsWith("/assets/"))
       fail(f, `${k} should be a /assets/… path (got ${JSON.stringify(data[k])})`);
   }
+}
+
+// interviews (optional folder)
+const ivDir = path.join(root, "content/interviews");
+for (const f of fs.existsSync(ivDir) ? fs.readdirSync(ivDir).filter((f) => f.endsWith(".md")) : []) {
+  let data;
+  try { data = matter(fs.readFileSync(path.join(ivDir, f), "utf8")).data; }
+  catch (e) { fail("interviews/" + f, "unparseable frontmatter — " + e.message); continue; }
+  if (!data.title || !String(data.title).trim()) fail("interviews/" + f, "missing title");
+  if (!data.date || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr(data.date)))
+    fail("interviews/" + f, `date must be YYYY-MM-DD (got ${JSON.stringify(data.date)})`);
+  if (data.image && !String(data.image).startsWith("/assets/"))
+    fail("interviews/" + f, `image should be a /assets/… path (got ${JSON.stringify(data.image)})`);
+  if (data.event && !fs.existsSync(path.join(evDir, path.basename(String(data.event)))))
+    fail("interviews/" + f, `related event not found (got ${JSON.stringify(data.event)})`);
 }
 
 if (errors.length) {

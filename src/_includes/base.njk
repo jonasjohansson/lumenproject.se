@@ -96,6 +96,7 @@
   {% if current != 'home' %}<a class="site-nav__home{% if hasHero %} site-nav__home--hero{% endif %}" href="/">Lumen Project</a>{% endif %}
   <nav class="site-nav{% if current == 'home' or hasHero %} site-nav--hero{% endif %}{% if current != 'home' %} site-nav--withlogo{% endif %}" aria-label="Sections">
     <a href="/events/"{% if current == 'events' %} aria-current="page"{% endif %}>Events</a>
+    <a href="/interviews/"{% if current == 'interviews' %} aria-current="page"{% endif %}>Interviews</a>
     <a href="/gallery/"{% if current == 'gallery' %} aria-current="page"{% endif %}>Gallery</a>
     <a href="/about/"{% if current == 'about' %} aria-current="page"{% endif %}>About</a>
     {% if current == 'home' and lumen.settings.mailing_url %}<a class="badge badge--cta site-nav__newsletter" href="{{ lumen.settings.mailing_url }}" target="_blank" rel="noopener">Newsletter <span class="badge__arrow" aria-hidden="true">&rarr;</span></a>{% endif %}

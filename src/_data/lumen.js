@@ -3,6 +3,7 @@
  *  Pages CMS, app.pagescms.org) and hand it to the templates.
  *
  *    content/events/*.md   — one Markdown file per event (frontmatter)
+ *    content/interviews/*.md — one Markdown file per interview
  *    content/settings.json — site text/links + artists/partners/media
  *    src/assets/img/events/— event posters (uploaded via the CMS)
  *
@@ -14,6 +15,10 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 const { imageSize } = require("image-size");
+const markdownIt = require("markdown-it");
+
+// interview bodies are Markdown from the CMS rich-text editor (raw HTML allowed)
+const md = markdownIt({ html: true, linkify: true });
 
 const CONTENT = path.join(__dirname, "..", "..", "content");
 const ASSETS = path.join(__dirname, "..", "assets");
@@ -247,6 +252,52 @@ module.exports = function () {
     }
   }
 
+  // Interviews: content/interviews/*.md, newest first. A paragraph that is
+  // nothing but bold text is a question (that's how the editor marks them).
+  const ivDir = path.join(CONTENT, "interviews");
+  const ivFiles = fs.existsSync(ivDir) ? fs.readdirSync(ivDir).filter((f) => f.endsWith(".md")) : [];
+  const eventBySlug = new Map(events.map((e) => [e.slug, e]));
+  let interviews = ivFiles.map((f) => {
+    const g = matter(fs.readFileSync(path.join(ivDir, f), "utf8"));
+    const d = g.data || {};
+    const body = md.render(String(g.content || "").trim())
+      .replace(/<p><strong>((?:(?!<\/strong>)[\s\S])*)<\/strong><\/p>/g, '<p class="iv-q">$1</p>');
+    const intro = String(d.intro || "").trim();
+    // the CMS reference field stores the event's file path; match on its slug
+    const ev = d.event ? eventBySlug.get(path.basename(String(d.event)).replace(/\.md$/, "")) : null;
+    const image = d.image || "";
+    const dims = dimsOf(image);
+    const ratio = dims ? dims.width / dims.height : 0;
+    const slug = f.replace(/\.md$/, "") || slugify(d.title);
+    return {
+      Title: String(d.title || "").trim(),
+      Date: ymd(d.date),
+      By: String(d.by || "").trim(),
+      Intro: intro ? md.render(intro) : "",
+      IntroText: intro.replace(/\*/g, ""),
+      ImageURL: image,
+      ImageAlt: String(d.image_alt || "").trim(),
+      ImageCredit: String(d.image_credit || "").trim(),
+      Body: body,
+      excerpt: excerptOf(intro || body.replace(/<[^>]+>/g, " ")),
+      dims,
+      // same landscape-card rule as event posters (see ogShare above)
+      ogShare: ratio >= 1.4 && ratio <= 2.2 && dims.width >= 600 ? image : "",
+      event: ev ? { url: ev.url, Title: ev.Title, Date: ev.Date, meta: ev.meta, isUpcoming: ev.isUpcoming, TicketURL: ev.TicketURL } : null,
+      slug,
+      url: `/interviews/${slug}/`,
+    };
+  }).filter((iv) => iv.Title);
+  interviews.sort((a, b) => (b.Date || "").localeCompare(a.Date || ""));
+  interviews = interviews.map((iv, i, arr) => ({
+    ...iv,
+    olderInterview: ref(arr[i + 1]),
+    newerInterview: ref(arr[i - 1]),
+  }));
+  // an event page links to the interviews that point at it (upcoming/past
+  // hold these same objects, so attaching here reaches every list)
+  for (const e of events) e.interviews = interviews.filter((iv) => iv.event && iv.event.url === e.url).map(ref);
+
   const s = JSON.parse(fs.readFileSync(path.join(CONTENT, "settings.json"), "utf8"));
 
   // Performer index: every act mined from event line-ups (newest event first),
@@ -283,6 +334,7 @@ module.exports = function () {
     pastByYear,
     byYear,
     nextEvent,
+    interviews,
     redirects,
     artists,
     partners: (s.partners || []).filter((p) => p.name)
