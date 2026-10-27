@@ -261,7 +261,8 @@ module.exports = function () {
     const g = matter(fs.readFileSync(path.join(ivDir, f), "utf8"));
     const d = g.data || {};
     const body = md.render(String(g.content || "").trim())
-      .replace(/<p><strong>((?:(?!<\/strong>)[\s\S])*)<\/strong><\/p>/g, '<p class="iv-q">$1</p>');
+      .replace(/<p><strong>((?:(?!<\/strong>)[\s\S])*)<\/strong><\/p>/g, '<p class="iv-q">$1</p>')
+      .replace(/<img /g, '<img loading="lazy" decoding="async" ');
     const intro = String(d.intro || "").trim();
     // the CMS reference field stores the event's file path; match on its slug
     const ev = d.event ? eventBySlug.get(path.basename(String(d.event)).replace(/\.md$/, "")) : null;

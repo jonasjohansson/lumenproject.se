@@ -5,11 +5,16 @@ intro: >-
   Jolanda Moletta performs at Lumen Project x Nordiska Museet on 15 November.
   We spoke with her about improvisation, ritual, and what the voice can do once
   it lets go of words.
+image: /assets/img/interviews/jolanda-moletta-1-giorgio-violino.jpg
+image_alt: Jolanda Moletta in black and white, eyes closed, her hair blurred in motion
+image_credit: Giorgio Violino
 event: content/events/lumen-project-autumn-1511.md
 ---
 **You’ll be performing at the Lumen Project in mid-November, as we move into the darker and more inward part of the year. Your work is closely connected to natural and lunar cycles. Does the particular time and place of a performance change what it can become?**
 
 There’s a huge part of improvisation in my live set, so the environment, the time of day, and the season deeply influence what happens on stage. For this particular show, I expect to be inspired to create some deep, introspective textures, starting with vocal drones, layers of sustained sounds and slowly evolving sound washes, and to let everyone get lost in it. But you never really know what will happen until you’re there, and the performance might take a completely different direction from what I imagined. I like leaving that space open for something unexpected to happen.
+
+![Jolanda Moletta holding a conch shell over half her face](/assets/img/interviews/jolanda-moletta-5-giorgio-violino.jpg)
 
 **Ritual runs through much of your work, and you have described your performances as collective rituals rather than concerts. What draws you to ritual, and what do you think it can offer us today?**
 
@@ -20,6 +25,8 @@ This is what I try to bring into my performances. I’m not interested in recrea
 I think ritual can offer us something very valuable today: a moment to slow down, enter a different state of presence, and experience something together without needing to explain everything.
 
 For me, especially when I improvise, it’s about really feeling the people in the room and finding a kind of shared emotional space where, for a moment, we can breathe as one. I try to listen deeply to everything around me, to the silences, the breaths, the atmosphere, and let these things guide what I create. It’s about being present, feeling each other and allowing something to happen between us that we couldn’t have planned. That’s where I find something sacred in music.
+
+![Jolanda Moletta in a sheer hooded dress against a cave wall](/assets/img/interviews/jolanda-moletta-2-giorgio-violino.jpg)
 
 **Your solo work centers on the voice, but largely removes words and language from it. What becomes possible when the voice no longer has to explain or name anything – both for you as a performer and for the person listening?**
 
